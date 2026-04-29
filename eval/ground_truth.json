@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "case_id": "GT-001",
+    "difficulty": "normal",
+    "input": {
+      "product_name": "FOUP",
+      "material": "폴리카보네이트",
+      "purpose": "300mm 웨이퍼 클린룸 이송 및 보관",
+      "trade_direction": "수출",
+      "process_stage": "전공정"
+    },
+    "answer": {
+      "hs_code_10": "3923100000",
+      "hs_code_6": "392310",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["8486900000"]
+    },
+    "notes": "플라스틱제 운반용 케이스. 재질 기준 39류 vs 반도체 장비 부품 기준 84류 혼동 주의"
+  },
+  {
+    "case_id": "GT-002",
+    "difficulty": "normal",
+    "input": {
+      "product_name": "Bond Wire 알루미늄",
+      "material": "알루미늄 99.9%",
+      "purpose": "반도체 칩 내부 전기 연결용 와이어 본딩",
+      "trade_direction": "수입",
+      "process_stage": "후공정"
+    },
+    "answer": {
+      "hs_code_10": "7605110000",
+      "hs_code_6": "760511",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["8544421000"]
+    },
+    "notes": "알루미늄 단선. 8544 절연전선과 혼동 주의"
+  },
+  {
+    "case_id": "GT-003",
+    "difficulty": "normal",
+    "input": {
+      "product_name": "Quartz Wafer Carrier",
+      "material": "석영(합성 용융 실리카)",
+      "purpose": "웨이퍼 열처리 공정 내 이송 보트",
+      "trade_direction": "수입",
+      "process_stage": "전공정 확산"
+    },
+    "answer": {
+      "hs_code_10": "7020000000",
+      "hs_code_6": "702000",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["8486909000"]
+    },
+    "notes": "석영제 산업용 물품. 반도체 장비 부품(8486)과 혼동 가능"
+  },
+  {
+    "case_id": "GT-004",
+    "difficulty": "normal",
+    "input": {
+      "product_name": "포토마스크",
+      "material": "석영기판 + 크롬 패턴",
+      "purpose": "리소그래피 노광 공정용 회로 패턴 전사",
+      "trade_direction": "수입",
+      "process_stage": "전공정 리소그래피"
+    },
+    "answer": {
+      "hs_code_10": "9002190000",
+      "hs_code_6": "900219",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["8486200000"]
+    },
+    "notes": "광학 소자(90류). 반도체 제조용 장비(8486) 혼동 주의"
+  },
+  {
+    "case_id": "GT-005",
+    "difficulty": "confusing",
+    "input": {
+      "product_name": "CMP Slurry",
+      "material": "콜로이달 실리카 + 산화제 혼합 수용액",
+      "purpose": "화학적 기계적 평탄화(CMP) 공정 연마재",
+      "trade_direction": "수입",
+      "process_stage": "전공정 CMP"
+    },
+    "answer": {
+      "hs_code_10": "3824990000",
+      "hs_code_6": "382499",
+      "label_source": "관세청_유권해석",
+      "similar_codes": ["2804690000", "3819000000"]
+    },
+    "notes": "혼합 화학제품(3824). 규소화합물(2804) 혼동. 성분 비율이 류 결정에 영향"
+  },
+  {
+    "case_id": "GT-006",
+    "difficulty": "confusing",
+    "input": {
+      "product_name": "EMC(Epoxy Molding Compound)",
+      "material": "에폭시 수지 + 실리카 충전재 복합체",
+      "purpose": "반도체 패키지 봉지재(몰딩)",
+      "trade_direction": "수입",
+      "process_stage": "후공정 패키징"
+    },
+    "answer": {
+      "hs_code_10": "3907300000",
+      "hs_code_6": "390730",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["3926909000", "3824990000"]
+    },
+    "notes": "에폭시 수지(3907). 플라스틱 기타 제품(3926) 혼동 가능"
+  },
+  {
+    "case_id": "GT-007",
+    "difficulty": "confusing",
+    "input": {
+      "product_name": "Gate Oxide 전구체(TEOS)",
+      "material": "TEOS(테트라에틸오르토실리케이트)",
+      "purpose": "CVD 공정 산화막 증착용 전구체 가스",
+      "trade_direction": "수입",
+      "process_stage": "전공정 CVD"
+    },
+    "answer": {
+      "hs_code_10": "2931900000",
+      "hs_code_6": "293190",
+      "label_source": "관세청_유권해석",
+      "similar_codes": ["2811290000", "2804690000"]
+    },
+    "notes": "유기규소화합물(2931). 실리콘화합물(2811) 혼동. 유기금속 전구체 분류 복잡"
+  },
+  {
+    "case_id": "GT-008",
+    "difficulty": "confusing",
+    "input": {
+      "product_name": "구리 스퍼터링 타깃",
+      "material": "구리 99.999% 고순도",
+      "purpose": "PVD 스퍼터링 공정 배선층 증착용 타깃재",
+      "trade_direction": "수입",
+      "process_stage": "전공정 금속배선"
+    },
+    "answer": {
+      "hs_code_10": "7410110000",
+      "hs_code_6": "741011",
+      "label_source": "관세청_사례집",
+      "similar_codes": ["8486909000", "8101990000"]
+    },
+    "notes": "구리 판·띠(7410). 반도체 장비 부품(8486) 혼동. 타깃재 형태가 분류 기준"
+  },
+  {
+    "case_id": "GT-009",
+    "difficulty": "edge",
+    "input": {
+      "product_name": "EUV 포토레지스트",
+      "material": "금속산화물계 신소재(Zr 함유)",
+      "purpose": "EUV(13.5nm) 리소그래피 노광용 감광재",
+      "trade_direction": "수입",
+      "process_stage": "전공정 EUV 리소그래피"
+    },
+    "answer": {
+      "hs_code_10": "3707100000",
+      "hs_code_6": "370710",
+      "label_source": "관세청_유권해석",
+      "similar_codes": ["3824990000", "2850009000"]
+    },
+    "notes": "엣지 케이스. 신소재로 분류 사례 부족. Fallback 또는 3707 추천 예상"
+  },
+  {
+    "case_id": "GT-010",
+    "difficulty": "edge",
+    "input": {
+      "product_name": "하이브리드 본딩 소재",
+      "material": "Cu/SiO2 복합 다층 구조",
+      "purpose": "첨단 패키징 Die-to-Die 직접 접합",
+      "trade_direction": "수입",
+      "process_stage": "후공정 어드밴스드 패키징"
+    },
+    "answer": {
+      "hs_code_10": "3824990000",
+      "hs_code_6": "382499",
+      "label_source": "관세청_유권해석",
+      "similar_codes": ["8486909000", "7410110000", "2811290000"]
+    },
+    "notes": "엣지 케이스. 복합 구성 신기술. 분류 사례 없어 Fallback 정상 처리 예상"
+  }
+]
