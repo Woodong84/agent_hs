@@ -11,19 +11,22 @@ RESULTS_DIR = Path(__file__).parent / "results"
 REGRESSION_THRESHOLD = 5.0  # %p 이상 하락 시 경고
 
 
-def _load_two_latest() -> tuple:
+def _load_two_latest():
     files = sorted(RESULTS_DIR.glob("eval_*.json"))
     if len(files) < 2:
         return None, None
-    with open(files[-2], encoding="utf-8") as f:
-        prev = json.load(f)
-    with open(files[-1], encoding="utf-8") as f:
-        curr = json.load(f)
-    return (files[-2].name, prev), (files[-1].name, curr)
+    try:
+        with open(files[-2], encoding="utf-8") as f:
+            prev = json.load(f)
+        with open(files[-1], encoding="utf-8") as f:
+            curr = json.load(f)
+        return (files[-2].name, prev), (files[-1].name, curr)
+    except (json.JSONDecodeError, KeyError):
+        return None, None
 
 
 def _diff_label(delta: float, higher_is_better: bool = True) -> str:
-    sign = "+" if delta >= 0 else ""
+    sign = "+" if delta > 0 else ""
     if higher_is_better:
         bad = delta <= -REGRESSION_THRESHOLD
     else:
@@ -42,12 +45,16 @@ def main():
     prev_name, prev_data = prev_pair
     curr_name, curr_data = curr_pair
 
-    p = prev_data["overall"]
-    c = curr_data["overall"]
+    p = prev_data.get("overall", {})
+    c = curr_data.get("overall", {})
+
+    if not p or not c:
+        print("[오류] 평가 결과 파일 형식이 올바르지 않습니다.")
+        return
 
     print("\n=== 회귀 테스트 결과 ===")
-    print(f"이전: {prev_name} ({p['n']}건)")
-    print(f"현재: {curr_name} ({c['n']}건)")
+    print(f"이전: {prev_name} ({p.get('n', '?')}건)")
+    print(f"현재: {curr_name} ({c.get('n', '?')}건)")
     print()
 
     top3_delta = c["top3_pct"] - p["top3_pct"]

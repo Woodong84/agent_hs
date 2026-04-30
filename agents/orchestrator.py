@@ -4,6 +4,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import json
 import time
 from langchain_anthropic import ChatAnthropic
 from langchain.agents import AgentExecutor, create_react_agent
@@ -39,8 +40,14 @@ Question: {input}
 {agent_scratchpad}"""
 )
 
+# AgentExecutor 모듈 레벨 캐시 (매 run_agent 호출마다 재생성 방지)
+_executor_cache: AgentExecutor | None = None
+
 
 def _build_agent_executor() -> AgentExecutor:
+    global _executor_cache
+    if _executor_cache is not None:
+        return _executor_cache
     llm = ChatAnthropic(
         model=settings.ANTHROPIC_MODEL,
         api_key=settings.ANTHROPIC_API_KEY,
@@ -48,7 +55,7 @@ def _build_agent_executor() -> AgentExecutor:
     )
     prompt = PromptTemplate.from_template(_REACT_TEMPLATE)
     agent = create_react_agent(llm=llm, tools=_TOOLS, prompt=prompt)
-    return AgentExecutor(
+    _executor_cache = AgentExecutor(
         agent=agent,
         tools=_TOOLS,
         max_iterations=5,
@@ -56,6 +63,25 @@ def _build_agent_executor() -> AgentExecutor:
         handle_parsing_errors=True,
         return_intermediate_steps=True,
     )
+    return _executor_cache
+
+
+def _parse_observation(observation) -> dict:
+    """LangChain intermediate_steps의 observation을 dict로 변환한다.
+    Tool이 dict를 반환해도 LangChain이 문자열로 직렬화할 수 있어 JSON 파싱을 시도한다.
+    """
+    if isinstance(observation, dict):
+        return observation
+    if isinstance(observation, str):
+        try:
+            parsed = json.loads(observation)
+            if isinstance(parsed, dict):
+                return parsed
+        except (json.JSONDecodeError, ValueError):
+            pass
+        # JSON 파싱 실패 시 빈 dict 반환
+        return {}
+    return {}
 
 
 def _format_question(data: dict) -> str:
@@ -98,14 +124,15 @@ def run_agent(input_data: dict) -> dict:
         final_response = result.get("output", "")
         intermediate = result.get("intermediate_steps", [])
 
-        rag_result = {}
-        tax_result = {}
+        rag_result: dict = {}
+        tax_result: dict = {}
         for action, observation in intermediate:
             tool_name = getattr(action, "tool", "")
-            if tool_name == "search_hs_code_rag" and isinstance(observation, dict):
-                rag_result = observation
-            elif tool_name == "query_tax_rate" and isinstance(observation, dict):
-                tax_result = observation
+            parsed = _parse_observation(observation)
+            if tool_name == "search_hs_code_rag" and parsed:
+                rag_result = parsed
+            elif tool_name == "query_tax_rate" and parsed:
+                tax_result = parsed
 
         fallback_triggered = rag_result.get("fallback", False)
         if fallback_triggered:

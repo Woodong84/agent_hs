@@ -10,14 +10,31 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from configs.settings import settings
 
+# 모델과 벡터스토어를 모듈 레벨에서 캐싱 (매 호출마다 재로드 방지)
+_embeddings: HuggingFaceEmbeddings | None = None
+_vectorstore: Chroma | None = None
+
+# Cosine distance 컬렉션 메타데이터
+_COLLECTION_METADATA = {"hnsw:space": "cosine"}
+
+
+def _get_embeddings() -> HuggingFaceEmbeddings:
+    global _embeddings
+    if _embeddings is None:
+        _embeddings = HuggingFaceEmbeddings(model_name=settings.EMBEDDING_MODEL)
+    return _embeddings
+
 
 def _get_vectorstore() -> Chroma:
-    embeddings = HuggingFaceEmbeddings(model_name=settings.EMBEDDING_MODEL)
-    return Chroma(
-        collection_name=settings.CHROMA_COLLECTION_NAME,
-        embedding_function=embeddings,
-        persist_directory=settings.CHROMA_DB_PATH,
-    )
+    global _vectorstore
+    if _vectorstore is None:
+        _vectorstore = Chroma(
+            collection_name=settings.CHROMA_COLLECTION_NAME,
+            embedding_function=_get_embeddings(),
+            persist_directory=settings.CHROMA_DB_PATH,
+            collection_metadata=_COLLECTION_METADATA,
+        )
+    return _vectorstore
 
 
 def _score_to_confidence(score: float) -> str:
@@ -30,20 +47,22 @@ def _score_to_confidence(score: float) -> str:
 
 def _detect_conflict(candidates: list, existing_hs_code: str, top5_chunks: list) -> tuple:
     """(conflict_flag, conflict_type, conflict_detail) 반환"""
+    top3_codes = [c["hs_code"] for c in candidates[:3]]
+
+    # TYPE-2: 기존 코드와 1순위 코드가 6단위 불일치 (후보 1개여도 검사)
+    if top3_codes and existing_hs_code and len(existing_hs_code) >= 6 and len(top3_codes[0]) >= 6:
+        if existing_hs_code[:6] != top3_codes[0][:6]:
+            return True, "TYPE-2", f"기존코드 {existing_hs_code[:6]} ↔ 추천코드 {top3_codes[0][:6]}"
+
+    # TYPE-1·3은 후보가 2개 이상일 때만 의미 있음
     if len(candidates) < 2:
         return False, None, None
 
-    top3_codes = [c["hs_code"] for c in candidates[:3]]
     top3_classes = [code[:2] for code in top3_codes if len(code) >= 2]
 
     # TYPE-1: 상위 3개 코드 중 2개 이상이 서로 다른 2단위(류)
     if len(set(top3_classes)) >= 2:
-        return True, "TYPE-1", f"류 충돌: {', '.join(set(top3_classes))}"
-
-    # TYPE-2: 기존 코드와 1순위 코드가 6단위 불일치
-    if existing_hs_code and len(existing_hs_code) >= 6 and len(top3_codes[0]) >= 6:
-        if existing_hs_code[:6] != top3_codes[0][:6]:
-            return True, "TYPE-2", f"기존코드 {existing_hs_code[:6]} ↔ 추천코드 {top3_codes[0][:6]}"
+        return True, "TYPE-1", f"류 충돌: {', '.join(sorted(set(top3_classes)))}"
 
     # TYPE-3: 상위 5청크 중 서로 다른 코드를 각 2개 이상 지지
     chunk_codes = [
@@ -84,7 +103,16 @@ def search_hs_code_rag(
             "max_similarity": 0.0, "top5_chunks": [],
         }
 
-    results = vectorstore.similarity_search_with_score(query, k=top_k)
+    # relevance_score는 cosine similarity 기반 [0, 1] 값 (높을수록 유사)
+    try:
+        results = vectorstore.similarity_search_with_relevance_scores(query, k=top_k)
+    except Exception as e:
+        return {
+            "candidates": [], "conflict_flag": False, "conflict_type": None,
+            "conflict_detail": None, "fallback": True,
+            "fallback_reason": f"RAG 검색 실패: {e}",
+            "max_similarity": 0.0, "top5_chunks": [],
+        }
 
     if not results:
         return {
@@ -94,28 +122,21 @@ def search_hs_code_rag(
             "max_similarity": 0.0, "top5_chunks": [],
         }
 
-    # ChromaDB 거리 점수(낮을수록 유사) → 유사도(높을수록 유사)로 변환
-    max_raw = max(score for _, score in results)
-    processed = []
-    for doc, raw_score in results:
-        sim = 1.0 - (raw_score / (max_raw + 1e-9)) if max_raw > 0 else 0.0
-        processed.append((doc, sim))
-
-    max_similarity = max(sim for _, sim in processed)
+    max_similarity = max(score for _, score in results)
 
     if max_similarity < similarity_threshold:
         return {
             "candidates": [], "conflict_flag": False, "conflict_type": None,
             "conflict_detail": None, "fallback": True,
             "fallback_reason": f"유사도 {max_similarity:.2f} < 임계값 {similarity_threshold}",
-            "max_similarity": max_similarity, "top5_chunks": [],
+            "max_similarity": round(max_similarity, 4), "top5_chunks": [],
         }
 
     top5_chunks = []
     candidates = []
     seen_codes: dict = {}
 
-    for idx, (doc, sim) in enumerate(processed):
+    for idx, (doc, sim) in enumerate(results):
         meta = doc.metadata
         source = Path(meta.get("source", "알 수 없는 문서")).name
         page = meta.get("page", "?")
