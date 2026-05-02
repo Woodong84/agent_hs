@@ -1,4 +1,6 @@
-"""ChromaDB RAG 검색 + HS-Code 후보 생성 + conflict 판정."""
+"""ChromaDB RAG 검색 + HS-Code 후보 생성 + conflict 판정.
+Azure OpenAI 설정 시 AzureOpenAIEmbeddings 사용, 없으면 HuggingFace Fallback.
+"""
 import os
 import sys
 
@@ -6,21 +8,32 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pathlib import Path
 from langchain.tools import tool
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from configs.settings import settings
 
 # 모델과 벡터스토어를 모듈 레벨에서 캐싱 (매 호출마다 재로드 방지)
-_embeddings: HuggingFaceEmbeddings | None = None
+_embeddings = None
 _vectorstore: Chroma | None = None
 
 # Cosine distance 컬렉션 메타데이터
 _COLLECTION_METADATA = {"hnsw:space": "cosine"}
 
 
-def _get_embeddings() -> HuggingFaceEmbeddings:
+def _get_embeddings():
+    """Azure OpenAI 설정 시 AzureOpenAIEmbeddings, 없으면 HuggingFaceEmbeddings."""
     global _embeddings
-    if _embeddings is None:
+    if _embeddings is not None:
+        return _embeddings
+    if settings.use_azure:
+        from langchain_openai import AzureOpenAIEmbeddings
+        _embeddings = AzureOpenAIEmbeddings(
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            azure_deployment=settings.AZURE_OPENAI_EMBEDDING_DEPLOYMENT,
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
+        )
+    else:
+        from langchain_huggingface import HuggingFaceEmbeddings
         _embeddings = HuggingFaceEmbeddings(model_name=settings.EMBEDDING_MODEL)
     return _embeddings
 

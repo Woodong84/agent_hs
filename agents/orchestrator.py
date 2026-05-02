@@ -1,4 +1,6 @@
-"""1차 PoC LangChain ReAct 단일 Orchestrator Agent."""
+"""1차 PoC LangChain ReAct 단일 Orchestrator Agent.
+Azure OpenAI 키 설정 시 우선 사용, 없으면 Anthropic으로 Fallback.
+"""
 import os
 import sys
 
@@ -6,7 +8,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 import time
-from langchain_anthropic import ChatAnthropic
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.prompts import PromptTemplate
 from configs.settings import settings
@@ -40,19 +41,33 @@ Question: {input}
 {agent_scratchpad}"""
 )
 
-# AgentExecutor 모듈 레벨 캐시 (매 run_agent 호출마다 재생성 방지)
 _executor_cache: AgentExecutor | None = None
+
+
+def _build_llm():
+    """Azure OpenAI 설정 시 AzureChatOpenAI, 없으면 ChatAnthropic 반환."""
+    if settings.use_azure:
+        from langchain_openai import AzureChatOpenAI
+        return AzureChatOpenAI(
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            azure_deployment=settings.AZURE_OPENAI_DEPLOYMENT,
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
+            max_tokens=4096,
+        )
+    from langchain_anthropic import ChatAnthropic
+    return ChatAnthropic(
+        model=settings.ANTHROPIC_MODEL,
+        api_key=settings.ANTHROPIC_API_KEY,
+        max_tokens=4096,
+    )
 
 
 def _build_agent_executor() -> AgentExecutor:
     global _executor_cache
     if _executor_cache is not None:
         return _executor_cache
-    llm = ChatAnthropic(
-        model=settings.ANTHROPIC_MODEL,
-        api_key=settings.ANTHROPIC_API_KEY,
-        max_tokens=4096,
-    )
+    llm = _build_llm()
     prompt = PromptTemplate.from_template(_REACT_TEMPLATE)
     agent = create_react_agent(llm=llm, tools=_TOOLS, prompt=prompt)
     _executor_cache = AgentExecutor(
@@ -66,10 +81,14 @@ def _build_agent_executor() -> AgentExecutor:
     return _executor_cache
 
 
+def reset_executor_cache():
+    """API 키 변경 시 캐시 초기화용."""
+    global _executor_cache
+    _executor_cache = None
+
+
 def _parse_observation(observation) -> dict:
-    """LangChain intermediate_steps의 observation을 dict로 변환한다.
-    Tool이 dict를 반환해도 LangChain이 문자열로 직렬화할 수 있어 JSON 파싱을 시도한다.
-    """
+    """intermediate_steps의 observation을 dict로 변환."""
     if isinstance(observation, dict):
         return observation
     if isinstance(observation, str):
@@ -79,8 +98,6 @@ def _parse_observation(observation) -> dict:
                 return parsed
         except (json.JSONDecodeError, ValueError):
             pass
-        # JSON 파싱 실패 시 빈 dict 반환
-        return {}
     return {}
 
 
@@ -114,6 +131,7 @@ def run_agent(input_data: dict) -> dict:
         "response_time_sec": 0.0,
         "audit_log": {},
         "error_message": None,
+        "llm_provider": "azure" if settings.use_azure else "anthropic",
     }
 
     try:
@@ -153,6 +171,7 @@ def run_agent(input_data: dict) -> dict:
             "candidates": candidates,
             "fallback_triggered": fallback_triggered,
             "response_time_sec": round(time.time() - start, 2),
+            "llm_provider": base_result["llm_provider"],
         }
 
         return {

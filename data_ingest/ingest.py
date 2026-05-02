@@ -9,7 +9,6 @@ sys.path.insert(0, _PROJECT_ROOT)
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from configs.settings import settings
 
@@ -43,8 +42,19 @@ def run_ingest():
     chunks = splitter.split_documents(all_docs)
     print(f"[청킹] 총 {len(chunks):,}개 청크 생성")
 
-    print(f"[임베딩] HuggingFace {settings.EMBEDDING_MODEL} 모델 사용 중...")
-    embeddings = HuggingFaceEmbeddings(model_name=settings.EMBEDDING_MODEL)
+    if settings.use_azure:
+        from langchain_openai import AzureOpenAIEmbeddings
+        print(f"[임베딩] Azure OpenAI {settings.AZURE_OPENAI_EMBEDDING_DEPLOYMENT} 모델 사용 중...")
+        embeddings = AzureOpenAIEmbeddings(
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            azure_deployment=settings.AZURE_OPENAI_EMBEDDING_DEPLOYMENT,
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
+        )
+    else:
+        from langchain_huggingface import HuggingFaceEmbeddings
+        print(f"[임베딩] HuggingFace {settings.EMBEDDING_MODEL} 모델 사용 중...")
+        embeddings = HuggingFaceEmbeddings(model_name=settings.EMBEDDING_MODEL)
 
     chroma_path.mkdir(parents=True, exist_ok=True)
 

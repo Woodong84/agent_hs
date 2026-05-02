@@ -37,14 +37,54 @@ def _sidebar():
     with st.sidebar:
         st.title("⚙️ HSAgent 설정")
 
-        api_key = st.text_input(
-            "Anthropic API Key",
-            value=os.environ.get("ANTHROPIC_API_KEY", ""),
-            type="password",
-            help=".env 파일에 설정하면 자동 로드됩니다.",
-        )
-        if api_key:
-            os.environ["ANTHROPIC_API_KEY"] = api_key
+        # ── API 키 탭 선택
+        tab_azure, tab_anthropic = st.tabs(["Azure OpenAI", "Anthropic"])
+
+        with tab_azure:
+            az_key = st.text_input(
+                "Azure OpenAI API Key",
+                value=os.environ.get("AZURE_OPENAI_API_KEY", ""),
+                type="password",
+                key="az_key",
+                help="이미지의 키(atl-...)를 입력하세요.",
+            )
+            az_endpoint = st.text_input(
+                "Endpoint",
+                value=os.environ.get("AZURE_OPENAI_ENDPOINT", ""),
+                key="az_ep",
+                placeholder="https://aitalentlab.skax.co.kr:18081",
+            )
+            az_deploy = st.text_input(
+                "LLM 모델명 (deployment)",
+                value=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4.1"),
+                key="az_deploy",
+            )
+            az_emb = st.text_input(
+                "임베딩 모델명",
+                value=os.environ.get("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-small"),
+                key="az_emb",
+            )
+            if az_key and az_endpoint:
+                os.environ["AZURE_OPENAI_API_KEY"] = az_key
+                os.environ["AZURE_OPENAI_ENDPOINT"] = az_endpoint
+                os.environ["AZURE_OPENAI_DEPLOYMENT"] = az_deploy
+                os.environ["AZURE_OPENAI_EMBEDDING_DEPLOYMENT"] = az_emb
+                os.environ["AZURE_OPENAI_API_VERSION"] = "2024-12-01-preview"
+                # 설정 변경 시 executor 캐시 초기화
+                from agents.orchestrator import reset_executor_cache
+                reset_executor_cache()
+                st.success("Azure OpenAI 연결 준비 완료")
+
+        with tab_anthropic:
+            ant_key = st.text_input(
+                "Anthropic API Key",
+                value=os.environ.get("ANTHROPIC_API_KEY", ""),
+                type="password",
+                key="ant_key",
+                help="sk-ant-... 형식의 키를 입력하세요.",
+            )
+            if ant_key:
+                os.environ["ANTHROPIC_API_KEY"] = ant_key
 
         st.divider()
         st.markdown("**임계값 설정**")
@@ -243,9 +283,15 @@ def main():
     threshold = _sidebar()
     _render_history()
 
-    # API 키 미설정 경고
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        st.warning("⚠️ Anthropic API Key가 설정되지 않았습니다. 사이드바에서 입력하거나 .env 파일을 설정해주세요.")
+    # API 키 상태 확인 (Azure 우선, 없으면 Anthropic)
+    from configs.settings import Settings
+    _s = Settings()
+    _has_llm = _s.use_azure or bool(os.environ.get("ANTHROPIC_API_KEY"))
+    if not _has_llm:
+        st.warning("⚠️ API Key가 설정되지 않았습니다. 사이드바의 **Azure OpenAI** 또는 **Anthropic** 탭에서 키를 입력해주세요.")
+    else:
+        provider = "Azure OpenAI" if _s.use_azure else "Anthropic Claude"
+        st.info(f"✅ LLM 연결: **{provider}**")
 
     input_data = _input_form()
 
@@ -257,7 +303,7 @@ def main():
             input_data["product_name"]
             and input_data["material"]
             and input_data["purpose"]
-            and os.environ.get("ANTHROPIC_API_KEY")
+            and _has_llm
         ),
     )
 
