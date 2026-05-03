@@ -89,10 +89,27 @@ def _sidebar():
         st.divider()
         st.markdown("**임계값 설정**")
         threshold = st.slider(
-            "유사도 임계값", min_value=0.5, max_value=0.95,
-            value=0.75, step=0.05,
-            help="이 값 미만이면 Fallback 처리됩니다."
+            "유사도 임계값", min_value=0.1, max_value=0.95,
+            value=0.30, step=0.05,
+            help="이 값 미만이면 LLM 지식 기반으로 전환됩니다. RAG 테스트 시 낮게 설정하세요."
         )
+
+        st.divider()
+        st.markdown("**RAG 데이터 관리**")
+        from configs.settings import settings as _s2
+        if _s2.use_pinecone:
+            if st.button("📥 샘플 문서 Pinecone 적재", help="data/raw/ 문서를 Pinecone에 업로드합니다"):
+                with st.spinner("Pinecone에 문서 적재 중... (30초~1분 소요)"):
+                    try:
+                        from data_ingest.ingest import run_ingest
+                        from tools.search_hs import reset_vectorstore_cache
+                        run_ingest()
+                        reset_vectorstore_cache()
+                        st.success("✅ 문서 적재 완료! 이제 RAG 검색이 가능합니다.")
+                    except Exception as e:
+                        st.error(f"❌ 적재 실패: {e}")
+        else:
+            st.caption("⚠️ PINECONE_API_KEY 미설정")
 
         st.divider()
         st.markdown("**사용 안내**")
