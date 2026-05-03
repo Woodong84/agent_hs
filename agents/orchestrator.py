@@ -119,6 +119,8 @@ def _format_question(data: dict) -> str:
         lines.append(f"공정 단계: {data['process_stage']}")
     if data.get("existing_hs_code"):
         lines.append(f"기존 HS-Code: {data['existing_hs_code']}")
+    threshold = data.get("similarity_threshold", 0.30)
+    lines.append(f"similarity_threshold: {threshold}")
     return "\n".join(lines)
 
 

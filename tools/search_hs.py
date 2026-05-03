@@ -89,7 +89,7 @@ def search_hs_code_rag(
     trade_direction: str = "",
     existing_hs_code: str = "",
     top_k: int = 5,
-    similarity_threshold: float = 0.75,
+    similarity_threshold: float = 0.30,
 ) -> dict:
     """Pinecone에서 유사 문서를 검색하고 HS-Code 후보와 근거를 반환한다."""
     # LLM이 전체 입력을 product_name 하나에 JSON 문자열로 넣는 경우 방어 처리
