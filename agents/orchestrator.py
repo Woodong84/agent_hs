@@ -160,7 +160,7 @@ def run_agent(input_data: dict) -> dict:
                 tax_result = parsed
 
         fallback_triggered = rag_result.get("fallback", False)
-        if fallback_triggered:
+        if fallback_triggered and not final_response.strip():
             similar_class = input_data.get("product_name", "해당 품목")[:10]
             final_response = FALLBACK_PROMPT.format(
                 similarity_score=round(rag_result.get("max_similarity", 0.0), 2),

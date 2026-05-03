@@ -184,10 +184,22 @@ def _render_result(result: dict):
 
     if result.get("fallback_triggered"):
         st.markdown(
-            f'<div class="fallback-box">⚠️ <b>근거 부족 — HS-Code 추천 불가</b><br><br>'
-            f'<pre style="white-space:pre-wrap">{result["final_response"]}</pre></div>',
+            '<div class="fallback-box">⚠️ <b>RAG 문서 근거 없음 — LLM 지식 기반 추천</b><br>'
+            '<span style="font-size:0.85rem;color:#888">관련 문서가 DB에 없어 AI 자체 지식으로 추천합니다. 반드시 전문가 확인 필요.</span></div>',
             unsafe_allow_html=True,
         )
+        st.markdown("### 📋 추천 결과 (LLM 지식 기반)")
+        final_response = result.get("final_response", "")
+        if final_response:
+            st.markdown(
+                f'<div class="result-box"><pre style="white-space:pre-wrap;font-family:inherit">'
+                f'{final_response}</pre></div>',
+                unsafe_allow_html=True,
+            )
+        st.markdown("""
+---
+> ⚠️ **면책 고지**: 문서 근거 없이 AI 지식만으로 생성된 참고용이며 최종 확정은 반드시 관세사 검토 필요.
+""")
         return
 
     # 추천 결과 본문
