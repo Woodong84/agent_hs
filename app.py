@@ -89,16 +89,15 @@ def _sidebar():
         st.divider()
         st.markdown("**임계값 설정**")
         threshold = st.slider(
-            "유사도 임계값", min_value=0.1, max_value=0.95,
-            value=0.30, step=0.05,
-            help="이 값 미만이면 LLM 지식 기반으로 전환됩니다. RAG 테스트 시 낮게 설정하세요."
+            "유사도 임계값", min_value=0.01, max_value=0.95,
+            value=0.10, step=0.01,
+            help="RAG 검색 최소 유사도. 낮을수록 더 많은 문서를 참조합니다."
         )
 
         st.divider()
         st.markdown("**RAG 데이터 관리**")
         from configs.settings import settings as _s2
         if _s2.use_pinecone:
-            # 벡터 수 확인
             try:
                 from pinecone import Pinecone as _PC
                 _pc = _PC(api_key=_s2.PINECONE_API_KEY)
@@ -112,17 +111,35 @@ def _sidebar():
             except Exception:
                 st.caption("Pinecone 상태 확인 불가")
 
-            if st.button("📥 샘플 문서 Pinecone 적재", help="data/raw/ 문서를 Pinecone에 업로드합니다"):
-                with st.spinner("Pinecone에 문서 적재 중... (30초~1분 소요)"):
+            if st.button("📥 샘플 문서 Pinecone 적재"):
+                with st.spinner("Pinecone에 문서 적재 중..."):
                     try:
                         from data_ingest.ingest import run_ingest
                         from tools.search_hs import reset_vectorstore_cache
                         run_ingest()
                         reset_vectorstore_cache()
-                        st.success("✅ 문서 적재 완료! 이제 RAG 검색이 가능합니다.")
+                        st.success("✅ 적재 완료!")
                         st.rerun()
                     except Exception as e:
-                        st.error(f"❌ 적재 실패: {str(e)[:200]}")
+                        st.error(f"❌ 적재 실패: {str(e)[:300]}")
+
+            with st.expander("🔬 RAG 유사도 진단"):
+                test_q = st.text_input("진단 쿼리", value="FOUP 폴리카보네이트 웨이퍼 이송", key="diag_q")
+                if st.button("유사도 점수 확인", key="diag_btn"):
+                    try:
+                        from tools.search_hs import _get_vectorstore, _get_embeddings, reset_vectorstore_cache
+                        reset_vectorstore_cache()
+                        vs = _get_vectorstore()
+                        raw = vs.similarity_search_with_score(test_q, k=5)
+                        if raw:
+                            for doc, score in raw:
+                                src = doc.metadata.get("source", "?")
+                                hs = doc.metadata.get("hs_code", "?")
+                                st.markdown(f"`{score:.4f}` — {src} (HS:{hs})")
+                        else:
+                            st.warning("검색 결과 없음")
+                    except Exception as e:
+                        st.error(f"오류: {str(e)[:300]}")
         else:
             st.caption("⚠️ PINECONE_API_KEY 미설정")
 
@@ -211,6 +228,10 @@ def _render_result(result: dict):
     col_a.metric("응답 시간", f"{rt:.1f}초", delta="✅" if rt <= 10 else "⚠️ 초과")
     col_b.metric("근거 품질", f"{eq:.1f}/8.0점", delta="✅" if eq >= 6 else "보완 필요")
     col_c.metric("Fallback", "예" if result.get("fallback_triggered") else "아니오")
+
+    # Fallback 원인 표시 (진단용)
+    if result.get("fallback_triggered") and result.get("fallback_reason"):
+        st.caption(f"ℹ️ Fallback 원인: `{result.get('fallback_reason')}`")
 
     st.divider()
 
