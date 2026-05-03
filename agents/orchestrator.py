@@ -31,11 +31,18 @@ _REACT_TEMPLATE = (
 Question: 처리할 입력
 Thought: 다음 액션을 생각합니다
 Action: 도구 이름
-Action Input: 도구 입력값 (JSON)
+Action Input: 도구 입력값 (반드시 아래 예시처럼 개별 필드를 가진 JSON 객체로 입력)
 Observation: 도구 결과
 ... (Thought/Action/Observation 반복)
 Thought: 최종 답변을 작성합니다
 Final Answer: 최종 출력
+
+[중요] search_hs_code_rag 호출 예시:
+Action: search_hs_code_rag
+Action Input: {{"product_name": "FOUP", "material": "폴리카보네이트", "purpose": "300mm 웨이퍼 이송", "trade_direction": "수입"}}
+
+Action Input은 반드시 개별 키-값 쌍으로 구성된 JSON 객체여야 합니다.
+절대로 전체 입력을 하나의 문자열로 직렬화하여 단일 필드에 넣지 마세요.
 
 Question: {input}
 {agent_scratchpad}"""

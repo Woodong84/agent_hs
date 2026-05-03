@@ -3,6 +3,7 @@ Azure OpenAI 설정 시 AzureOpenAIEmbeddings 사용, 없으면 HuggingFace Fall
 """
 import os
 import sys
+import json
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -104,6 +105,20 @@ def search_hs_code_rag(
     similarity_threshold: float = 0.75,
 ) -> dict:
     """ChromaDB에서 유사 문서를 검색하고 HS-Code 후보와 근거를 반환한다."""
+    # LLM이 전체 입력을 product_name 하나에 JSON 문자열로 넣는 경우 방어 처리
+    try:
+        if isinstance(product_name, str) and product_name.strip().startswith("{"):
+            parsed = json.loads(product_name)
+            if isinstance(parsed, dict):
+                product_name = parsed.get("product_name", product_name)
+                material = parsed.get("material", material)
+                purpose = parsed.get("purpose", purpose)
+                trade_direction = parsed.get("trade_direction", trade_direction)
+                existing_hs_code = parsed.get("existing_hs_code", existing_hs_code)
+                similarity_threshold = float(parsed.get("similarity_threshold", similarity_threshold))
+    except (json.JSONDecodeError, AttributeError, TypeError, ValueError):
+        pass
+
     query = f"{product_name} {material} {purpose} {trade_direction}"
 
     try:
