@@ -98,6 +98,20 @@ def _sidebar():
         st.markdown("**RAG 데이터 관리**")
         from configs.settings import settings as _s2
         if _s2.use_pinecone:
+            # 벡터 수 확인
+            try:
+                from pinecone import Pinecone as _PC
+                _pc = _PC(api_key=_s2.PINECONE_API_KEY)
+                _idx = _pc.Index(_s2.PINECONE_INDEX_NAME)
+                _stats = _idx.describe_index_stats()
+                _cnt = _stats.get("total_vector_count", 0)
+                if _cnt > 0:
+                    st.success(f"✅ Pinecone 벡터: {_cnt}개 적재됨")
+                else:
+                    st.warning("⚠️ Pinecone 비어있음 — 아래 버튼으로 적재하세요")
+            except Exception:
+                st.caption("Pinecone 상태 확인 불가")
+
             if st.button("📥 샘플 문서 Pinecone 적재", help="data/raw/ 문서를 Pinecone에 업로드합니다"):
                 with st.spinner("Pinecone에 문서 적재 중... (30초~1분 소요)"):
                     try:
@@ -106,8 +120,9 @@ def _sidebar():
                         run_ingest()
                         reset_vectorstore_cache()
                         st.success("✅ 문서 적재 완료! 이제 RAG 검색이 가능합니다.")
+                        st.rerun()
                     except Exception as e:
-                        st.error(f"❌ 적재 실패: {e}")
+                        st.error(f"❌ 적재 실패: {str(e)[:200]}")
         else:
             st.caption("⚠️ PINECONE_API_KEY 미설정")
 

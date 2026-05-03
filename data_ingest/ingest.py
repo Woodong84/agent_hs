@@ -92,20 +92,22 @@ def run_ingest():
     pc = Pinecone(api_key=settings.PINECONE_API_KEY)
     index = pc.Index(settings.PINECONE_INDEX_NAME)
 
+    # langchain-pinecone 0.2.x 호환 방식: add_documents 사용
+    vectorstore = PineconeVectorStore(index=index, embedding=embeddings)
+
     batch_size = 50
     for i in range(0, len(chunks), batch_size):
         batch = chunks[i:i + batch_size]
-        PineconeVectorStore.from_documents(
-            documents=batch,
-            embedding=embeddings,
-            index_name=settings.PINECONE_INDEX_NAME,
-            pinecone_api_key=settings.PINECONE_API_KEY,
-        )
+        vectorstore.add_documents(batch)
         print(f"  → {min(i + batch_size, len(chunks))}/{len(chunks)} 청크 업로드 완료")
 
     print(f"[적재 완료] Pinecone에 {len(chunks):,}개 청크 저장")
 
-    vectorstore = PineconeVectorStore(index=index, embedding=embeddings)
+    # 적재 후 벡터 수 확인
+    stats = index.describe_index_stats()
+    total_vectors = stats.get("total_vector_count", 0)
+    print(f"[검증] Pinecone 총 벡터 수: {total_vectors}")
+
     test_query = "FOUP 웨이퍼 이송"
     print(f'[검증] 테스트 쿼리: "{test_query}"')
     results = vectorstore.similarity_search_with_score(test_query, k=3)
