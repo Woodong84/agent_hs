@@ -1,27 +1,18 @@
-"""ChromaDB RAG 검색 + HS-Code 후보 생성 + conflict 판정.
-Azure OpenAI 설정 시 AzureOpenAIEmbeddings 사용, 없으면 HuggingFace Fallback.
-"""
+"""Pinecone RAG 검색 + HS-Code 후보 생성 + conflict 판정."""
 import os
 import sys
 import json
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from pathlib import Path
 from langchain.tools import tool
-from langchain_chroma import Chroma
 from configs.settings import settings
 
-# 모델과 벡터스토어를 모듈 레벨에서 캐싱 (매 호출마다 재로드 방지)
 _embeddings = None
-_vectorstore: Chroma | None = None
-
-# Cosine distance 컬렉션 메타데이터
-_COLLECTION_METADATA = {"hnsw:space": "cosine"}
+_vectorstore = None
 
 
 def _get_embeddings():
-    """Azure OpenAI 설정 시 AzureOpenAIEmbeddings, 없으면 HuggingFaceEmbeddings."""
     global _embeddings
     if _embeddings is not None:
         return _embeddings
@@ -39,16 +30,22 @@ def _get_embeddings():
     return _embeddings
 
 
-def _get_vectorstore() -> Chroma:
+def _get_vectorstore():
     global _vectorstore
-    if _vectorstore is None:
-        _vectorstore = Chroma(
-            collection_name=settings.CHROMA_COLLECTION_NAME,
-            embedding_function=_get_embeddings(),
-            persist_directory=settings.CHROMA_DB_PATH,
-            collection_metadata=_COLLECTION_METADATA,
-        )
+    if _vectorstore is not None:
+        return _vectorstore
+    from pinecone import Pinecone
+    from langchain_pinecone import PineconeVectorStore
+    pc = Pinecone(api_key=settings.PINECONE_API_KEY)
+    index = pc.Index(settings.PINECONE_INDEX_NAME)
+    _vectorstore = PineconeVectorStore(index=index, embedding=_get_embeddings())
     return _vectorstore
+
+
+def reset_vectorstore_cache():
+    global _embeddings, _vectorstore
+    _embeddings = None
+    _vectorstore = None
 
 
 def _score_to_confidence(score: float) -> str:
@@ -60,30 +57,20 @@ def _score_to_confidence(score: float) -> str:
 
 
 def _detect_conflict(candidates: list, existing_hs_code: str, top5_chunks: list) -> tuple:
-    """(conflict_flag, conflict_type, conflict_detail) 반환"""
     top3_codes = [c["hs_code"] for c in candidates[:3]]
 
-    # TYPE-2: 기존 코드와 1순위 코드가 6단위 불일치 (후보 1개여도 검사)
     if top3_codes and existing_hs_code and len(existing_hs_code) >= 6 and len(top3_codes[0]) >= 6:
         if existing_hs_code[:6] != top3_codes[0][:6]:
             return True, "TYPE-2", f"기존코드 {existing_hs_code[:6]} ↔ 추천코드 {top3_codes[0][:6]}"
 
-    # TYPE-1·3은 후보가 2개 이상일 때만 의미 있음
     if len(candidates) < 2:
         return False, None, None
 
     top3_classes = [code[:2] for code in top3_codes if len(code) >= 2]
-
-    # TYPE-1: 상위 3개 코드 중 2개 이상이 서로 다른 2단위(류)
     if len(set(top3_classes)) >= 2:
         return True, "TYPE-1", f"류 충돌: {', '.join(sorted(set(top3_classes)))}"
 
-    # TYPE-3: 상위 5청크 중 서로 다른 코드를 각 2개 이상 지지
-    chunk_codes = [
-        c.get("supports_hs", "")[:4]
-        for c in top5_chunks
-        if c.get("supports_hs", "")
-    ]
+    chunk_codes = [c.get("supports_hs", "")[:4] for c in top5_chunks if c.get("supports_hs", "")]
     code_counts: dict = {}
     for code in chunk_codes:
         code_counts[code] = code_counts.get(code, 0) + 1
@@ -104,7 +91,7 @@ def search_hs_code_rag(
     top_k: int = 5,
     similarity_threshold: float = 0.75,
 ) -> dict:
-    """ChromaDB에서 유사 문서를 검색하고 HS-Code 후보와 근거를 반환한다."""
+    """Pinecone에서 유사 문서를 검색하고 HS-Code 후보와 근거를 반환한다."""
     # LLM이 전체 입력을 product_name 하나에 JSON 문자열로 넣는 경우 방어 처리
     try:
         if isinstance(product_name, str) and product_name.strip().startswith("{"):
@@ -121,19 +108,27 @@ def search_hs_code_rag(
 
     query = f"{product_name} {material} {purpose} {trade_direction}"
 
+    if not settings.use_pinecone:
+        return {
+            "candidates": [], "conflict_flag": False, "conflict_type": None,
+            "conflict_detail": None, "fallback": True,
+            "fallback_reason": "PINECONE_API_KEY 미설정",
+            "max_similarity": 0.0, "top5_chunks": [],
+        }
+
     try:
         vectorstore = _get_vectorstore()
     except Exception as e:
         return {
             "candidates": [], "conflict_flag": False, "conflict_type": None,
             "conflict_detail": None, "fallback": True,
-            "fallback_reason": f"ChromaDB 로드 실패: {e}",
+            "fallback_reason": f"Pinecone 연결 실패: {e}",
             "max_similarity": 0.0, "top5_chunks": [],
         }
 
-    # relevance_score는 cosine similarity 기반 [0, 1] 값 (높을수록 유사)
     try:
-        results = vectorstore.similarity_search_with_relevance_scores(query, k=top_k)
+        # Pinecone은 similarity_search_with_score로 cosine similarity [0,1] 반환
+        results = vectorstore.similarity_search_with_score(query, k=top_k)
     except Exception as e:
         return {
             "candidates": [], "conflict_flag": False, "conflict_type": None,
@@ -146,7 +141,7 @@ def search_hs_code_rag(
         return {
             "candidates": [], "conflict_flag": False, "conflict_type": None,
             "conflict_detail": None, "fallback": True,
-            "fallback_reason": "검색 결과 없음",
+            "fallback_reason": "검색 결과 없음 (문서 미적재)",
             "max_similarity": 0.0, "top5_chunks": [],
         }
 
@@ -166,7 +161,7 @@ def search_hs_code_rag(
 
     for idx, (doc, sim) in enumerate(results):
         meta = doc.metadata
-        source = Path(meta.get("source", "알 수 없는 문서")).name
+        source = meta.get("source", "알 수 없는 문서")
         page = meta.get("page", "?")
         hs_code = meta.get("hs_code", f"UNKNOWN_{idx:03d}")
         chunk_id = meta.get("chunk_id", f"chunk_{idx:03d}")

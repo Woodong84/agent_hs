@@ -15,13 +15,15 @@ class Settings(BaseSettings):
     # ── Azure 임베딩 (선택 — 설정 시 HuggingFace 대신 사용)
     AZURE_OPENAI_EMBEDDING_DEPLOYMENT: str = "text-embedding-3-small"
 
+    # ── Pinecone 벡터 DB
+    PINECONE_API_KEY: str = ""
+    PINECONE_INDEX_NAME: str = "hs-code-docs"
+
     # ── 외부 API (선택)
     UNIPASS_API_KEY: str = ""
 
     # ── 경로 설정
-    CHROMA_DB_PATH: str = "./data/chroma_db"
     AUDIT_LOG_PATH: str = "./logs/audit_log.json"
-    CHROMA_COLLECTION_NAME: str = "hs_code_docs"
 
     # ── RAG 설정
     SIMILARITY_THRESHOLD: float = 0.75
@@ -34,13 +36,15 @@ class Settings(BaseSettings):
 
     @property
     def use_azure(self) -> bool:
-        """Azure OpenAI 키와 엔드포인트가 모두 설정된 경우 True"""
         return bool(self.AZURE_OPENAI_API_KEY and self.AZURE_OPENAI_ENDPOINT)
 
     @property
     def has_llm(self) -> bool:
-        """사용 가능한 LLM 키가 하나라도 있으면 True"""
         return self.use_azure or bool(self.ANTHROPIC_API_KEY)
+
+    @property
+    def use_pinecone(self) -> bool:
+        return bool(self.PINECONE_API_KEY and self.PINECONE_INDEX_NAME)
 
     class Config:
         env_file = ".env"
