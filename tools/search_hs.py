@@ -97,9 +97,9 @@ def _detect_conflict(candidates: list, existing_hs_code: str, top5_chunks: list)
 @tool
 def search_hs_code_rag(
     product_name: str,
-    material: str,
-    purpose: str,
-    trade_direction: str,
+    material: str = "",
+    purpose: str = "",
+    trade_direction: str = "",
     existing_hs_code: str = "",
     top_k: int = 5,
     similarity_threshold: float = 0.75,
