@@ -90,7 +90,7 @@ def _sidebar():
         st.markdown("**임계값 설정**")
         threshold = st.slider(
             "유사도 임계값", min_value=0.01, max_value=0.95,
-            value=0.10, step=0.01,
+            value=0.45, step=0.01,
             help="RAG 검색 최소 유사도. 낮을수록 더 많은 문서를 참조합니다."
         )
 

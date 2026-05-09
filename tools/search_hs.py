@@ -49,9 +49,9 @@ def reset_vectorstore_cache():
 
 
 def _score_to_confidence(score: float) -> str:
-    if score >= 0.85:
+    if score >= 0.60:
         return "높음"
-    if score >= 0.75:
+    if score >= 0.45:
         return "중간"
     return "낮음"
 
