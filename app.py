@@ -259,9 +259,11 @@ def _render_result(result: dict):
     st.markdown("### 📋 추천 결과")
     final_response = result.get("final_response", "")
     if final_response:
+        # [세율] 태그 앞에 줄바꿈 삽입
+        formatted_response = final_response.replace("[세율]", "\n[세율]")
         st.markdown(
             f'<div class="result-box"><pre style="white-space:pre-wrap;font-family:inherit">'
-            f'{final_response}</pre></div>',
+            f'{formatted_response}</pre></div>',
             unsafe_allow_html=True,
         )
 
@@ -284,6 +286,31 @@ def _render_result(result: dict):
                         f"&nbsp;&nbsp;*\"{cite[:100]}...\"*"
                     )
                 st.markdown("---")
+
+        # JSON 출력 (Interface 연동용)
+        import json as _json
+        audit = result.get("audit_log", {})
+        input_data = audit.get("input", {})
+        json_output = {
+            "product_info": {
+                "product_name": input_data.get("product_name", ""),
+                "material": input_data.get("material", ""),
+                "purpose": input_data.get("purpose", ""),
+                "trade_direction": input_data.get("trade_direction", ""),
+                "process_stage": input_data.get("process_stage", ""),
+                "existing_hs_code": input_data.get("existing_hs_code", ""),
+            },
+            "hs_code_candidates": [
+                {
+                    "rank": c.get("rank"),
+                    "hs_code": c.get("hs_code", ""),
+                    "confidence": c.get("confidence", ""),
+                }
+                for c in candidates
+            ],
+        }
+        with st.expander("📎 JSON 출력 (Interface 연동용)"):
+            st.code(_json.dumps(json_output, ensure_ascii=False, indent=2), language="json")
 
     # 세율 정보
     audit = result.get("audit_log", {})
