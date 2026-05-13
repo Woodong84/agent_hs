@@ -16,7 +16,7 @@ from tools.search_hs import search_hs_code_rag
 from tools.query_tax import query_tax_rate
 from tools.audit_log import save_audit_log
 
-_TOOLS = [search_hs_code_rag, query_tax_rate, save_audit_log]
+_TOOLS = [search_hs_code_rag, query_tax_rate]
 
 _REACT_TEMPLATE = (
     ORCHESTRATOR_SYSTEM_PROMPT
@@ -137,6 +137,9 @@ def run_agent(input_data: dict) -> dict:
         "evidence_quality_score": 0.0,
         "fallback_triggered": False,
         "fallback_reason": None,
+        "conflict_flag": False,
+        "conflict_type": None,
+        "conflict_detail": None,
         "response_time_sec": 0.0,
         "audit_log": {},
         "error_message": None,
@@ -172,16 +175,34 @@ def run_agent(input_data: dict) -> dict:
 
         candidates = rag_result.get("candidates", [])
         evidence_quality_score = _score_evidence(candidates)
+        conflict_flag = rag_result.get("conflict_flag", False)
+        conflict_type = rag_result.get("conflict_type", None)
+        conflict_detail = rag_result.get("conflict_detail", None)
 
+        response_time = round(time.time() - start, 2)
         audit_log = {
             "input": input_data,
             "rag_result": rag_result,
             "tax_result": tax_result,
             "candidates": candidates,
             "fallback_triggered": fallback_triggered,
-            "response_time_sec": round(time.time() - start, 2),
+            "conflict_flag": conflict_flag,
+            "conflict_type": conflict_type,
+            "conflict_detail": conflict_detail,
+            "response_time_sec": response_time,
             "llm_provider": base_result["llm_provider"],
         }
+
+        # audit_log를 직접 저장 (LLM 경유 없이 → input_data 누락 방지)
+        try:
+            top1_code = candidates[0]["hs_code"] if candidates else ""
+            save_audit_log.invoke({
+                "audit_log": {"candidates": candidates, "input": input_data},
+                "user_selection": top1_code,
+                "modify_reason": "",
+            })
+        except Exception:
+            pass
 
         return {
             **base_result,
@@ -190,7 +211,10 @@ def run_agent(input_data: dict) -> dict:
             "evidence_quality_score": evidence_quality_score,
             "fallback_triggered": fallback_triggered,
             "fallback_reason": rag_result.get("fallback_reason"),
-            "response_time_sec": round(time.time() - start, 2),
+            "conflict_flag": conflict_flag,
+            "conflict_type": conflict_type,
+            "conflict_detail": conflict_detail,
+            "response_time_sec": response_time,
             "audit_log": audit_log,
         }
 

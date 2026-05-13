@@ -235,6 +235,22 @@ def _render_result(result: dict):
 
     st.divider()
 
+    # 충돌 경고 배너
+    if result.get("conflict_flag"):
+        conflict_type = result.get("conflict_type", "")
+        conflict_detail = result.get("conflict_detail", "")
+        type_desc = {
+            "TYPE-1": "상위 후보 간 류(類) 코드 충돌",
+            "TYPE-2": "기존 HS-Code와 추천 코드 불일치",
+            "TYPE-3": "복수 코드가 동등하게 지지됨",
+        }.get(conflict_type, "분류 충돌 감지")
+        st.markdown(
+            f'<div style="background:#fff3e0;border-left:4px solid #e65100;padding:10px 14px;border-radius:4px;margin-bottom:8px">'
+            f'⚠️ <b>분류 충돌 감지 ({conflict_type}) — {type_desc}</b><br>'
+            f'<span style="font-size:0.85rem;color:#555">{conflict_detail} · 관세사 확인을 권장합니다.</span></div>',
+            unsafe_allow_html=True,
+        )
+
     if result.get("fallback_triggered"):
         st.markdown(
             '<div class="fallback-box">⚠️ <b>RAG 문서 근거 없음 — LLM 지식 기반 추천</b><br>'
