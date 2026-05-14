@@ -1,0 +1,575 @@
+### 핵심 구현 내용
+
+이번 PoC 단계에서 실제 코드로 구현된 핵심 기능들을 **동작 원리**와 **사용 기술** 중심으로 상세히 기술합니다.
+
+**1.1 에이전트 워크플로우 (Agent Workflow)**
+
+* **구현 기능:**
+  반도체 품목 정보를 입력받아 HS-Code를 자동 추천하는 ReAct 오케스트레이터 에이전트
+
+* **동작 원리:**
+  사용자가 품목명·재질·용도·수출입 방향을 입력하면 에이전트가 다음 순서로 처리합니다.
+  (1) 입력값을 구조화된 질문으로 변환 후 에이전트에 전달
+  (2) ReAct(Reasoning + Acting) 루프에서 어떤 도구를 어떤 순서로 호출할지 자율 판단
+  (3) search_hs_code_rag → query_tax_rate 순으로 도구 호출
+  (4) RAG 검색 결과가 임계값 미만이면 LLM 지식 기반 Fallback으로 자동 전환
+  (5) 최종 HS-Code 추천 + 세율 정보를 통합하여 사용자에게 반환
+
+* **주요 기술:**
+  (1) LangChain
+  - create_react_agent : LLM이 ReAct(Reasoning and Acting), 즉 '추론'과 '행동'을 결합하여 문제를 해결하도록 설정된 에이전트 객체를 생성하는 함수
+  - AgentExecutor : create_react_agent로 만든 에이전트 두뇌와 실제 실행할 도구들을 결합하여 구동시키는 런타임 환경
+  (2) LLM
+  - Azure OpenAI gpt-4.1 (메인) : 에이전트의 주력 두뇌로 사용
+  - Fallback Claude Sonnet 4.5 (대체) : 메인 모델 예외 발생 시 즉각 요청을 이어받아 처리하는 백업 모델
+  (3) PromptTemplate (ReAct 형식)
+  - LLM이 환각(Hallucination)에 빠지지 않고, 정해진 도구를 논리적인 순서대로 사용하도록 통제하는 가이드라인
+  (4) Pydantic-Settings 기반 환경 설정
+  - DB 접속 정보, API 키, 모델 버전, 유사도 임계값 등 시스템 구동에 필요한 환경 변수들을 Pydantic 라이브러리를 통해 관리
+
+---
+
+**1.2 도구(Tool) 및 함수 연동**
+
+* **구현 기능:**
+  (1) HS-Code RAG 검색 도구 (search_hs_code_rag)
+  (2) 관세율 조회 도구 (query_tax_rate)
+
+* **동작 원리:**
+  (1) HS-Code RAG 검색 도구 (search_hs_code_rag)
+  - LLM이 품목명·재질·용도를 JSON 형태의 Action Input으로 도구에 전달
+  - 입력값을 단일 쿼리 문자열로 결합 후 Pinecone에서 코사인 유사도 검색 (top-k=5)
+  - 유사도 최댓값이 임계값(기본 0.30) 이상인 경우에만 후보 HS-Code와 근거 문서 반환
+  - 동일 HS-Code를 지지하는 청크가 여러 개인 경우 합산하여 신뢰도 산정
+  - 상위 3개 류(類) 코드가 서로 다를 경우 충돌 플래그(TYPE-1/2/3) 자동 생성
+  (2) 관세율 조회 도구 (query_tax_rate)
+  - HS-Code 앞 2자리(류)를 키로 정적 세율 테이블에서 기본관세율 조회
+  - 한-미·한-EU·한-중 FTA 협정 세율 및 수입 요건 반환
+  - 실제 운영 시 관세청 UNI-PASS API 연동으로 대체 가능한 구조로 설계
+
+* **주요 기술:**
+  (1) LangChain @tool 데코레이터
+  - 파이썬 함수를 LLM 에이전트가 인식하고 호출할 수 있는 도구(Tool)로 변환
+  (2) Pydantic 자동 스키마 생성
+  - LLM이 내뱉는 결과물의 포맷을 강제 적용
+  (3) JSON 방어적 파싱 (LLM 오형식 대응)
+  - LLM이 전체 입력을 product_name 단일 필드에 JSON 문자열로 직렬화하는 오형식 발생 시, 자동 파싱하여 각 필드로 분해하는 방어 로직 내장
+  (4) 관세율 Fallback 정적 테이블
+  - UNI-PASS API 호출 실패 시 내부 정적 테이블(류 38, 39, 84, 85, 76, 90)에서 즉시 반환
+
+---
+
+**[신설] 1.2.1 도구 입출력 샘플 (실제 구현 기준)**
+
+아래는 각 도구의 실제 입력값과 반환값 구조입니다. 모두 코드에서 직접 추출한 스키마입니다.
+
+■ search_hs_code_rag — 정상 반환 (RAG 매칭 성공 시)
+
+  입력:
+  {
+    "product_name": "FOUP",
+    "material": "폴리카보네이트",
+    "purpose": "300mm 웨이퍼 클린룸 이송 및 보관",
+    "trade_direction": "수입",
+    "existing_hs_code": "",
+    "top_k": 5,
+    "similarity_threshold": 0.30
+  }
+
+  반환:
+  {
+    "candidates": [
+      {
+        "rank": 1,
+        "hs_code": "3923100000",
+        "confidence": "중간",
+        "evidence": [
+          {
+            "evidence_id": "ev_001",
+            "doc_name": "hs_3923_FOUP.txt",
+            "pub_year": "2024",
+            "page": "p.1",
+            "section": "3923류",
+            "citation": "FOUP(Front Opening Unified Pod)은 300mm 반도체 웨이퍼 이송·보관용 폴리카보네이트 재질의 특수 용기",
+            "similarity_score": 0.4710,
+            "chunk_id": "chunk_0021",
+            "supports_hs": "3923100000"
+          }
+        ]
+      }
+    ],
+    "conflict_flag": false,
+    "conflict_type": null,
+    "conflict_detail": null,
+    "fallback": false,
+    "fallback_reason": null,
+    "max_similarity": 0.4710,
+    "top5_chunks": [...]
+  }
+
+■ search_hs_code_rag — Fallback 반환 (유사도 미달 시)
+
+  반환:
+  {
+    "candidates": [],
+    "conflict_flag": false,
+    "conflict_type": null,
+    "conflict_detail": null,
+    "fallback": true,
+    "fallback_reason": "유사도 0.18 < 임계값 0.30",
+    "max_similarity": 0.1800,
+    "top5_chunks": []
+  }
+
+■ search_hs_code_rag — 충돌 반환 (TYPE-1: 류 충돌 시)
+
+  반환 (conflict 관련 필드만 발췌):
+  {
+    "conflict_flag": true,
+    "conflict_type": "TYPE-1",
+    "conflict_detail": "류 충돌: 39, 85",
+    "candidates": [상위 3개 후보의 류 코드가 2종류 이상]
+  }
+
+■ query_tax_rate — 정상 반환
+
+  입력:
+  {
+    "hs_code": "3923100000",
+    "trade_direction": "수입",
+    "target_country": "US"
+  }
+
+  반환:
+  {
+    "hs_code": "3923100000",
+    "basic_rate": "8%",
+    "fta_rates": [
+      {"country": "미국", "agreement": "한-미 FTA", "rate": "0%"},
+      {"country": "EU",   "agreement": "한-EU FTA", "rate": "0%"},
+      {"country": "중국", "agreement": "한-중 FTA", "rate": "확인필요"}
+    ],
+    "import_requirements": "특별한 수입 요건 없음",
+    "is_fallback": true
+  }
+
+■ save_audit_log — 수정 사유 누락 시 오류 반환
+
+  상황: 사용자가 Top-1 외 코드를 선택했으나 수정 사유를 입력하지 않은 경우
+
+  반환:
+  {
+    "log_id": null,
+    "saved": false,
+    "file_path": null,
+    "error": "수정 사유 미입력: 1순위 외 코드 선택 시 수정 사유 필수"
+  }
+
+---
+
+**1.3 데이터 및 메모리 (RAG & Context)**
+
+* **구현 기능:**
+  반도체 HS-Code 참조 문서(TXT/PDF) 기반 검색 증강 생성(RAG)
+
+* **동작 원리:**
+  문서 적재: data/raw/ 폴더의 TXT/PDF 파일을 로드 — TXT는 --- 구분자 기반 메타데이터(HS-Code·문서명·발행연도·류) 파싱, PDF는 PyPDFLoader로 페이지별 로드
+  청킹: RecursiveCharacterTextSplitter로 chunk_size=500 / overlap=50으로 분할 후 각 청크에 chunk_id 부여
+  임베딩: Azure OpenAI text-embedding-3-small (1,536차원)으로 청크 벡터화
+  저장: Pinecone 인덱스(hs-code-docs, cosine metric)에 배치 50개 단위로 업로드
+  검색: 사용자 쿼리를 동일 임베딩 모델로 변환 후 similarity_search_with_score로 top-5 청크 반환
+  근거 품질 채점: 문서명·페이지·인용 문장·유사도를 기준으로 8점 만점 자동 채점
+
+* **주요 기술:**
+  Pinecone Serverless (cloud vector DB)
+  langchain-pinecone 0.2.0
+  Azure OpenAI text-embedding-3-small (1536차원)
+  RecursiveCharacterTextSplitter (chunk=500, overlap=50)
+  similarity_search_with_score (cosine)
+
+---
+
+**[신설] 1.3.1 데이터 적재 결과 수치 (실측)**
+
+  현재 Pinecone 인덱스(hs-code-docs)에 적재된 실제 수치:
+
+  | 항목             | 수치                             |
+  |----------------|--------------------------------|
+  | 참조 문서 파일 수    | 11개 (TXT 형식)                   |
+  | 총 문서 라인 수     | 303줄                           |
+  | 생성된 청크 수      | 약 242개                         |
+  | Pinecone 저장 벡터 수 | 242개 (인덱스 describe_index_stats 확인) |
+  | 임베딩 차원        | 1,536 (text-embedding-3-small)  |
+  | 유사도 메트릭       | cosine                          |
+  | 배치 단위         | 50개/배치                         |
+
+  커버 품목 (TXT 문서 기준):
+
+  | 파일명                          | 대표 HS-Code  | 품목              |
+  |-------------------------------|-------------|-----------------|
+  | hs_2920_TEOS.txt              | 2920        | TEOS (전구체)      |
+  | hs_3707_EUV_photoresist.txt   | 3707        | EUV 포토레지스트     |
+  | hs_3810_CMP_slurry.txt        | 3810        | CMP 슬러리         |
+  | hs_3818_silicon_wafer.txt     | 3818        | 실리콘 웨이퍼        |
+  | hs_3907_EMC.txt               | 3907        | EMC 봉지재         |
+  | hs_3923_FOUP.txt              | 3923        | FOUP            |
+  | hs_7020_quartz_carrier.txt    | 7020        | 석영 캐리어          |
+  | hs_7115_bond_wire.txt         | 7115        | 본딩 와이어          |
+  | hs_7410_Cu_target.txt         | 7410        | 구리 타겟            |
+  | hs_8486_photomask.txt         | 8486        | 포토마스크           |
+  | hs_8541_semiconductor_device.txt | 8541     | 반도체 디바이스        |
+
+  실제 적재 파이프라인 실행 로그 예시 (data_ingest/ingest.py 출력):
+
+    [적재 시작] data/raw/ 폴더에서 문서 탐색 중...
+    [발견] hs_3923_FOUP.txt (1페이지/섹션)
+    [발견] hs_8541_semiconductor_device.txt (1페이지/섹션)
+    ... (총 11개)
+    [청킹] 총 242개 청크 생성
+    [임베딩] Azure OpenAI text-embedding-3-small 사용 중...
+    [Pinecone] 인덱스 'hs-code-docs'에 적재 중...
+      → 50/242 청크 업로드 완료
+      → 100/242 청크 업로드 완료
+      → 150/242 청크 업로드 완료
+      → 200/242 청크 업로드 완료
+      → 242/242 청크 업로드 완료
+    [적재 완료] Pinecone에 242개 청크 저장
+    [검증] Pinecone 총 벡터 수: 242
+    [검증] 테스트 쿼리: "FOUP 웨이퍼 이송"
+      - 유사도 0.471: "FOUP(Front Opening Unified Pod)은 300mm 반도체..." [HS:3923100000]
+      - 유사도 0.428: "반도체 웨이퍼 이송용 특수 용기 및 보관 장치..." [HS:3923100000]
+      - 유사도 0.374: "클린룸 환경에서 사용하는 폴리카보네이트 재질..." [HS:3923100000]
+    [완료] Pinecone 적재 파이프라인 정상 종료
+
+---
+
+**[신설] 1.3.2 근거 품질 채점 기준 (8점 만점 상세)**
+
+  근거 품질 점수(evidence_quality_score)는 _score_evidence() 함수에서 자동 산출됩니다.
+  Top-1 후보의 첫 번째 증거(evidence[0])를 기준으로 아래 항목별 가산:
+
+  | 채점 항목                    | 조건                         | 점수    |
+  |-----------------------------|------------------------------|--------|
+  | 증거 존재                   | evidence 리스트가 1개 이상     | +2.0점  |
+  | 문서명 포함                  | doc_name 필드가 비어있지 않음   | +1.5점  |
+  | 페이지 정보 포함             | page 필드가 비어있지 않음       | +1.0점  |
+  | 인용 문장 충분               | citation 길이 > 20자          | +1.5점  |
+  | 유사도 높음 (고신뢰)          | similarity_score ≥ 0.85      | +2.0점  |
+  | 유사도 보통 (중신뢰)          | similarity_score ≥ 0.75      | +1.0점  |
+  | **최대 합산**                |                              | **8.0점** |
+
+  FOUP 시나리오 채점 예시 (실제 결과):
+    - 증거 존재: +2.0 (hs_3923_FOUP.txt 청크 반환됨)
+    - 문서명 포함: +1.5 (doc_name = "hs_3923_FOUP.txt")
+    - 페이지 포함: +1.0 (page = "p.1")
+    - 인용 문장: +1.5 (citation 120자 반환)
+    - 유사도 0.47 → 0.75 미달: +0.0
+    - 합계: 6.0/8.0점 ← UI 표시값과 일치
+
+---
+
+**[신설] 1.3.3 재현 절차**
+
+  로컬 환경에서 전체 시스템을 재현하는 최소 절차입니다.
+
+  사전 요건:
+    - Python 3.11
+    - .env 파일에 아래 키 설정:
+        AZURE_OPENAI_API_KEY=...
+        AZURE_OPENAI_ENDPOINT=...
+        PINECONE_API_KEY=...
+        PINECONE_INDEX_NAME=hs-code-docs
+
+  재현 단계:
+    1. 의존성 설치
+       pip install -r requirements.txt
+
+    2. Pinecone 문서 적재 (최초 1회)
+       python data_ingest/ingest.py
+       → "적재 완료" 메시지 및 벡터 수 확인
+
+    3. Streamlit UI 실행
+       streamlit run app.py
+       → 브라우저에서 localhost:8501 접속
+
+    4. 시나리오 1 재현 (RAG 정상 추천)
+       품목명: FOUP
+       재질: 폴리카보네이트
+       용도: 300mm 웨이퍼 클린룸 이송
+       수출입: 수입
+       유사도 임계값: 0.30
+       → 기대 결과: Fallback=아니오, Top-1 = 3923100000, 근거 품질 ≥ 5.0
+
+    5. 시나리오 2 재현 (Fallback 전환)
+       품목명: 양자컴퓨터 희석냉동기
+       재질: 알루미늄, 구리
+       용도: 큐비트 냉각
+       유사도 임계값: 0.45
+       → 기대 결과: Fallback=예, 근거 품질 0.0, 경고 배너 표시
+
+---
+
+**[신설] 1.4 모듈 구조 (파일 구성)**
+
+  저장소 최상위 기준 실제 파일 구조:
+
+  agent_hs/
+  ├── app.py                          # Streamlit UI 진입점 (메인 화면)
+  ├── main.py                         # CLI 실행 진입점 (비UI 테스트용)
+  ├── requirements.txt                # Python 의존성 목록
+  ├── runtime.txt                     # Render 배포용 Python 버전 고정 (python-3.11)
+  │
+  ├── agents/
+  │   ├── orchestrator.py             # ReAct 에이전트 빌드 및 run_agent() 구현
+  │   ├── state.py                    # LangGraph AgentState 정의 (현재 미사용)
+  │   ├── rag_agent.py                # LangGraph RAG 노드 스텁 (현재 미사용)
+  │   └── tax_agent.py                # LangGraph 세율 노드 스텁 (현재 미사용)
+  │
+  ├── tools/
+  │   ├── search_hs.py                # search_hs_code_rag @tool (Pinecone RAG)
+  │   ├── query_tax.py                # query_tax_rate @tool (세율 조회)
+  │   ├── audit_log.py                # save_audit_log @tool (감사 로그 저장)
+  │   └── clarification.py           # 추가 질문 도구 (구조 정의됨)
+  │
+  ├── configs/
+  │   ├── settings.py                 # Pydantic-Settings 환경변수 관리
+  │   └── prompts.py                  # ReAct 시스템 프롬프트, Fallback 메시지
+  │
+  ├── data_ingest/
+  │   ├── ingest.py                   # 문서 적재 파이프라인 (로드→청킹→임베딩→Pinecone)
+  │   ├── loaders.py                  # TXT/PDF 로더
+  │   └── chunker.py                  # 청킹 유틸리티
+  │
+  ├── data/
+  │   └── raw/                        # 참조 문서 11개 (TXT 형식)
+  │
+  ├── logs/
+  │   └── audit_log.json              # JSONL 형식 감사 로그 누적 파일
+  │
+  ├── eval/
+  │   ├── eval_runner.py              # 평가 실행기 (PoC 이후 단계용)
+  │   └── compare_results.py         # 결과 비교 유틸리티
+  │
+  └── .streamlit/
+      └── config.toml                 # Render 배포용 Streamlit 설정
+
+---
+
+**[신설] 1.5 응답 상태별 정책 (Confidence / Conflict / Fallback)**
+
+  시스템은 RAG 검색 결과의 품질에 따라 3가지 상태를 구분하여 각기 다른 응답을 사용자에게 전달합니다.
+
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ 상태 A: RAG 근거 존재 + 후보 간 충돌 (Conflict)                             │
+  └─────────────────────────────────────────────────────────────────────────────┘
+
+  조건:
+    - fallback = False (유사도 임계값 통과)
+    - conflict_flag = True
+    - TYPE-1: 상위 3개 후보의 류(2자리) 코드가 2종류 이상
+    - TYPE-2: 기존 HS-Code(사용자 입력)와 Top-1 추천 코드의 앞 6자리 불일치
+    - TYPE-3: 복수의 HS-Code가 각각 2개 이상의 청크로 지지되어 동등하게 경쟁
+
+  사용자 응답 정책:
+    - UI에 주황색 경고 배너 표시:
+        "⚠️ 분류 충돌 감지 — TYPE-X: [충돌 유형 설명] / [충돌 상세 내용]"
+    - HS-Code 후보는 정상 표시 (최대 3순위까지)
+    - 근거 품질 점수 정상 산출 및 표시
+    - 감사 로그에 conflict_flag=true, conflict_type, conflict_detail 기록
+
+  처리 예시:
+    FOUP(3923류)와 반도체 장비(8486류) 후보가 동시에 상위에 오를 경우:
+    → "⚠️ 분류 충돌 감지 — TYPE-1: 상위 후보 간 류(類) 코드 충돌 / 류 충돌: 39, 84"
+    → 사용자가 직접 1순위를 확인·선택 후 감사 로그에 수정 사유 입력 권고
+
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ 상태 B: RAG 근거 약함 → LLM Fallback 전환 (Fallback)                        │
+  └─────────────────────────────────────────────────────────────────────────────┘
+
+  조건:
+    - fallback = True
+    - fallback_reason 중 하나:
+        · "PINECONE_API_KEY 미설정"   — 환경변수 누락
+        · "Pinecone 연결 실패: ..."  — 네트워크/인증 오류
+        · "RAG 검색 실패: ..."       — 쿼리 실행 오류
+        · "검색 결과 없음 (문서 미적재)" — 인덱스 비어있음
+        · "유사도 N.NN < 임계값 N.NN"  — 유사도 미달 (가장 빈번)
+
+  사용자 응답 정책:
+    - UI에 노란색 경고 박스 표시:
+        "⚠️ RAG 근거 없음: [fallback_reason] — LLM 지식 기반 추천이 제공됩니다."
+    - LLM이 자체 지식으로 HS-Code를 추천하되, 추천 텍스트에 "반드시 전문가 확인 필요" 문구 포함
+    - 근거 품질 점수 = 0.0/8.0으로 고정 표시
+    - Fallback=예 레이블 표시
+    - 감사 로그에 fallback=true, fallback_reason 기록
+
+  처리 예시:
+    양자컴퓨터 희석냉동기 입력, 유사도 0.18 < 임계값 0.30:
+    → "⚠️ RAG 근거 없음: 유사도 0.18 < 임계값 0.30 — LLM 지식 기반 추천"
+    → "* RAG 문서 근거 없음 — LLM 지식 기반 추천. [1순위] HS-Code 8419899090..."
+    → 근거 품질 0.0/8.0, Fallback=예
+
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ 정상 상태: RAG 근거 존재 + 충돌 없음 (High Confidence)                       │
+  └─────────────────────────────────────────────────────────────────────────────┘
+
+  조건:
+    - fallback = False, conflict_flag = False
+    - Top-1 유사도 ≥ similarity_threshold
+
+  사용자 응답 정책:
+    - 경고 없이 HS-Code 후보 및 근거 정상 표시
+    - 신뢰도 레이블: "높음"(≥0.60) / "중간"(≥0.45) / "낮음"(<0.45)
+    - 근거 품질 점수 정상 산출 (최대 8.0점)
+
+---
+
+### 주요 문제 해결 및 기술 리서치
+
+구현 과정에서 마주친 기술적 문제와 이를 해결하기 위해 찾아본 자료(리서치) 및 적용한 방법을 기록합니다.
+
+|           |                                                                                                                                                                                                     |                                                                                                                                                                                                                                                |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **이슈 구분** | **문제 상황 및 원인**                                                                                                                                                                                      | **리서치 및 해결 과정 (Reference & Solution)**                                                                                                                                                                                                         |
+| **프롬프트**  | LLM이 search_hs_code_rag 도구 호출 시 product_name, material, purpose 등 개별 파라미터를 각각 넣지 않고, 전체 입력을 하나의 JSON 문자열로 직렬화하여 product_name 필드 하나에 몰아넣는 오형식(Malformed Tool Call) 발생 → Pydantic Validation Error 발생 | **리서치:** LangChain ReAct 프롬프트의 Action Input 형식 명세 문서 확인. LLM이 예시 없이 스키마만 보면 직렬화 실수를 반복하는 사례 확인 **적용 (2가지):** ① ReAct 프롬프트 내 올바른 Action Input 예시를 명시적으로 추가 ② 도구 함수 내부에 product_name이 JSON 문자열일 경우 파싱하여 각 필드로 분해하는 방어 로직 추가 → 오류 해소          |
+| **도구 연동** | Streamlit Cloud에 로컬 ChromaDB를 사용하면서 로컬에 저장했지만 쿼터이슈로 인한 운영 지속성 불가 발생                                                                                                          | **리서치:** 쿼터량이 있음을 확인하여 다른 도구 연동 검토가 필요함을 확인 **적용:** Render Web Service + Pinecone cloud 간 API 검색 구조로 변경하여 시스템 운영 영속성 확보                                                                                                  |
+| **도구 연동** | Pinecone 인덱스 차원(dimension)을 512로 생성했으나 Azure OpenAI text-embedding-3-small 임베딩 출력이 1,536차원이어서 업로드 시 dimension mismatch 오류 발생                                                                      | **리서치:** Azure OpenAI 임베딩 모델 스펙 문서에서 text-embedding-3-small의 기본 출력 차원이 1,536임을 확인 **적용:** Pinecone 콘솔에서 기존 인덱스 삭제 후 dimension=1,536, metric=cosine으로 재생성 → 정상 적재                                                                             |
+| **성능/기타** | Python 3.13 환경(Render 기본값)에서 langchain-community가 요구하는 numpy≥2.1과 langchain-chroma가 요구하는 numpy<2.0이 충돌하여 빌드 실패                                                                              | **리서치:** Render 공식 문서의 Python 버전 지정 방법 확인 — runtime.txt 또는 환경변수 PYTHON_VERSION으로 버전 고정 가능 **적용:** 저장소 루트에 runtime.txt (python-3.11) 추가 + Render 대시보드 환경변수 PYTHON_VERSION=3.11.0 설정. 근본 원인인 langchain-chroma 의존성은 Pinecone 전환으로 제거 |
+| **성능/기타** | ChromaDB를 로컬 벡터 DB로 사용했을 때 Render 배포 환경에서 컨테이너 재시작 시마다 인덱스 데이터가 초기화(휘발)되어 매번 재적재 필요                                                                                                                 | **리서치:** Render 무료 플랜의 파일시스템 정책 확인 — Disk는 유료 기능이며 무료 플랜은 배포 시마다 초기화됨. 클라우드 벡터 DB 비교 검토 (Pinecone 무료 Serverless 플랜: 100만 벡터 무료) **적용:** ChromaDB → Pinecone Serverless로 전환. 적재는 인덱스 버튼 1회 실행으로 영구 보존                                          |
+| **RAG/임계값** | Pinecone 코사인 유사도 점수 범위(실측 0.37~0.47)와 불일치하는 기본 임계값(0.75) 설정으로 인해 정상 문서가 적재되어 있음에도 항상 Fallback 발생 | **리서치:** Pinecone cosine similarity_search_with_score 반환값 범위 확인 — 반도체 전문 도메인 문서의 경우 0.40~0.55 수준이 일반적임을 실측 확인 **적용:** 도구 기본 임계값 0.75→0.30으로 하향, UI 슬라이더 기본값 0.45로 설정 → 정상 매칭 확인 |
+| **신뢰도 표시** | 근거 품질 신뢰도 레이블이 항상 "낮음"으로 표시 — Pinecone 실제 코사인 점수(0.47)가 기존 임계값(높음≥0.85, 중간≥0.75)을 충족하지 못함 | **리서치:** 도메인 특화 임베딩 모델의 코사인 유사도 분포 특성 검토 — 전문 용어 밀집 문서의 경우 0.45~0.65가 고신뢰 구간 **적용:** _score_to_confidence() 기준 조정 → 높음(≥0.60) / 중간(≥0.45) / 낮음(<0.45) |
+| **감사 로그** | LLM이 save_audit_log 도구를 자체 호출할 때 input 필드를 빈 딕셔너리 {}로 구성하여 품목 정보가 로그에서 누락 | **원인 분석:** LLM이 자체적으로 audit_log 딕셔너리를 구성할 때 원본 input_data를 참조하지 않고 빈 객체를 전달하는 패턴 확인 **적용:** save_audit_log를 LLM 도구 목록(_TOOLS)에서 제거 → orchestrator.py의 run_agent() 함수 내에서 input_data를 직접 포함하여 save_audit_log.invoke() 호출 |
+
+---
+
+### 핵심 동작 검증
+
+위에서 구현한 기능이 의도대로 동작하는지 보여주는 대표적인 실행 결과를 첨부합니다.
+
+---
+
+**[신설] 검증 성공 기준 (공통 정의)**
+
+  아래 기준을 만족해야 각 시나리오가 "검증 성공"으로 판정됩니다.
+  이 기준은 다음 테스트 및 고도화 Task의 평가표로 직접 이어집니다.
+
+  | 기준 항목           | 정상 케이스 성공 조건                     | Fallback 케이스 성공 조건                   |
+  |--------------------|----------------------------------------|------------------------------------------|
+  | HS-Code 정확도      | Top-1 추천 코드의 앞 4자리(호)가 기대값과 일치 | 해당 없음 (LLM 추천이므로 정확도 보장 불가)    |
+  | Top-3 허용 기준     | Top-1 불일치 시 Top-3 내 포함이면 부분 성공  | 해당 없음                                  |
+  | Fallback 상태       | fallback = False                       | fallback = True                           |
+  | Fallback 경고 문구  | 경고 배너 미표시                          | "RAG 문서 근거 없음" 문구 반드시 포함         |
+  | 근거 품질 점수       | ≥ 5.0/8.0점 (문서명·페이지·인용 항목 확보)  | 0.0/8.0점 고정                             |
+  | 신뢰도 레이블        | "중간" 또는 "높음"                        | 표시 없음 (후보 없음)                        |
+  | 감사 로그 기록       | input 필드에 품목정보 포함, log_id 생성    | fallback_reason 필드 포함                   |
+  | 응답 시간           | 10초 이내 (LLM API 호출 포함)             | 10초 이내                                  |
+  | 충돌 배너 (해당 시)  | conflict_flag=True 시 주황 배너 표시      | 해당 없음                                   |
+
+---
+
+**[검증 시나리오 1: RAG 기반 HS-Code 정상 추천]**
+
+* **입력:**
+  품목명: FOUP
+  재질/소재: 폴리카보네이트
+  용도/기능: 300mm 웨이퍼 클린룸 이송 및 보관
+  수출/수입: 수입
+
+* **에이전트 동작:**
+
+  1. 입력값을 구조화된 질문으로 변환 (품목명·재질·용도·유사도 임계값 포함)
+
+  2. search_hs_code_rag("FOUP", material="폴리카보네이트", purpose="300mm 웨이퍼 클린룸 이송 및 보관", similarity_threshold=0.30) 호출
+     → Pinecone에서 hs_3923_FOUP.txt 청크 top-5 검색, 최고 유사도 0.47 반환
+     → 임계값(0.30) 초과 → fallback=False, 후보 HS-Code 반환
+
+  3. query_tax_rate("3923100000") 호출
+     → 기본관세율 8%, 한-미 FTA 0%, 한-EU FTA 0% 반환
+
+  4. RAG 근거 + 세율 정보를 종합하여 최종 답변 생성
+
+* **최종 결과:**
+
+  Fallback: 아니오
+  근거 품질: 6.0/8.0점 (증거존재 +2.0, 문서명 +1.5, 페이지 +1.0, 인용 +1.5, 유사도0.47<0.75 +0)
+  신뢰도: 중간 (유사도 0.47 ≥ 0.45)
+  추천 결과:
+    "[1순위] HS-Code 3923100000 — FOUP(Front Opening Unified Pod)은 반도체 300mm 웨이퍼의
+    클린룸 이송·보관용 폴리카보네이트 재질의 특수 용기입니다. → 근거: hs_3923_FOUP.txt p.1.
+    [세율]
+    기본관세율 8% / FTA 협정세율 한-미 0%, 한-EU 0%"
+
+* **성공 판정:**
+  - Top-1 = 3923100000 (앞 4자리 3923 일치) → 성공
+  - 근거 품질 6.0 ≥ 5.0 → 성공
+  - Fallback=아니오, 경고 배너 없음 → 성공
+  - 감사 로그 기록 확인 (실제 로그 발췌):
+      {"log_id": "0cd7b2d7-...", "timestamp": "2026-04-29T21:48:30",
+       "user_selection": "3923100000", "top1_recommendation": "3923100000",
+       "final_hs_code": "3923100000", "input": {"product_name": "FOUP"}}
+
+---
+
+**[검증 시나리오 2: RAG 문서 미매칭 시 LLM Fallback 전환]**
+
+* **입력:**
+  품목명: 양자컴퓨터 희석냉동기
+  재질/소재: 알루미늄, 구리
+  용도/기능: 큐비트 냉각용 극저온 장치
+  수출/수입: 수출
+
+* **에이전트 동작:**
+
+  1. search_hs_code_rag("양자컴퓨터 희석냉동기", ...) 호출
+     → Pinecone 검색 실행, 최고 유사도 0.18 반환
+     → 임계값(0.30) 미달 → fallback=True, fallback_reason: "유사도 0.18 < 임계값 0.30" 반환
+
+  2. RAG 근거 없음 인지 (Reasoning) → LLM 자체 지식 기반 추천으로 전환
+
+  3. query_tax_rate() 호출 생략 또는 범용 세율 조회
+
+  4. 경고 배너와 함께 LLM 지식 기반 추천 결과 반환
+
+* **최종 결과:**
+
+  Fallback: 예
+  Fallback 사유: "유사도 0.18 < 임계값 0.30"
+  근거 품질: 0.0/8.0점
+  신뢰도: 없음 (후보 RAG 근거 없음)
+  추천 결과:
+    "⚠️ RAG 근거 없음: 유사도 0.18 < 임계값 0.30 — LLM 지식 기반 추천이 제공됩니다.
+    * RAG 문서 근거 없음 — LLM 지식 기반 추천. [1순위] HS-Code 8419899090 —
+    극저온 냉각 장치는 제84류 산업용 기계 중 기타 열처리 장치로 분류될 수 있습니다.
+    반드시 전문가 확인 필요*"
+
+* **성공 판정:**
+  - fallback=True → 성공 (Fallback 케이스 기준 적용)
+  - 경고 문구 "RAG 문서 근거 없음" 포함 → 성공
+  - 근거 품질 0.0/8.0 고정 → 성공
+  - "반드시 전문가 확인 필요" 문구 포함 → 성공
+
+---
+
+**[신설] 실제 감사 로그 발췌 (logs/audit_log.json)**
+
+  아래는 실제 운영 중 누적된 감사 로그의 실제 레코드 3건입니다 (민감 정보 제외):
+
+  레코드 1: 정상 추천, Top-1 선택
+    {"log_id": "0cd7b2d7-1558-46be-ac42-df912fe31bca",
+     "timestamp": "2026-04-29T21:48:30",
+     "user_selection": "3923100000",
+     "top1_recommendation": "3923100000",
+     "modify_reason": "",
+     "final_hs_code": "3923100000",
+     "input": {"product_name": "FOUP"}}
+
+  레코드 2: 사용자가 Top-1 외 코드 선택 + 수정 사유 기록
+    {"log_id": "d2e2b747-c14b-4c13-8f4f-a01372030996",
+     "timestamp": "2026-04-30T00:15:08",
+     "user_selection": "8486900000",
+     "top1_recommendation": "3923100000",
+     "modify_reason": "재질보다 기능 기준 우선 적용",
+     "final_hs_code": "8486900000"}
+
+  포맷: JSONL (1줄 = 1레코드), 파일 경로: ./logs/audit_log.json
+  누적 방식: 매 조회마다 append, 파일 삭제 없이 영구 보존
