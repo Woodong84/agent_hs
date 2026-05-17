@@ -163,7 +163,7 @@ def search_hs_code_rag(
         meta = doc.metadata
         source = meta.get("source", "알 수 없는 문서")
         page = meta.get("page", "?")
-        hs_code = meta.get("hs_code", f"UNKNOWN_{idx:03d}")
+        hs_code = meta.get("hs_code", "")
         chunk_id = meta.get("chunk_id", f"chunk_{idx:03d}")
 
         chunk_info = {
@@ -173,6 +173,11 @@ def search_hs_code_rag(
             "snippet": doc.page_content[:100],
         }
         top5_chunks.append(chunk_info)
+
+        # HS 코드가 없는 청크(PDF 통째 적재분 등)는 참고 근거로만 활용,
+        # 후보 목록에는 포함하지 않아 UNKNOWN 중복 노출 방지
+        if not hs_code:
+            continue
 
         evidence = {
             "evidence_id": f"ev_{idx+1:03d}",

@@ -326,10 +326,19 @@ def _render_result(result: dict):
     st.markdown("### 📋 추천 결과")
     final_response = result.get("final_response", "")
     if final_response:
-        # [세율] 태그 앞에 줄바꿈 삽입
-        formatted_response = final_response.replace("[세율]", "\n[세율]")
+        # 주요 섹션 마커 앞에 빈 줄 삽입 → 문장별 줄바꿈
+        _MARKERS = [
+            "[1순위]", "[2순위]", "[3순위]", "[4순위]", "[5순위]",
+            "[주의]", "[세율]", "[경고]", "[Clarification", "[상충",
+            "→ 근거:", "→ 품목 설명:", "→ 적용 조건:",
+        ]
+        formatted_response = final_response
+        for marker in _MARKERS:
+            formatted_response = formatted_response.replace(marker, f"\n\n{marker}")
+        # 단일 \n → 줄바꿈 유지, 연속 공백 정리
+        formatted_response = formatted_response.strip()
         st.markdown(
-            f'<div class="result-box"><pre style="white-space:pre-wrap;font-family:inherit">'
+            f'<div class="result-box"><pre style="white-space:pre-wrap;font-family:inherit;line-height:1.7">'
             f'{formatted_response}</pre></div>',
             unsafe_allow_html=True,
         )
@@ -383,10 +392,13 @@ def _render_result(result: dict):
                     )
 
                 # 유사 정보: top5_chunks 중 같은 HS 코드 앞 4자리를 지지하는 청크 수
+                # UNKNOWN/빈 코드는 제외
                 top5 = result.get("audit_log", {}).get("rag_result", {}).get("top5_chunks", [])
                 related = [
                     ch for ch in top5
-                    if ch.get("supports_hs", "")[:4] == hs[:4]
+                    if ch.get("supports_hs", "")
+                    and not ch.get("supports_hs", "").startswith("UNKNOWN")
+                    and ch.get("supports_hs", "")[:4] == hs[:4]
                     and ch.get("supports_hs", "") != hs
                 ]
                 if related:
