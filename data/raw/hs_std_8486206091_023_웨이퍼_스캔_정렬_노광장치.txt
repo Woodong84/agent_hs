@@ -1,0 +1,76 @@
+---
+hs_code: 8486206091
+source: HS_Code_standard_지침_4장
+pub_year: 2023
+section: 84류
+chapter: 제4장 포토(포토레지스트 도포 - 노광- 현상)
+enacted: 
+---
+【품목명】 웨이퍼 스캔 정렬 노광장치
+【영문명】 STEP & SCAN(ArF Scanner ; NSR-S308F
+【HS Code】 8486.20-6091 (HSK2022: 8486206091)
+【제조공정】 제4장 포토(포토레지스트 도포 - 노광- 현상)
+
+【물품설명】
+용 도
+  ◈   12″ SILICON WAFER 초미세 선폭을 재현해내는 SCAN 정렬 노광용 반도체 제조장치로서 
+MEMORY 제품 생산용
+  ◈   본 장비는 Step & Repeat Aligner(스텝퍼) 기능에 Scaning Aligner(투사형정렬기)의 기능을 
+접목시킨 장비로 작은 슬릿영역을 주사하여 노출시키는 방식으로 노광하는 기기 
+ 주요 구성요소
+  ◈   MAIN BODY : 설비의 본체를 말하며, WAFER를 직접 정렬, SCAN 노광하는 장치
+  ◈   SCAN RETICLE STAGE : WAFER에 노광할 PATTERN이 새겨져 있는 RETICLE을 높은 정밀도로 
+SCAN하는 장치
+082
+반도체 HS 표준해석 지침
+  ◈   WAFER LOADER : 노광할 WAFER 또는, 노광이 완료된 WAFER를 반송하는 장치
+  ◈   LASER : WAFER 노광 시 필요한 광(光) 발생장치로서 248㎛의 파장이 발생
+  ◈   온/공조기 : WAFER 정렬, SCAN, 노광 시 WAFER의 주위 온도, 습도 등에 의한 영향을 
+최소화하기 위한 온도, 습도 제어장치
+  ◈   AMP Rack : 장치 전체를 통신, 제어하는 장치로서 주로 전기, 전자적인 크고 작은 소자들로 
+구성된 전기회로가 새겨진 여러 개의 기판 및 제어기로 구성되어 있음
+  ◈   CONTROL UNIT : WAFER를 정렬, SCAN, 노광하기 위해 장치를 정해진 PROGRAM에 의해 
+조작하는 장치
+   동작원리
+  ◈   WAFER에 새길 PATTERN이 있는 RETICLE을 ROBOT ARM을 사용하여 MAIN BODY로 이동시킴
+  ◈   이동된 RETICLE은 보다 정밀한 노광을 하기 위해 기준이 되는 MASK와 자동적으로 정렬
+  ◈   WAFER LOADER가 노광할 WAFER를 ROBOT ARM을 이용해 MAIN BODY로 반송
+  ◈   MAIN BODY에 이송된 WAFER는 미세한 PATTERN이 새겨진 RETICLE의 象을 1/4로 축소하여 
+초정밀도로 WAFER에 정렬, SCAN, 노광
+  ◈   노광이 완료되면 WAFER를 UNLOADER 위치로 운반
+
+【결정사유】
+본 물품은 12인치 실리콘 웨이퍼에 초미세 선폭을 재현해내는 Step & Scan 정렬 
+노광용반도체 제조장치로 Logic 제품(비메모리제품) 생산용 장비임
+   제8486호 해설서(4)(b)(d)에서 스텝 앤 리피트 얼라이너를 “한 번에 하나씩 해당 
+웨이퍼의 한 부분을 노광하는 투사기술을 사용한다. 마스크에서 웨이퍼에 작은 형태로 
+복사하는 과정(축사)에서 노광되거나, 동일한 크기로 복사하는 과정에서 노광될 수 
+있다.”라고 설명하고 있음
+
+083
+제4장 l 포토(포토레지스트 도포 - 노광- 현상)
+반도체 제조장비
+Chapter
+1
+   본 기기는 슬릿모양의 영역에 광을 조사하는 방식으로 유리기판 상에 실장된 크롬층에 
+회로패턴이 그려진 레티클(또는 포토마스크가 위에 설치되어 있고)의 인쇄회로 이미지를 
+웨이퍼에 정렬·노광시키는 기기이므로 제8486.20-6090호에 분류함
+
+084
+반도체 HS 표준해석 지침
+1. 물품설명
+ 개 요
+  ◈   Step & Repeat Aligner(스텝퍼) 기능에 투사형정렬기(Scaning Aligner)의 기능을 접목시킨 
+장비로 작은 슬릿영역을 주사하여 노출시키는 방식으로 노광하는 기기 
+  ◈   12인치 실리콘 웨이퍼에 초미세 선폭을 재현해내는 Step & Scan 정렬 노광용 반도체 
+제조장치로 Logic 제품(비메모리제품) 생산용 
+ 주요 구성 및 기능
+    ① MAIN BODY : 설비의 본체를 말하며, WAFER를 직접 정렬·스캔·노광하는 장치
+    ② SCAN RETICLE STAGE : WAFER에 노광할 PATTERN이 새겨져 있는 RETICLE을 스캔하는 장치
+    ③ WAFER FEEDER : 노광할 WAFER 또는 노광이 완료된 WAFER를 반송하는 장치
+    ④ LASER : WAFER 노광 시 필요한 광(光) 발생장치로서 248㎛의 파장이 발생
+11. 웨이퍼 스캔 정렬 노광장치 (STEP & SCAN ; FPA6000 ES6A)
+8486.20-6091
+*
+8486.20-6090
+품목분류2

@@ -1,0 +1,70 @@
+---
+hs_code: 8486402031
+source: HS_Code_standard_지침_10장
+pub_year: 2023
+section: 84류
+chapter: 제10장 조립(Bonder 등)
+enacted: 2009-04-09
+---
+【품목명】 웨이퍼 레벨 몰딩기
+【영문명】 Wafer Level Molding Machine ; WLP 300
+【HS Code】 8486.40-2031 (HSK2022: 8486402031)
+【제조공정】 제10장 조립(Bonder 등)
+
+【물품설명】
+웨이퍼 상에 형성된 칩에, Solder Ball을 부착한 상태에서 EMC(Epoxy Mold 
+Compound)를 사용하여 Chip in Wafer를 성형하는 반도체 조립장비
+    ※   과거에는 Chip in Wafer를 칩 상태로 절단해서 성형했으나 대량성형, 얇은 두께, 비용절감 
+차원에서 개량된 장비임
+   주요 구성요소별 기능 
+    ① Load & Unload Port : Chip in Wafer를 공급하고 몰딩 완료된 Chip in Wafer를 Unloading함 
+    ② Wafer Handling Robot : Chip in Wafer를 이송하는 로봇암 
+    ③   Paste상 EMC Dispensing : 페이스트상의 EMC(Epoxy Mold Compound)를 Chip in Wafer 
+위에 일정하게 도포 
+    ④   Film 공급 : 페이스트상 EMC가 도포된 Chip in Wafer를 덮는 필름을 공급(몰딩 시 Chip in 
+Wafer와 금형 간의 이형 및 Chip in Wafer의 Ball을 보호) 
+    ⑤   Mold Station : 금형을 이루는 상판(Top Cavity)과 하판(Bottom Tool)의 예열기능을 통해 
+페이스트상의 EMC에 150℃의 온도를 가하여 Chip in Wafer를 캡슐화시킴 
+184
+반도체 HS 표준해석 지침
+
+【결정사유】
+본 기기는 웨이퍼 상에 형성된 칩에 Solder Ball을 부착한 상태에서 페이스트상의 
+EMC(Epoxy Mold Compound)를 본 기기 내부의 Dispensing부에서 Chip in Wafer와 
+Solder Ball 내부에 주입한 후, Molding Station에 위치한 금형을 이루는 상·하판 내부에 
+형성된 예열기능을 통해 칩의 회로와 Solder Ball 단자를 내부캡슐화시키는 장비로,
+   제8486호 해설서 (D)(2)(b) “프레스 등 캡슐화장비 : 칩 주위로 플라스틱 물질을 압착하여 
+칩이 들어있는 플라스틱의 케이스로 만든다.”에 해당하는 기기이므로 제8486.40-
+2031호에 분류함
+
+185
+제10장 l 조립(Bonder 등)
+반도체 제조장비
+Chapter
+1
+1. 물품설명 
+ 개 요
+  ◈   본 장비는 Molding된 Package에 대해 표면에 고객이 지정하는 특정한 무늬, 기호, 숫자나 문자 
+등을 레이저(laser)를 사용하여 새기는 공정에 사용됨
+  ◈   마킹공정은 일련의 모든 반도체 제조공정이 마무리되고 관리 및 제품 추적을 위해 시리얼 번호, 
+생산 Lot 번호 등 식별번호를 새기는 공정임
+  ◈   마킹은 반도체 표면의 일부를 제거하여 글자를 새기는 과정으로 이 공정에서 Fail이 생기면 전량 
+폐기해야 하므로 실패비용이 매우 높음
+  ◈   요즘은 웨이퍼 상태에 직접 마킹을 하기도 함
+12. 레이저 마킹 시스템 (Laser marking system)
+8486.40-2099
+8486.40-2099
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+186
+반도체 HS 표준해석 지침
+2. 결정사유
+   본 물품은 Molding된 Package에 대해 표면에 고객이 지정하는 특정한 무늬, 기호, 
+숫자나 문자 등을 레이저(laser)를 사용하여 새기는 장비임
+   제8486호 해설서에서 “(a) 레이저 조각기 : 완성된 모놀리식 집적회로 또는 개별 반도체 
+부품의 플라스틱 케이싱을 조각한다.”를 반도체 디바이스 또는 

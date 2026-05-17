@@ -1,0 +1,77 @@
+---
+hs_code: 8486902090
+source: HS_Code_standard_지침_16장
+pub_year: 2023
+section: 84류
+chapter: 제16장 재료 및 부분품Ⅱ
+enacted: 2001-07-12
+---
+【품목명】 매니프레이터
+【영문명】 MANIPULATOR
+【HS Code】 8486.90-2090 (HSK2022: 8486902090)
+【제조공정】 제16장 재료 및 부분품Ⅱ
+
+【물품설명】
+본 물품은 이온을 생성시키는 Source Head와 Analyzer Magnet Chamber 사이에 
+위치하며 Source Head에서 ionization으로 생성된 +이온을 원하는 energy를 가지고 
+beam의 형태로 추출하기 위한 extraction voltage의 ground plate와 2차 전자를 
+제거하기 위한 suppression plate가 존재하는 곳이고, beam을 추출할 때 최적의 형태로 
+추출하기 위하여 x, y, z의 세 방향으로 beam을 steering하는 곳임
+  ◈   이것은 beam의 초기 형태를 결정하는 중요한 Assy로서 beam을 x, y, z 세 축으로 steering할 
+때 신중하고 정확한 조절이 필요함
+       ※   장착장비(부분) : 반도체 제조장비인 ION IMPLANTER의 PROCESS CHAMBER
+
+【결정사유】
+제16부 주 제2호 나목의 규정에 따라 제8543.90-1010호에 분류
+483
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+1. 물품설명
+   90°Magnet Chamber와 Magnetic Quadrupole Focusing 사이에 위치하며 Magnetic 
+Chamber를 통과한 빔을 걸러내는 기능
+  ◈   원통형의 로울러 2개가 빔의 진행방향과 반대로 1,700rpm의 속도로 회전하면서 두 로울러 
+사이(3~5mm)를 통과하는 빔을 걸러 원하는 빔만이 통과될 수 있도록 하며, 또한 불필요한 빔은 
+진행 방향과 반대로 밀어내어 최종적으로는 이온주입에 필요한 빔만이 통과될 수 있도록 하는 
+부분품임
+       ※   장착장비(부분) : 반도체 제조장비인 ION IMPLANTER의 MAGNET CHAMBER
+2. 결정사유
+   제16부 주 제2호 나목의 규정에 따라 제8543.90-1010호에 분류
+69. 매스 슬릿 어세이 (Mass Slot Assembly) 
+8486.90-2090
+*
+8543.90-1010
+평가분류47281-642
+2001-07-12 
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’01) HSK 8543.90-1010 → (’07) HSK 8486.90-2010 → (’22) HSK 8486.90-2090 (HSK 연계)
+
+484
+반도체 HS 표준해석 지침
+1. 물품설명
+ 형태 및 구조
+  ◈   외부의 피복과 내부의 심으로 구성됨
+  ◈   재질
+     - 내부/외부도체 : SC(Silver Copper)
+     - 절연물질 : PTFE
+     - 외피 : FEX-IV(* 화주설명 : 열에 강한 합성수지)
+   기 능
+70. 케이블 (CABLE-RF ; RG393 Type NLC 1M) 
+8544.20-0000
+8544.20-0000
+품목분류과-106250
+2005-12-28
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+485
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3

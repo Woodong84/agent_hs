@@ -1,0 +1,52 @@
+---
+hs_code: 8486403010
+source: HS_Code_standard_지침_8장
+pub_year: 2023
+section: 84류
+chapter: 제8장 테스트(Tester, Prober 등)
+enacted: 2015-01-16
+---
+【품목명】 웨이퍼 프로버
+【영문명】 WAFER PROBER ; UF3000EX-e
+【HS Code】 8486.40-3010 (HSK2022: 8486403010)
+【제조공정】 제8장 테스트(Tester, Prober 등)
+
+【물품설명】
+용 도
+  ◈   반도체 공정 중 FAB 공정(웨이퍼 생산)을 거친 웨이퍼를 후공정(조립공정) 전에 검사(EDS 
+Test)에 사용되는 장비의 구성요소(Tester, Probe Card, Prober Station)중 일부인 Prober 
+Station에 해당하는 물품
+  ◈   카세트에서 웨이퍼를 Load/Unload하고 프로버 카드의 needle과 Chuck Top의 웨이퍼 위치를 
+조정하여 needle과 웨이퍼가 정밀하게 contact 할 수 있도록 Handling하는 기능을 수행
+139
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+Chapter
+1
+
+【결정사유】
+관세율표 제84류 주 제9호 라목에서 “제8486호의 표현을 만족하는 기계는 이 표의 다른 
+호에 분류하지 아니하고 제8486호에 분류한다.”라고 규정하고 있음
+   관세율표 제8486호에는 “반도체 보울 또는 웨이퍼·반도체 디바이스 전자집적회로 
+또는 평판디스플레이의 제조에 전용 또는 주로 사용되는 기계와 기기, 이 류의 주 제9호 
+다목에서 특정한 기계와 기기 및 부분품과 부속품”이 분류되며,
+  ◈   같은 호 해설서 (D)(3)항에 “웨이퍼, 반도체디바이스, 전자집적회로의 권양, 하역, 양하 및 
+적하용의 기기(예를 들면, 반도체웨이퍼, 웨이퍼 카세트, 웨이퍼 박스 및 기타 반도체 디바이스용 
+원료를 운송, 하역 및 저장하기 위한 자동 원료하역기 등)”를 설명하고 있음
+   본 물품은 자체 검사 기능은 없으나 웨이퍼 테스트기에 연결되어 웨이퍼의 양·불량 
+검사를 위해 카세트에서 웨이퍼를 Load/Unload하고, 프로버 카드의 needle과 Chuck 
+Top의 웨이퍼 위치를 조정하여 needle과 웨이퍼가 정밀하게 contact 할 수 있도록 
+웨이퍼를 Handling하는 기계임
+   따라서 본 물품을 웨이퍼 권양, 하역, 양하 및 적하용의 기기로 보아 관세율표 해석에 
+관한 통칙 제1호 및 제6호에 따라 제8486.40-3010호에 분류함
+
+140
+반도체 HS 표준해석 지침
+1. 물품설명 
+ 개 요
+  ◈   EDS Tester system(wafer 상태에서 각 chip의 전기적인 특성검사를 실시하여 양/불량을 선별)은 
+Tester(본체), Probe Card, Probe Station으로 구성되는데 이 중에서 Probe Station만 제시됨
+  ◈   Tester 본체와 연결하여 카셋트에서 웨이퍼를 Load/Unload하고 Probe Card의 needle과 
+Wafer의 IC Pad를 정밀하게 Contact, Tester에서 받은 좌표의 위치로 Chuck을 이동하는 기능을 
+수행
+6. 프로브 스테이션 (Probe Station ; PRECI

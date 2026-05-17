@@ -1,0 +1,57 @@
+---
+hs_code: 8486402099
+source: HS_Code_standard_지침_10장
+pub_year: 2023
+section: 84류
+chapter: 제10장 조립(Bonder 등)
+enacted: 2001-07-12
+---
+【품목명】 트림 머신
+【영문명】 Auto Trim system
+【HS Code】 8486.40-2099 (HSK2022: 8486402099)
+【제조공정】 제10장 조립(Bonder 등)
+
+【물품설명】
+개 요
+  ◈   본 물품은 반도체 조립공정 중 Molding된 Package에 대해 Tie-bar를 제거하여 개별 Unit화하는 
+장비로서, Press 구동 방식에 따라 유압식과 Mechanical type으로 구별됨
+
+【결정사유】
+본 물품은 Molding된 Package에 대해 Tie-bar를 제거하여 개별 Unit화하는 장비로서,
+  ◈   리드프레임의 각 리드는 몰딩되어 완성된 외형을 갖기 전까지는 타이바(tie bar)로 지지되고 
+있으나 이 타이 바는 각각의 리드를 전기회로를 쇼트시키는 존재이므로 몰딩 후에는 
+리드프레임의 타이바를 제거시켜야 하는데, 본 물품이 타이바를 떼어 내는 장비임
+180
+반도체 HS 표준해석 지침
+   본 물품은 굽힘기, 접음기, 교정기와 펼침기가 아닌 수치제어방식에 의해 펀칭 타입으로 
+Tie-Bar(Dam-Bar)를 전단해주는 기기이므로 제8462.41-1000호에 분류함
+
+181
+제10장 l 조립(Bonder 등)
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   본 물품은 반도체 조립공정 Molding된 Package에 대해 요구하는 Lead 형태를 성형하여 
+개별 Unit화하는 장비로서 Press 구동 방식에 따라 유압식과 Mechanical Type으로 구별됨
+2. 결정사유
+   본 물품은 패키지 밖으로 나온 외부 리드의 형태를 JEDEC 규격에 맞추어 굽혀주는 
+공정에 사용되는 장비로서 이 공정을 거쳐야 비로소 패키지를 부품 실장할 수 있고, 
+굽히는 형태에 따라 패키지 바깥쪽으로 휘어진 Gull form, J자 모양으로 패키지 안쪽으로 
+구부리는 J form방법이 있음
+10. 폼 머신 (AUTO Form System)
+8486.40-2091
+*
+8462.21-1010
+평가분류47281-642
+2001-07-12  
+HSK 2022
+결정세번
+분류근거
+시행일자
+* (’01) HSK 8462.21-1010 →   (’07) HSK 8486.40-2091 (HSK 연계)
+
+182
+반도체 HS 표준해석 지침
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 “Machines 
+for bending, folding and straightening semicond

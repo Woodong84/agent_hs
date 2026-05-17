@@ -1,0 +1,86 @@
+---
+hs_code: 8486403010
+source: HS_Code_standard_지침_14장
+pub_year: 2023
+section: 84류
+chapter: 제14장 기타 지원 장비
+enacted: 2010-09-02
+---
+【품목명】 웨이퍼 보관용 물류창고
+【영문명】 STOCKER ; CLS-50
+【HS Code】 8486.40-3010 (HSK2022: 8486403010)
+【제조공정】 제14장 기타 지원 장비
+
+【물품설명】
+용 도
+  ◈   반도체 제조라인에서 웨이퍼를 자동으로 이송하는 자동이송장치의 일부로, Bay 간 또는 Bay 
+내에 각 설비로 이동하는 FOUP을 임시 저장하거나, 타 Bay로 FOUP을 이송하는 데 있어 저장된 
+FOUP를 Loading/Unloading 역할을 하는 물류자동화 창고임
+276
+반도체 HS 표준해석 지침
+   동작원리 
+  ◈   작업자가 FOUP을 Stocker의 Manual Conveyor의 Input Port에 Loading
+  ◈   Stocker Manual Conveyor에서 RF-Tag로 Data를 읽어 FOUP의 정보를 Stocker 
+Controller(MCP7), MCS를 통하여 Host(Job Manager 라인 전체의 공정을 제어하는 장치)로 
+전송함
+  ◈   Host(Job Manager)는 MCS에서 받은 ID를 조회하여 MCS로 해당 FOUP에 대해 반송 및 저장 
+명령을 전달함
+  ◈   MCS는 Stocker Controller로 명령을 전달하면 RM(Rack Master)는 Stocker Manual Conveyor에 
+있는 FOUP을 Stocker 내로 이송 및 저장함
+  ◈   저장된 FOUP에 대해 Host에서 반송명령이 있을 경우, RM(Rack Master)는 Shelf에서 FOUP을 
+Auto Conveyor의 T-Port(Send)로 반송함
+  ◈   Stocker의 Auto Conveyor T-Port (Receive)로 들어오는 FOUP을 명령에 따라 RM(Rack 
+Master)가 Shelf에 저장하거나 Manual Out Port로 반송함
+   주요 구성요소
+  ◈   Stocker : MCS의 명령에 의해 작동하는 Automatic Storage/Retrieval System으로 웨이퍼가 
+수납된 FOUP를 내부에 설치된 선반에 자동으로 보관 및 이송을 위해 추출하는 장치
+  ◈   MCP7(Master Control Processor) : Stocker를 제어하는 시스템으로 MCS(이송장치 전체를 
+제어하는 장치)와의 통신을 하는 장치
+  ◈   RM(Rack Master) : Stocker 내부에서 FOUP을 이송하는 Robot 
+  ◈   Conveyor : Manual Conveyor, Auto Conveyor로 구성되며, Stocker 내외부로 FOUP을 
+이송해주는 역할을 수행
+    ㉠   Manual Conveyor : 운용자가 직접 FOUP을 Stocker에 Loading/Unloading하는 장치로 Input 
+Port, Out Port로 구성됨
+    ㉡   Auto Conveyor : 자동이송장치의 FOUP를 이송하는 Vehicle에 의해 이송된 Foup를 Stocker에 
+Loading/Unloading하는 장치로 2개의 T-port로 구성됨
+  ◈   Shelf : Stocker 내부로 이송된 FOUP를 저장하는 선반
+
+277
+제14장 l 기타 지원 장비
+반도체 제조장비
+Chapter
+1
+
+【결정사유】
+관세율표 제84류 주 제9호 다목에 “(3) 보울, 웨이퍼, 반도체 디바이스, 전자집적회로와 
+평판디스플레이의 권양, 하역, 적하 또는 양하에 전용 또는 주로 사용되는 기계를 
+제8486호에 분류한다”라고 규정하는 한편,
+   관세율표 제8486호에 “반도체 디바이스, 전자집적회로의 제조에 전용 또는 주로 
+사용되는 기계와 이 류 주 제9호의 다목에서 특정한 기계와 기기”를 규정하고 있고,
+  ◈   같은 호 해설서 (D) 이 류의 주 제9호 다목에서 규정한 기기 그룹을 설명하면서 (3) 웨이퍼의 
+권양, 하역, 양하 및 적하용의 기기(예를 들면, 반도체 웨이퍼, 웨이퍼 카세트, 웨이퍼 박스 … 를 
+운송 하역 및 저장하기 위한 기계에 전용 또는 주로 사용되는 기기)가 포함된다고 하고 있음
+   본 물품은 ①제어기(MCP), ②로봇으로 구성된 상·하, 좌·우로 웨이퍼 FOUP을 
+이송하는 RACK MASTER(ROBOT), ③장비 내외부로 FOUP 이송해주는 기능을 수행하는 
+CONVEYOR, ④FOUP이 저장되는 SHELF로 구성되어 있어 FOUP(웨이퍼 카세트)을 
+이송하고, 저장할 수 있도록 특별히 고안된 물품이므로 제8486.40-3010호에 분류함
+
+278
+반도체 HS 표준해석 지침
+1. 물품설명
+[ Stocker ] [ Zip Stcoker ]
+[ Vehicle ] [ Rail ]
+   용 도
+  ◈   반도체 FAB 공정에서 사람을 대신하여 원거리 간(Bay) 웨이퍼를 이송시켜주는 자동화 설비로 
+Bay 간, 층간 웨이퍼를 담은 웨이퍼 상자(Wafer Box)를 자동으로 이동시키는 데 사용 
+4. 웨이퍼 자동이송장치 (Automatic Transport System, OHT ; PRI)
+8486.40-3010
+*
+8428.90-0000
+평가분류47281-642
+2001-07-12  
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’01) HSK 8428.90-0000 → (’22) HSK 8486.40-3010 (반도체 소자 제조용 웨이퍼, 

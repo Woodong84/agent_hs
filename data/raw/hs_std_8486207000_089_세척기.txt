@@ -1,0 +1,67 @@
+---
+hs_code: 8486207000
+source: HS_Code_standard_지침_12장
+pub_year: 2023
+section: 84류
+chapter: 제12장 감광제 제거 및 세척
+enacted: 2008-03-19
+---
+【품목명】 세척기
+【영문명】 Semiconductor Wafer Cleaning System ; FC-3100
+【HS Code】 8486.20-7000 (HSK2022: 8486207000)
+【제조공정】 제12장 감광제 제거 및 세척
+
+【물품설명】
+용 도
+  ◈   반도체 제조공정 중 웨이퍼 세정을 위한 공정을 진행하는 장치로,
+     -   SC1(Standard Clean) Bath에서 1차 Chemical 세정과 DI Water(De-Ionized Water, DIW) 
+수세진행 후, 웨이퍼 표면에 남아있는 불순물 등을 HF Bath(DIW : HF(불산) = 200:1)에서 
+세척과 DIW 수세진행을 한 후,
+     -   LPD(저압건조 ; Low Pressure Dryer)에서 IPA(Isopropyl Alcohol)에 의해 건조시키는 과정을 
+진행하여 유기금속 증착(Metal Depo) 전에 웨이퍼를 세정하는 장비
+233
+제12장 l 감광제 제거 및 세척
+반도체 제조장비
+Chapter
+1
+   주요 구성요소별 기능 
+    ①   WACB & CTC : 웨이퍼를 Process Bath로 이동시키기 위한 Robot 등이 있는 Transfer 
+Module Area 
+    ②   HB(H2SO4 Boil) : H2SO4를 120℃의 온도로 높여 웨이퍼 표면에 묻어있는 불순물을 제거하는 Bath 
+    ③   SC1 Bath : 70℃의 온도로 높여 웨이퍼 표면에 묻어있는 불순물을 제거하는 Bath 
+    ④   HQDR(Hot Quick Dump Rinse) Bath : SC1 Bath에서 Chemical 처리한 웨이퍼를 75℃의 
+온도로 초순수로 세정하여 주는 Bath 
+    ⑤   HF Bath : DIW:HF=200:1의 비율로 혼합하여 일정시간 웨이퍼를 처리하면서 불순물을 
+식각방식으로 제거해주는 기능
+    ⑥   OR(Over Flow)Bath : HF처리한 웨이퍼를 DIW를 Over Flow하면서 일정시간 동안 세정하는 
+기능을 수행 
+    ⑦   LPD(Low Pressure Dryer) : OR Bath에서 처리하면서 웨이퍼에 묻어있는 DIW를 제거하기 
+위해 일정량의 가열된 IPA를 기체화시켜 웨이퍼 표면의 DIW를 건조시키는 기능을 수행 
+   동작원리 
+  ◈   Loader에서 LOT(FOUP에 담긴 웨이퍼)를 Loading → Buffer로 이동 → 이동 Robot이 
+SC1 Bath로 이동(600″처리) → HQDR(350″처리) → HF(480″처리) → OR(300″처리) → 
+LPD(600″처리) → LOT처리 완료
+
+【결정사유】
+본 물품은 Chemical과 DI Water를 이용하여 웨이퍼 표면의 막질을 제거하거나 불순물을 
+제거하는 습식방식(Wet)의 세척기로서 반도체 제조공정에서 세척기는 웨이퍼 표면에 
+묻어있는 유기 또는 무기 불순물을 제거해주는 장치를 말하며,
+  ◈   이는 웨이퍼의 표면 불순물에 의해 오염이 된 경우 기판 위에 전도체 박막 또는 저항체 박막의 
+형성이 불량하게 되거나 불균일하게 일어날 수 있기 때문임
+
+234
+반도체 HS 표준해석 지침
+  ◈   따라서 박막공정에 들어가기 전에 웨이퍼 상에 묻어있는 오염물질을 충분히 제거해주어야 하며, 
+또한 웨이퍼의 세척은 후공정인 어셈블리 공정에서 매우 중요함(→ 어셈블리 공정 중 다이 본딩 
+또는 와이어 본딩 시 본딩 강도를 좌우하기 때문)
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 게기되어 
+있는 세척기의 분류유형을 보면,
+    ①   전기도금공정 전에 반도체 패키지의 금속리드의 세척 및 오염물질제거기(Deflash Machines 
+for Cleaning and Removing Contaminants form the metal leads of semiconductor package 
+prior to the electroplating process)
+    ②   반도체 웨이퍼의 식각, 스트리핑 또는 세척을 위한 분사기(Spraying appliance for etching 
+stripping or cleaning semiconductor Wafer)
+    ③   플라즈마, 전자빔, 이온빔 등에 의해 반도체 웨이퍼를 스트리핑 또는 세척하는 기기(Apparatus 
+for Stripping or Cleaning Semiconductor Wafer)
+    ④   단순히 웨이퍼 또는 캐리어나 튜브 상의 불순물을 세척하는 기기(Washing Wafer)
+    ⑤   기타 침적 방식과 같은 습식방식 등에 의해 반도체 웨이퍼를 

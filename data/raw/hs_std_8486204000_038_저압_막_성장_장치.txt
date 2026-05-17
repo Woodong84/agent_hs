@@ -1,0 +1,54 @@
+---
+hs_code: 8486204000
+source: HS_Code_standard_지침_7장
+pub_year: 2023
+section: 84류
+chapter: 제7장 증착
+enacted: 2001-07-12
+---
+【품목명】 저압 막 성장 장치
+【영문명】 LOW PRESSURE CHEMICAL VAPOR DEPOSITION SYSTEM ; PRODUCER
+【HS Code】 8486.20-4000 (HSK2022: 8486204000)
+【제조공정】 제7장 증착
+
+【물품설명】
+용 도
+  ◈   WAFER 내에 LAYER의 평탄화 역할을 하며, 상부의 도선이 안정되게 올라갈 수 있게 하며, 
+전도체와 전도체 사이에 절연막을 형성시키는 장치
+ 동작원리
+  ◈   CASSETTE에 있는 WAFER를 TRANSFER CHAMBER의 ROBOT이 잡아서 PROCESS 
+CHAMBER에 이송
+  ◈   CHAMBER에 놓인 WAFER로 TEOS/TEB/TEPD CHEMICAL이 분사되어 반응이 이루어지면 
+WAFER 위에 BPSG막(절연막)이 형성됨
+  ◈   일정 두께의 막이 형성되면 ROBOT이 CASSETTE로 WAFER를 되돌려 보냄
+
+【결정사유】
+CVD 장비는 실리콘웨이퍼 표면에 박막을 형성하는 공정에 사용되는 장비로서 
+①상압(Atmospheric Pressure)에서 진행하는 AP-CVD, ②저압(Low Pressure)에서 
+진행하는 LP-CVD, ③플라즈마를 이용하는 PE(Plasma Enhanced)-CVD와 기타 ④MO-
+CVD, ⑤HDP(High Density Plasma)-CVD 등이 있음
+119
+제7장 l  증착
+반도체 제조장비
+Chapter
+1
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 게기된 
+박막형성기의 분류유형을 보면,
+    ①   반도체 생산을 위한 화학식 증착기(Chemical Vapor Deposition Apparatus for Semiconductor 
+Production), 
+    ②   웨이퍼 상에 스퍼터링 방식으로 막을 형성하는 물리식 증착기(Apparatus for Physical 
+Deposition by Sputtering On Semiconductor Wafers),
+    ③   반도체웨이퍼에 실리콘 에피층 성장기(EPI 증착기) (Epitaxial Deposition Machines for 
+Semiconductor Wafers) 및 
+    ④   반도체 생산을 위한 스퍼터링 방식 외의 물리식 증착기(Physical Deposition Apparatus for 
+Semiconductor Production)가 있음
+   본 장비는 LP-CVD 방식의 화학식 증착기이므로 제8479.89-2020호에 분류함
+
+120
+반도체 HS 표준해석 지침
+1. 물품설명
+ 용 도
+  ◈   반도체 제조공정 중 Back-end 공정에서 사용되는 물품으로, 식각공정 후 기존의 절연막 표면에 
+새로운 초박막 절연막을 형성해주는 장비
+       ※   절연막(low-k 유전체) 증착 이후 식각(etching) 공정에서 절연막을 일부 제거할 때 남아있던 절연막의 
+표면이 손상되어 

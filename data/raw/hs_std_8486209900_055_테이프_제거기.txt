@@ -1,0 +1,72 @@
+---
+hs_code: 8486209900
+source: HS_Code_standard_지침_9장
+pub_year: 2023
+section: 84류
+chapter: 제9장 조립 前 공정
+enacted: 
+---
+【품목명】 테이프 제거기
+【영문명】 TAPE REMOVER ; DT-TR304
+【HS Code】 8486.20-9900 (HSK2022: 8486209900)
+【제조공정】 제9장 조립 前 공정
+
+【물품설명】
+용 도
+  ◈   Back Grinding 후 Wafer Pattern 보호용 Tape를 제거하는 설비
+ 동작원리
+  ◈   Wafer Pattern 위에 Tapping된 Tape를 UV 조사 후 접착력을 약화시킨 후, Heat Seal Tape를 
+이용해 열을 가하여 UV 조사된 Tape에 압착시킨 후 Tape를 제거
+159
+제9장 l  조립 前 공정
+반도체 제조장비
+Chapter
+1
+ 주요 구성요소
+  ◈   Load/Unload : Wafer의 이송을 위한 Cassette Plate부
+  ◈   Remover : Wafer Pattern에 보호 Tape를 제거하는 부
+  ◈   UV Unit : Wafer에 tapping된 UV Tape를 UV 조사기로 접착제 성분을 제거하는 부분
+
+【결정사유】
+신청물품인 웨이퍼 테이프 제거기는 웨이퍼 이면연마 시 웨이퍼가 연삭수, 연삭설 등에 
+오염되는 것을 방지하기 위해 Back grinding 전에 접착한 테이프를 Back grinding 후에 
+제거해주는 장비임
+   테이프 제거기는 반도체 제조용으로서 특정 호에 게기되어 있지 않으므로 제8486.20호 
+기타의 반도체 제조용 장비로 보아 제8486.20-9900호에 분류함
+
+160
+반도체 HS 표준해석 지침
+1. 물품설명
+ 용 도
+  ◈ Back Grinding 후 Wafer Pattern 보호용 Tape를 제거하는 설비
+  ◈   Wafer Pattern 위에 Tapping된 Tape를 UV 조사 후 접착력을 약화시킨 후, Heat Seal Tape를 
+이용해 열을 가하여 UV 조사된 Tape에 압착시킨 후 Tape를 제거
+2. 결정사유
+   신청물품인 웨이퍼 테이프 제거기는 웨이퍼 이면연마 시 웨이퍼가 연삭수, 연삭설 등에 
+오염되는 것을 방지하기 위해 Back grinding 전에 접착한 테이프를 Back grinding 후에 
+제거해주는 장비임
+   테이프 제거기는 반도체 제조용으로서 특정 호에 게기되어 있지 않으므로 제8479.89-
+2099호에 분류함
+6. 테이프 제거기 (TAPE REMOVER ; RAD-3000)
+8486.20-9900
+*
+8479.89-2099
+평가분류47281-642
+2001-07-12  
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’01) HSK 8479.89-2099 → (’22) HSK 8486.20-9900
+
+161
+제9장 l  조립 前 공정
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+ 용 도
+  ◈   완성된 반도체 웨이퍼를 개별 칩으로 절단하기 위해 반도체 웨이퍼 내부에 레이저빔을 
+집광(focusing)시켜 내부의 변형된 층(단결정 구조 → 다결정 구조)에 절단선(Scribe Line, 
+균열층)을 형성함으로써, 다결정으로 변형된 균열층을 따라 반도체 웨이퍼에 형성된 다이를 
+분리하기 위해 사용되는 

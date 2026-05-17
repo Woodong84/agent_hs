@@ -1,0 +1,67 @@
+---
+hs_code: 8486209310
+source: HS_Code_standard_지침_5장
+pub_year: 2023
+section: 84류
+chapter: 제5장 식각
+enacted: 
+---
+【품목명】 웨이퍼 표면 연마장치
+【영문명】 Chemical Mechanical Polisher ; REFLEXION LK
+【HS Code】 8486.20-9310 (HSK2022: 8486209310)
+【제조공정】 제5장 식각
+
+【물품설명】
+용 도
+  ◈   반도체 CHIP의 고집적화가 이루어 짐에 따라, CHIP 내의 PATTERN 형성이 여러 층으로 
+이루어져 PATTERN을 형성하게 됨
+  ◈   이때 PATTERN의 각층 형성 시 각층의 표면이 굴곡이 심하면 위층의 PATTERN 형성 시 
+문제가 발생하게 되므로 PATTERN의 표면을 평탄화시킬 때 기계적(MECHANICAL)으로 
+연마(POLISHING)하여 평탄화함으로써 위층의 PATTERN 형성을 가능하게 하는 장치임
+102
+반도체 HS 표준해석 지침
+   동작원리
+  ◈   LOAD/UNLOAD부의 CASSETTE에 있는 WAFER를 ROBOT이 MAIN FRAME 측의 POLISH 
+TABLE 측의 WAFER HEAD로 이동하여 장착시킴
+  ◈   WAFER의 PATTERN 표면이 POLISH TABLE의 PAD에 압축되고, 이 WAFER와 PAD 사이로 
+연마제인 SLURRY CHEMICAL이 공급되면서, POLISH TABLE과 HEAD가 회전하여 WAFER의 
+PATTERN 표면을 연마하여 PATTERN 표면을 평탄화함
+  ◈   평탄화가 끝난 WAFER를 AUTO FRAME에 장착된 CLEANER로 이동하여 CLEAN 및 건조
+  ◈   DRY된 WAFER를 ROBOT이 PICK-UP하여 LOAD/UNLOAD부의 원래 CASSETTE로 UNLOAD
+
+【결정사유】
+본 물품은 기계적 제거가공과 화학적 제거가공을 하나의 가공방법으로 혼합한 새로운 
+연마기능을 적용한 물품으로서 반도체 웨이퍼 표면을 연마하여 평탄화하는 장비임
+   관세율표 제8486호의 용어에 “반도체디바이스 제조에 전용 또는 주로 사용되는 기계와 
+기기”를, 제8486.20소호에 “반도체 디바이스 또는 전자집적회로 제조용 기계와 기기”를 
+규정하고 있고, 제8486.20-93 8단위에 광물성 물질의 가공기계를 분류하고 있음
+   본 물품은 300mm 웨이퍼 표면을 패드(Pad)와 슬러리(Slurry)를 이용해 물리적, 화학적 
+방법으로 평탄화시키는 웨이퍼 연마기이므로 관세율표 해석에 관한 통칙 제1호 및 
+제6호에 따라 제8486.20-9310에 분류함
+
+이온주입
+제  장6
+
+
+104
+반도체 HS 표준해석 지침
+1. 물품설명
+ 용 도
+  ◈   반도체 제조공정 중 특정 Ion의 불순물을 Wafer에 주입시키는 공정에 사용하는 장치
+  ◈   특정 Film이 입혀진 Wafer를 장치 내 Chamber에 넣은 후 Gas계, 이온 생성부(Ion Source), 이온 
+가공부(Beam Line), Pressure(Pumping System), 이온 주입실 등을 사용하여 Chamber 내의 
+조건을 특정 Ion의 불순물을 주입할 수 있게 조성
+  ◈   실리콘 Wafer 내에 전기적 성질을 띠게 하는 3가 Ion 및 5가 Ion의 불순물[붕소(B), 인(P), 
+비소(As) 등]을 주입
+  ◈   고전류 이온주입기 장비의 공정에서는 주로 아래 소자 특성을 형성하는 데 사용
+• 불순물 이온주입을 통한 트랜지스터 Source 영역 형성
+• 불순물 이온주입을 통한 트랜지스터 Drain 영역 형성
+1. 고전류 이온 주입기 (HIGH CURRENT ION IMPLANTER ; VIISTA TRIDENT)
+8486.20-3000
+8486.20-3000
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자

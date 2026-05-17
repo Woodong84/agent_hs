@@ -1,0 +1,70 @@
+---
+hs_code: 8486209500
+source: HS_Code_standard_지침_8장
+pub_year: 2023
+section: 84류
+chapter: 제8장 테스트(Tester, Prober 등)
+enacted: 2001-07-12
+---
+【품목명】 테이프 접착기
+【영문명】 TAPE LAMINATOR ; DT-ECS2030
+【HS Code】 8486.20-9500 (HSK2022: 8486209500)
+【제조공정】 제8장 테스트(Tester, Prober 등)
+
+【물품설명】
+용 도
+  ◈   Back Grinding 전 Wafer Pattern 보호용 Tape를 부착하는 설비
+   동작원리
+  ◈   Wafer Pattern 보호용 Tape를 Roller를 이용해 Wafer를 이송시킨 후 우레탄 Roller로 Tape를 
+문질러 Wafer에 Tapping한 후 Knife로 Wafer Size에 맞게 Cutting하는 장비
+151
+제9장 l  조립 前 공정
+반도체 제조장비
+Chapter
+1
+   주요 구성요소
+  ◈   Load/Unload : Wafer의 이송을 위한 Cassette Plate부
+  ◈   Tapping : Wafer Pattern에 보호 Tape를 부착하는 부
+  ◈   Cutting Unit : Tapping된 Wafer Size에 맞게 Cutting하는 부
+
+【결정사유】
+신청물품인 웨이퍼 테이프 접착기는 웨이퍼 이면연마 시 웨이퍼가 연삭수, 연삭설 등에 
+오염되는 것을 방지하기 위해 Back grinding 전에 테이프를 접착해주는 장비임
+   제8479.89-2030호에 “웨이퍼 상에 테이프를 부착시키는 기계”가 게기되어 있는바, 
+웨이퍼 상에 테이프를 접착하는 Tape Laminator는 제8479.89-2030호에 분류함
+
+152
+반도체 HS 표준해석 지침
+1. 물품설명
+   반도체 제조공정 중 WAFER의 BACK SIDE면 연삭 공정(BACK-END 공정)에 사용하는 장치
+   특정 FILM이 입혀진 WAFER의 BACK SIDE 면을 장치 내 STAGE 내부로 이동시키고, 
+일정량의 DI(De-Ionized) WATER를 주입하면서 웨이퍼의 후면을 DIAMOND WHEEL로 
+연삭하여 WAFER 두께를 일정하게 유지하도록 해줌으로써 DEVICE의 고집적화 및 
+경량화에 필수적인 공정임
+   실리콘 웨이퍼의 후면 연삭 시 주로 사용되는 것은 DI WATER, DIAMOND WHEEL 등임
+※ BACK GRINDER 장비의 적용 공정
+    - WAFER 후면 연삭 공정
+    - DEVICE의 고집적화 및 경량화에 필수적인 공정
+2. 결정사유
+   본 물품은 FAB공정이 끝난 후 조립 시 패키지를 용이하게 하기 위하여 Wafer를 자동으로 
+핸들링하여 공업용 다이아몬드 휠을 이용, 이면을 연삭하고 웨이퍼의 두께를 원하는 
+치수만큼 정밀가공하는 설비임
+2. 후면 연삭장치 (BACK GRINDER SYSTEM)
+8486.20-9310
+*
+8464.20-3000 
+평가분류47281-642
+2001-07-12
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’01) HSK 8464.20-3000 →   (’07) HSK 8486.20-9310 (HSK 연계)
+
+153
+제9장 l  조립 前 공정
+반도체 제조장비
+Chapter
+1
+[ 테이프 접착 ] [ Back grinding ] [ 테이프 제거 ]
+   제8464호에 “석

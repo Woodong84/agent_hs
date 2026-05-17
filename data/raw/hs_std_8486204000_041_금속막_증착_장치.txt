@@ -1,0 +1,89 @@
+---
+hs_code: 8486204000
+source: HS_Code_standard_지침_7장
+pub_year: 2023
+section: 84류
+chapter: 제7장 증착
+enacted: 2008-03-19
+---
+【품목명】 금속막 증착 장치
+【영문명】 PVD Sputtering System ; INOVA XT
+【HS Code】 8486.20-4000 (HSK2022: 8486204000)
+【제조공정】 제7장 증착
+
+【물품설명】
+개 요
+  ◈   300mm 반도체 제조설비 중 웨이퍼 위에 Cu, Ta 박막을 증착하기 위한 PVD(Physical Vapour 
+Deposition) 설비
+ 주요 구성요소별 기능
+    ① Load Port : 웨이퍼의 Loading/Unloading 
+    ②   PEC(Protective Electrostatic Chuck Cover) : Dummy Wafer Stocker로 SiC 웨이퍼를 
+Unloading 
+    ③ Load Lock : ATM에서 High Vacuum으로 웨이퍼를 이송 
+    ④ Path Through : Load chamber, Transfer chamber 간의 웨이퍼 이송 
+    ⑤ DEGAS : 웨이퍼에 존재하는 Wafer Vapour 제거 
+    ⑥ Preclean Chamber : 자연산화막을 제거 
+    ⑦ PVD Chamber : Ta, TaN, Cu를 증착하는 메인 챔버 
+    ⑧ Cool Chamber : Process Chamber에 의해 뜨거워진 웨이퍼를 Cooling 
+    ⑨   Load Chamber & Transfer Chamber : 웨이퍼의 Process 진행을 위해 Robot을 이용 웨이퍼를 
+이송하는 챔버 
+126
+반도체 HS 표준해석 지침
+ 동작원리
+    ①   Generator로 DC Power를 발생시켜 고진공 챔버 내의 Ar Gas를 이온화시켜 플라즈마를 
+발생시키고,
+    ② 이온화된 Ar이 Cathode인 타겟 표면에 충돌하여,
+    ③   분리된 금속입자(Ta, Cu 등)가 웨이퍼 표면에 Ta 막 등을 증착하는 것을 주된 공정으로 하는 
+물리적 기상증착장비(Physical Vapour Deposition) 
+    Sputtering 원리
+스퍼터링은 챔버 내에 공급되는 Gas Cathode에서 발생되는 전자사이의 충돌로부터 시작된다. 그 과정은 
+아래와 같다.
+① 진공챔버 내에 아르곤과 같은 불활성 기체를 넣고 Cathode에(-)전압을 가하면, 
+② Cathode로부터 방출된 전자들이 아르곤 기체원자와 충돌하여 아르곤을 이온화시킨다. 
+③   아르곤이 여기되면서 전자를 방출하면 에너지가 방출하며 이때 글로우방전이 발생하여 이온과 
+전자가 공존하는 보라색의 플라즈마를 보인다. 
+④   플라즈마 내에 아르곤 이온은 큰 전위차에 의해 Cathode(Target) 쪽으로 가속되어 Target 표면과 
+충돌하면 중성의 타겟원자들이 튀어나와 박막을 형성한다.
+
+【결정사유】
+본 기기는 고진공 상태에서 아르곤가스를 이온화된 플라즈마를 형성시킨 후, 이온화된 
+Ar을 Cathode인 타겟 표면에 충돌시켜 분리된 금속입자(Ta, Cu 등)를 웨이퍼 표면에 
+막을 형성하는 장비로,
+  ◈   제8486호 해설서 (B)(1)막형성장비에 “이 장비는 웨이퍼 가공공정에서 웨이퍼 표면에 여러 가지 
+막을 형성한다. 이러한 막은 완성된 디바이스 상에서 도체, 절연체 및 반도체역할을 한다. 이들 
+막은 표면금속 및 에피택셜 층의 산화물과 질화물 등을 포함하고 있다. 아래에 예시한 공정과 
+장비들은 특정 타입의 막만을 생성하도록 제한된 것은 아니다.”라고 해설하고 있고,
+  ◈   같은 호 해설서 (B)(1)(c)(2)스퍼터링장비에서 “이온이 있는 원료물질을 포격함으로써 막을 
+생성한다.”라고 설명하고 있는바, 
+   본 물품은 반도체웨이퍼 상에 금속을 증착하는 기계에 해당하므로 제8486.20-4000호에 
+분류함
+
+127
+제7장 l  증착
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+ 용 도
+  ◈   단일 웨이퍼 위에 얇은 금속박막을 PVD 방식으로 증착하기 위해 다중 챔버 방식으로 설계된 
+완전 자동방식의 물리적기상증착(PVD) 시스템 
+   작동원리
+  ◈   고진공 상태의 PROCESS CHAMBER 내부에 PROCESS GAS를 분사 후 PLASMA를 형성시켜 
+TARGET MATERIAL을 SPUTTERING 방식으로 FILM을 DEPOSITION
+   구성요소 
+  ◈   EFEM : 자동반송장치와 장비 간 WAFER를 이송하는 장치 
+  ◈   TRANSFER CHAMBER : WAFER 이송 장치 
+8. 금속막 증착 장치 (PVD SYSTEM ; ENDURA2) 
+8486.20-4000
+8486.20-4000
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+128
+반도체 HS 표준해석 지침
+  ◈   SPUTTERING CHAMBER : TARGET이 장착되어 막을 증착하는 장치
+  ◈   GENERATOR RACK : 플

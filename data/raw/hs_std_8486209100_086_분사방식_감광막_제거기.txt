@@ -1,0 +1,54 @@
+---
+hs_code: 8486209100
+source: HS_Code_standard_지침_11장
+pub_year: 2023
+section: 84류
+chapter: 제11장 측정
+enacted: 
+---
+【품목명】 분사방식 감광막 제거기
+【영문명】 Wafer Cleaning System ; ZETA 300
+【HS Code】 8486.20-9100 (HSK2022: 8486209100)
+【제조공정】 제11장 측정
+
+【물품설명】
+용 도
+  ◈   반도체 제조공정 중 Wafer 상의 이물을 제거하는 장치
+   동작원리
+  ◈   TRANSFER ROBOT에 의해 WAFER가 PROCESS CHAMBER로 이동하면 CHEMICAL과 DI 
+WATER를 웨이퍼 표면에 분사하여 불순물을 제거
+  ◈   세척이 종료된 WAFER는 고속으로 회전하여 잔류하는 수분을 제거
+227
+제12장 l 감광제 제거 및 세척
+반도체 제조장비
+Chapter
+1
+   주요 구성요소
+  ◈   TRANSFER ROBOT : LOADER부에 있는 WAFER를 PROCESS CHAMBER까지 이동시키고, 
+세정이 끝나면 다시 WAFER를 원래의 위치로 이동시키는 구동부
+  ◈   PROCESS CHAMBER : CHEMICAL과 DI WATER를 분사하여 웨이퍼를 세정
+
+【결정사유】
+본 물품은 Spray 방식에 의해 반도체 제조용 웨이퍼 상의 이물을 세정 및 Stripping하는 
+장치임
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 게기되어 
+있는 세척기의 분류유형을 보면,
+    ①   전기도금공정 전에 반도체 패키지의 금속리드의 세척 및 오염물질제거기(Deflash Machines 
+for Cleaning and Removing Contaminants form the metal leads of semiconductor package 
+prior to the electroplating process)는 제8424.89-1010호에 분류되고,
+    ②   반도체 웨이퍼의 식각, 스트리핑 또는 세척을 위한 분사기(Spraying appliance for etching 
+stripping or cleaning semiconductor Wafer)는 제8424.89-1020호에 분류되고,
+    ③   플라즈마, 전자빔, 이온빔 등에 의해 반도체 웨이퍼를 스트리핑 또는 세척하는 기기(Apparatus 
+for Stripping or Cleaning Semiconductor Wafer)는 제8456.99-2000호에 분류되고,
+    ④   웨이퍼, 캐리어, 튜브 상의 불순물을 세척만 하는 기기(Washing Wafer)는 제8479.89-
+2060호에 분류되고,
+    ⑤   기타 침적 방식과 같은 습식방식 등에 의해 반도체 웨이퍼를 식각, 현상, 스트리핑 또는 
+세척하는 기기(Apparatus for Wet Etching, developing, stripping or cleaning semiconductor 
+wafers)는 제8479.89-2092호에 분류되는바,
+   본 물품은 분사방식에 의해 반도체웨이퍼를 스트리핑 또는 세척하는 기기로 제8424.89-
+1020호에 분류함
+
+228
+반도체 HS 표준해석 지침
+1. 물품설명
+   반도체 제조공정 

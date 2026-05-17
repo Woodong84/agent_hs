@@ -1,0 +1,73 @@
+---
+hs_code: 9030820000
+source: HS_Code_standard_지침_8장
+pub_year: 2023
+section: 90류
+chapter: 제8장 테스트(Tester, Prober 등)
+enacted: 2015-04-02
+---
+【품목명】 테스터
+【영문명】 Memory Tester ; T5386
+【HS Code】 9030.82-0000 (HSK2022: 9030820000)
+【제조공정】 제8장 테스트(Tester, Prober 등)
+
+【물품설명】
+개 요
+  ◈     WAFER상의 MEMORY DEVICE의 전기적 특성(전류, 전압, 파형 등)을 검사, 기준값과 비교하여 
+양·불량을 테스트하는 장비로 TESTER HEAD와 POWER, DC UNIT, FRAME, PC, MONITOR 등 
+본체의 모든 구성품이 미조립 상태로 제시된 물품 
+  ◈   Target Device : DRAM, SDRAM, DDR devices, SRAM, Flash memory
+   주요 구성요소
+  ◈   TESTER HEAD : TESTER 내부의 각 Channel board에 연결된 Pin을 통해 로딩된 DEVICE에 
+전기적 신호를 인가(768개/tester head) 
+135
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+Chapter
+1
+  ◈   전원공급장치 : DEVICE 전원 인가용 
+  ◈   DC UNIT : 전류, 전압 측정(64UNIT/tester head) 
+  ◈   DRIVER : 전기적 파형 발생(72CHANNEL/tester head) 
+  ◈   PC(EWS), MONITOR : 측정 및 제어 프로그램을 내장하고 양·불량여부와 Repair 가능 여부 
+판정 및 디스플레이
+
+【결정사유】
+관세율표 제9030호의 용어는 “전기적 양의 측정용이나 검사용 기기”를 규정하고, 
+제9030.82소호는 기타의 기기 중 “반도체 웨이퍼나 소자의 측정용이나 검사용 기기”를 
+규정하고 있음 
+   본 물품은 반도체 웨이퍼에 전기적 신호를 인가하여 전압, 전류 등 전기적 양을 
+측정함으로써 반도체의 양·불량 여부를 검사하는 장비가 미조립 상태로 제시된 것으로, 
+‘반도체 웨이퍼나 소자의 검사용 물품’으로 보아 관세율표 해석에 관한 통칙 제1호, 제2호 
+및 제6호에 따라 제9030.82-0000호에 분류함 
+
+136
+반도체 HS 표준해석 지침
+1. 물품설명 
+ 개 요
+  ◈   반도체 웨이퍼나 디바이스(Package)의 전기적 특성(전압, 전류 등)을 테스트하여 제품의 
+양·불량을 검사하는 장비
+  ◈   크게 Support Cabinet, Manipulator Cabinet, Test Head 부분으로 구성
+   
+    ①   Support Cabinet : Test Head와 Manipulator 컨트롤부, Test Head의 냉각을 위한 공냉/
+수냉장치, 기기에 전원을 공급해주는 Power unit 등이 설치
+    ②   Manipulator Cabinet : Test Head부를 상하좌우로 이동 및 지지해 주며, Test Head의 데워진 
+공기를 빨아들이기 위한 임펠러가 설치
+4. 테스터 (Memory Tester ; ULTRAFLEX SC)
+9030.82-0000
+9030.82-0000
+품목분류3과-984
+2014-04-15
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+137
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+Chapter
+1
+    ③   Test Head : 반도체 웨이퍼나 디바이스(Package)의 전기적 특성을 측정하는 부분으로, 전기적 
+신호를 인가해주는 보드, 측정값을 PC로 전송해주는 보드 등이 장착
+   측정항목 
+  ◈   O/S test : 반도체 디바이스의 내부 wire 간의 open, shor

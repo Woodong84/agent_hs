@@ -1,0 +1,62 @@
+---
+hs_code: 8486202300
+source: HS_Code_standard_지침_3장
+pub_year: 2023
+section: 84류
+chapter: 제3장 확산로
+enacted: 2008-02-21
+---
+【품목명】 급속가열기
+【영문명】 RAPID THERMAL PROCESS ; HELIOS
+【HS Code】 8486.20-2300 (HSK2022: 8486202300)
+【제조공정】 제3장 확산로
+
+【물품설명】
+용 도
+  ◈   실리콘 웨이퍼에 열을 가하여 짧은 시간에 이온이 주입된 불순물을 활성화 또는 확산시키거나 
+비정질 실리콘을 어닐링(Annealing)하여 폴리 실리콘으로 재결정화 시키는 장비 
+   주요 구성요소
+  ◈   Process Chamber : 실질적으로 Wafer를 가공하는 곳으로 409개의 텅스텐 램프가 벌집형태로 
+구성되어 있음
+  ◈   EFEM : Wafer의 Loading/Unloading을 수행하는 장치로 Robot과 Cassette Plate로 이루어짐 
+  ◈   가스공급부 : 공정 중에 사용할 가스(질소, 산소, 암모니아)를 공급
+  ◈   Cooling Unit : 작업을 완료한 Wafer를 EFEM으로 이동하기 전 온도를 낮춰주는 역할
+  ◈   전원공급장치 : 설비에 전원을 공급하기 위한 장치 
+052
+반도체 HS 표준해석 지침
+   동작원리
+  ◈   Wafer를 Loading 후 Robot을 이용하여 Wafer를 Process Chamber로 이동 
+  ◈   이송된 Wafer를 공정조건에 따라 필요한 가스(질소, 산소, 암모니아 등)를 주입하면서 
+램프(409개의 텅스텐 램프)를 사용하여 Chamber 내 온도를 통상 1,000℃까지 상승시켜 가스와 
+웨이퍼를 반응시킴으로써 이온이 주입된 불순물의 확산 및 비정질 실리콘을 어닐링하여 폴리 
+실리콘으로 재결정화
+  ◈   반응(작업)이 완료되면 Cooling Unit을 이용 고온 상태의 Wafer를 일정온도로 낮춘 후 Robot을 
+이용하여 Unloading
+
+【결정사유】
+본 물품은 Tungsten Halogen Lamp를 Heating Source로 한 급속가열기로서 반도체 
+웨이퍼의 표면을 열처리하기 위한 장비임
+  ◈    ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 게기된 
+노와 오븐 및 가열기의 분류 유형을 보면,
+    ①   반도체 웨이퍼상의 반도체 소자 제조용의 저항가열식 노와 오븐(Resistance heated furnaces 
+and ovens for the manufacture of semiconductor devices on semi-conductor wafers),
+    ②   반도체 웨이퍼상의 반도체 소자 제조용의 전자 유도식 또는 유전식의 노와 오븐(Inductance 
+or dielectric furnaces and oven for the manufacture of semiconductor devices on 
+semiconductor wafers) 및 
+    ③   기타 방식의 노와 오븐 형태의 반도체 웨이퍼 급속가열기(Apparatus for rapid heating of 
+semiconductor wafers)가 있음
+   제8486.20호에는 반도체 디바이스·전자집적회로 제조용 기계와 기기가 분류되며 그 중 
+기타 방식의 노와 오븐 형태의 반도체 웨이퍼 급속가열기 제8486.20-2310호에 분류함
+   본 물품은 반도체 디바이스 또는 전자집적회로 제조 공정 중 웨이퍼를 공정조건에 따라 
+필요한 가스(질소, 산소, 암모니아 등)를 주입하면서 텅스텐 램프를 사용하여 Chamber 
+내 온도를 통상 1,000℃까지 상승시켜 주입된 가스와 웨이퍼를 반응시킴으로써 이온이 
+주입된 불순물의 확산 및 비정질 실리콘을 어닐링하여 폴리 실리콘으로 재결정화하는 
+물품이므로 반도체 웨이퍼 급속가열기로 보아 제8486.20-2310호에 분류함
+
+053
+제3장 l 확산로
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   LE

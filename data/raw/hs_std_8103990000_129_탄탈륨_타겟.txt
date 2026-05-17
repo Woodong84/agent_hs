@@ -1,0 +1,59 @@
+---
+hs_code: 8103990000
+source: HS_Code_standard_지침_15장
+pub_year: 2023
+section: 81류
+chapter: 제15장 재료 및 부분품Ⅰ
+enacted: 2006-02-28
+---
+【품목명】 탄탈륨 타겟
+【영문명】 Tantalum Target
+【HS Code】 8103.99-0000 (HSK2022: 8103990000)
+【제조공정】 제15장 재료 및 부분품Ⅰ
+
+【물품설명】
+개 요
+  ◈   Pure Tantalum과 Backing Plate(CuZn 또는 CuCr)가 Diffusion Bonding 방식으로 결합된 물품
+  ◈   Target은 Wafer 표면에 증착되어 박막을 형성하는 Source이며, Backing Plate는 Target을 
+증착기기(Chamber)에 용이하게 결합시키기 위한 Plate
+   용 도 : 반도체 제조용 Wafer에 Target 성분을 증착시켜 전기신호의 통로로 사용함
+   성 분 : Tantalum 99.995%
+   사용 방법
+      ① PVD 설비 Chamber 내에서 이온 진공 증착 방법으로 Ta 박막을 형성함
+      ② Target에 고전압의 전류를 흘리고 Chamber 내의 Ar Plasma를 이용하여,
+      ③ Ta 원자 혹은 분자 단위로 Source인 Metal을 뜯어내며 Ta 박막을 형성하거나,
+      ④   N2 Gas를 Flow시켜 N 2와 반응시킨 Reactive Sputtering 방식으로 TaN(Tantalum Nitride) 
+박막을 형성함
+323
+제15장 l 재료 및 부분품Ⅰ
+재료 및 부분품 Ⅰ
+Chapter
+2
+
+【결정사유】
+관세율표 제8103호는 “탄탈륨과 그 제품”을 분류하도록 규정하고 있고, 동 해설서 
+제81류 총설에서 “이 류에 분류되는 것은 탄탈륨 등의 비금속과 그 합금 및 그 
+제품으로서 이 표의 다호에서 특게되지 않은 것에 한한다.”라고 해설하고 있음
+   본 물품은 CuZn 또는 CuCr제 Backing Plate 위에, 원판형 Tantalum Target이 Diffusion 
+Bonding 방식으로 결합된 형태로,
+  ◈   PVD 설비 Chamber 내에 부착시킨 후 이온 진공 증착방법 또는 Reactive Sputtering 방식으로 
+반도체 Wafer에 금속을 증착시키면 금속은 소모되어 없어지고, 남게 되는 Backing Plate 부분은 
+폐기(매각 또는 잉여물 처리)함으로써 반복사용하지 않는 단순 일회성의 용기로 확인됨(Ta 
+Target과 Backing Plate를 함께 분류)
+   따라서 본 물품은 Ta Target에 주특성이 있으므로, 관세율표 제8103호의 용어 및 동 
+해설서 제81류 총설의 내용에 따라 “탄탈륨제의 기타 제품”(제8103.90-0000호)에 
+분류함 
+
+324
+반도체 HS 표준해석 지침
+1. 물품설명
+ 개 요
+  ◈   Pure Titanium과 Backing Plate(CuZn 또는 CuCr)가 Diffusion Bonding 방식으로 결합된 물품
+  ◈   Target은 Wafer 표면에 증착되어 박막을 형성하는 Source이며, Backing Plate는 Target을 
+증착기기(Chamber)에 용이하게 결합시키기 위한 Plate임
+   용 도 : 반도체 제조용 Wafer에 Target 성분을 증착시켜 전기신호의 통로로 사용함
+   성 분 : Titanium 99.995%
+   사용방법
+      ① PVD 설비 Chamber 내에서 이온 진공 증착 방법으로 Ti 박막을 형성함
+      ② Target에 고전압의 전류를 흘리고 Chamber 내의 Ar Plasma를 이용하여,
+      ③ Ti 원자 혹은 분자 단위로 

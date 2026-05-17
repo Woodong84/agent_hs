@@ -1,0 +1,59 @@
+---
+hs_code: 9031419000
+source: HS_Code_standard_지침_11장
+pub_year: 2023
+section: 90류
+chapter: 제11장 측정
+enacted: 
+---
+【품목명】 레티클 자동 검사기
+【영문명】 Auto Reticle Inspection System ; SLF SERIES
+【HS Code】 9031.41-9000 (HSK2022: 9031419000)
+【제조공정】 제11장 측정
+
+【물품설명】
+용 도
+  ◈   WAFER 제조공정에서 사용하기 위해 반입되는 RETICLE의 PATTERN에 이물질 또는 ERROR 
+PATTERN이 있는지 없는지 검사하는 장치(입고검사, 비정기검사)
+   동작원리
+  ◈   웨이퍼에 PATTERN을 형성하기 위한 레티클(또는 마스크) 제조과정에서 PATTERN 제작불량과 
+오염 또는 이물질을 검사하는 것으로 검사원리는 RETICLE 상호 (LEFT, RIGHT) PATTERN을 
+비교 검사
+209
+제11장 l 측정
+반도체 제조장비
+Chapter
+1
+   주요 구성요소
+  ◈ MAIN BODY : 설비 본체를 말하며 레티클 검사가 이루어지는 곳
+  ◈ CONTROLLER: 본체에서 검사한 DATA를 비교/분석하는 시스템
+  ◈   AUTO LOADER : 본체 검사시료대에 레티클을 자동으로 올려놓는 장치
+  ◈   DDP(IRS) : 설비를 작동/관리하는 전산시스템
+
+【결정사유】
+본 물품은 광학장치를 이용하여 반도체 소자 제조에 사용되는 레티클 상에 형성된 패턴에 
+오염 또는 이물질이 있는지 여부와 결함이 있는지 여부를 검사하는 장비임
+   제9031.41호에 “반도체 웨이퍼 및 소자 검사용 또는 반도체 소자 제조에 사용되는 
+포토마스크 또는 레티클 검사용의 광학식 기기(Other Optical Instruments and 
+appliances for inspecting semiconductor wafers or devices of for inspecting 
+photomasks or reticles used in manufacturing semiconductor devices)” 가 게기되어 
+있고,
+  ◈   제9031호 관세율표 해설서 (B)에 각종 광학식 측정 및 검사 기구를 설명하면서 ① 테이블, 
+프레임, 슬라이드 왕복대 및 두 개의 측정 현미경으로 구성되어 길이, 표면들의 검사에 사용되는 
+Comparator bench와 ② 광학식 표면 검사기(optical surface tester) 등을 나열하고 있음
+   본 물품은 반도체 소자 제조에 사용되는 레티클 상에 형성된 Pattern의 이상 여부를 
+내장된 광학장치에 의해 검사하는 장비이므로 제9031.41-9000호에 분류함
+
+210
+반도체 HS 표준해석 지침
+1. 물품설명
+   용 도
+  ◈   웨이퍼에 Metal Film을 증착하거나 Implant 공정을 진행한 후 Film에 면저항 및 누설 전류를 
+측정하는 장치
+   주요 구성요소
+  ◈   ATM Robot Arm : 웨이퍼를 설비 내부로 이동시켜주는 로봇암 
+  ◈   Load Port : 로봇부가 웨이퍼를 이송시킬 수 있도록 웨이퍼가 담겨 있는 Foup을 올려놓은 부위 
+  ◈   Optic Unit : 메인바디 내부에 장착된 부분으로 웨이퍼 표면에 빛을 입사하는 광원, 전자 
+전공들의 확산, 표류속도를 모니터링할 수 있는 전극으로 구성되며 전극에서 측정된 전압으로 
+저항 등을 측정 
+  ◈   SPC Prob

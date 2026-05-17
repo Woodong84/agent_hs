@@ -1,0 +1,79 @@
+---
+hs_code: 8486401040
+source: HS_Code_standard_지침_2장
+pub_year: 2023
+section: 84류
+chapter: 제2장 마스크 제작
+enacted: 2008-03-19
+---
+【품목명】 마스크 세정장치
+【영문명】 Mask Cleaner ; MC150
+【HS Code】 8486.40-1040 (HSK2022: 8486401040)
+【제조공정】 제2장 마스크 제작
+
+【물품설명】
+개 요
+  ◈   Mask 현상공정 후, Mask에 잔존하는 PR(Photoresist, 감광액)과 이물질(Particle)을 플라즈마와 
+Chemical을 이용하여 세척하는 Mask Cleaner
+   주요 구성요소별 기능
+    ① Ashing Module : O2/H2/N2 가스로 PR을 플라즈마 Ashing 방식으로 제거하는 장치
+    ② O3 Spin Module : 오존수 + Megasonic 방식을 사용하여 PR의 잔존물을 제거
+    ③ H2 Spin Module : 수소수 + Megasonic 방식을 사용하여 이물질을 제거
+044
+반도체 HS 표준해석 지침
+    ④ O3/H2 Water Generator : 설비에 O3, H2 Water를 공급
+    ⑤ Hot Water Unit : 설비에 Hot Water Unit을 공급해주는 장치
+    ⑥ Dry Pump : Asher Chamber의 진공을 유지해주는 장치
+    ⑦ Control Panel : 설비에 전원공급 및 시스템 제어장치
+    ⑧ Utility Box : 가스 및 Chemical 연결 포트
+   동작원리
+    ① Mask를 로보트를 이용하여 SMIF에서 Ashing Module에 이동
+    ② Ashing Module에서 고온으로 O2 플라즈마 처리를 해서 PR을 태워 제거
+    ③   O3 Module로 이동하여 오존수로 유기물을 산화시켜 제거한 후, Megasonic을 인가하여 잔존해 
+있는 PR을 제거
+    ④   H2 Module로 이동된 Mask는 Zeta Potential을 (-)로 변화시켜 이물질을 제거하고 Megasonic을 
+인가하여 잔존 이물질을 제거하면 공정이 완료됨
+
+【결정사유】
+본 기기는 Mask 현상공정 후, Mask 표면에 잔류하고 있는 감광액(PR)과 이물질을 가스와 
+화학용제를 사용하여 세척하는 기기로,
+  ◈   밀봉된 챔버 내에 마스크가 놓여진 상태에서 습식세정 화학물질이 마스크에 분사되면 습식세정 
+화학물질에 포함된 오존수의 오존 등은 구리, 은과 같은 유기적 화합물질과 화학적으로 반응한 
+후, 반응된 이물질의 응집구조를 초음파의 압력으로 약화시킨 다음 원심분리방식으로 제거하며,
+  ◈   Ashing Module은 플라즈마 방식으로 고형화된 PR을 태워서 제거하고 Hot Water Pump는 
+화학습식세정에 있어 반응의 효과를 증진시키기 위해 온도수를 공급해줌
+   따라서 전체 기능은 마스크 표면 세정용에 해당되는 제조용 기기에 해당되므로 
+제8486.40-1090호에 분류함
+
+045
+제2장 l 마스크 제작
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   용 도
+  ◈   포토마스크 제작 시 발생하는 이물이 세정을 통하여 제거되지 않고 고착화된 경우, 이를 
+AFM(원자현미경) Tip을 이용하여 물리적으로 긁어내어 제거하는 장치
+8. 마스크 수리 장치 (Photomask Repair system ; Merlin)
+8486.40-1090
+8486.40-1090
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+046
+반도체 HS 표준해석 지침
+   주요 구성요소
+  ◈   AFM Guided Nano Machining Module
+  ◈   Operation Module
+  ◈   Control Module
+  ◈   Environmental Climate Control Module 
+  ◈   SMIF(Standard Mechanical Interface) Module
+2. 결정사유
+   관세율표 제8486호는 전자집적회로의 제조에 전용 또는 주로 사용되는 기계가 분류되며, 
+제8486.40소호에는 이 류의 주 제9호 다목에서 특정한 기계와 기기를 분류하도록 
+규정하고 있음
+   본 물품은 포토마스크 제작 시 발

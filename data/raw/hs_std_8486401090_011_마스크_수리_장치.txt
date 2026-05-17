@@ -1,0 +1,72 @@
+---
+hs_code: 8486401090
+source: HS_Code_standard_지침_2장
+pub_year: 2023
+section: 84류
+chapter: 제2장 마스크 제작
+enacted: 
+---
+【품목명】 마스크 수리 장치
+【영문명】 Photomask Repair system ; Merlin
+【HS Code】 8486.40-1090 (HSK2022: 8486401090)
+【제조공정】 제2장 마스크 제작
+
+【물품설명】
+용 도
+  ◈   포토마스크 제작 시 발생하는 이물이 세정을 통하여 제거되지 않고 고착화된 경우, 이를 
+AFM(원자현미경) Tip을 이용하여 물리적으로 긁어내어 제거하는 장치
+046
+반도체 HS 표준해석 지침
+   주요 구성요소
+  ◈   AFM Guided Nano Machining Module
+  ◈   Operation Module
+  ◈   Control Module
+  ◈   Environmental Climate Control Module 
+  ◈   SMIF(Standard Mechanical Interface) Module
+
+【결정사유】
+관세율표 제8486호는 전자집적회로의 제조에 전용 또는 주로 사용되는 기계가 분류되며, 
+제8486.40소호에는 이 류의 주 제9호 다목에서 특정한 기계와 기기를 분류하도록 
+규정하고 있음
+   본 물품은 포토마스크 제작 시 발생하는 이물이 세정을 통하여 제거되지 않고 고착화된 
+경우, 이를 AFM Tip을 이용하여 물리적으로 긁어내어 제거하는 장치로, 포커스드 이온빔 
+밀링기에 해당하지 않는 마스크 제조용 기타의 수리장비로 보아 제8486.40-1090호에 
+분류함(통칙1)
+
+047
+제2장 l 마스크 제작
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   용 도
+  ◈   레이저를 조사하여 포토마스크 사용 중에 표면에 생성되는 HAZE를 제거하는 장치
+   주요 구성요소
+  ◈ Laser Module
+  ◈ Operation Module
+  ◈ Control Module
+  ◈   Environmental Climate Control Module
+  ◈   SMIF(Standard Mechanical Interface) Module
+2. 결정사유
+   관세율표 제8486호는 전자집적회로의 제조에 전용 또는 주로 사용되는 기계가 분류되며, 
+제8486.40소호에는 이 류의 주 제9호 다목에서 특정한 기계와 기기를 분류하도록 
+규정하고 있음
+   본 물품은 레이저를 조사하여 포토마스크 사용 중 표면에 생성되는 HAZE를 제거하는 
+장치로, 포커스드 이온빔 밀링기에 해당하지 않고 마스크수리용의 기타 기기로 보아 
+제8486.40-1090호에 분류함(통칙1)
+9. 포토마스크 헤이즈 제거장치 (PHOTOMASK HAZE REMOVAL MACHINE ; RHAZER)
+8486.40-1040
+*
+8486.40-1090
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’07) HSK 8486.40-1090 → (’09) HSK 8486.40-1040 (HSK 연계)
+
+048
+반도체 HS 표준해석 지침
+1. 물품설명
+   본 물품은 Reticle SMIF Po

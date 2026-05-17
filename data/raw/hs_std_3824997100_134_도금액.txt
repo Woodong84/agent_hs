@@ -1,0 +1,85 @@
+---
+hs_code: 3824997100
+source: HS_Code_standard_지침_15장
+pub_year: 2023
+section: 38류
+chapter: 제15장 재료 및 부분품Ⅰ
+enacted: 2005-09-26
+---
+【품목명】 도금액
+【영문명】 GOLD PLATING ECF-11SA MAKEUP SOL, Au
+【HS Code】 3824.99-7100 (HSK2022: 3824997100)
+【제조공정】 제15장 재료 및 부분품Ⅰ
+
+【물품설명】
+모델 및 규격
+  ◈   ECF-11SA Makeup Solution
+ 구조 및 형태
+  ◈   액상의 Chemical류
+ 기 능
+  ◈   Wafer에 외부와의 전기를 연결하는 단자(Bump)를 만들기 위한 도금공정에 사용되는 화학조제품
+ 용 도
+  ◈   ECF-11SA Series
+구   분 용   도
+ECF-11SA
+Makeup Solution 도금액 : Non Cyan(비독성) 도금공정에 사용됨
+ECF-11SA
+Replensher 보충액 : 공정 진행 중 소모되는 Au와 기타 첨가제를 보충함
+333
+제15장 l 재료 및 부분품Ⅰ
+재료 및 부분품 Ⅰ
+Chapter
+2
+   성분(함량)(단위:%)
+  ◈   본 물품은 Sodium gold sulfite, Sodium sulfite, Ethylenediamine, 킬레이트제 등으로 혼합조제된 
+무색투명 액상의 도금용 조제품(플라스틱 용기에 소매포장, 내용량 3,600mL) 
+규   격 Au(아황산금나트륨) 아황산나트륨 에텔렌디아민 킬레이트제
+ECF-11SA Makeup 
+Solution 2∼4% 5∼7% 1∼2% < 1%
+
+【결정사유】
+관세율표 제3824호는 “따로 분류되지 않는 화학품과 화학공업 또는 연관공업에 의한 
+조제품”을 분류하도록 규정하고 있으며,
+  ◈   같은 호 해설서 (B)에서 “이 호에는 3가지 경우를 제외하고는 화학적으로 단일인 원소 또는 
+화합물은 분류하지 않는다. 따라서 이 호에 분류되는 화학제품은 제조 시에 생기는 부산물(예 
+: 나프텐산)로 얻어지거나 직접적으로 제조된 물품이든 그 성분이 화학적으로 단일하지 않은 
+물품이다”라고 해설하고 있음
+   본 물품은 Sodium gold sulfite, Sodium sulfite, Ethylenediamine, 킬레이트제 등으로 
+혼합조제 도금용 조제품이므로 제3824.90-7100호에 분류함
+
+334
+반도체 HS 표준해석 지침
+1. 물품설명
+ 모델 및 규격
+  ◈   ECF-11SA REPLENISHER
+ 구조 및 형태
+  ◈   액상의 Chemical류
+ 기 능
+  ◈   Wafer에 외부와의 전기를 연결하는 단자(Bump)를 만들기 위한 도금공정에 사용되는 화학조제품
+ 용 도
+  ◈   ECF-11SA Series
+구   분 용   도
+ECF-11SA
+Makeup Solution 도금액 : Non Cyan(비독성) 도금공정에 사용됨
+ECF-11SA
+Replenisher 보충액 : 공정 진행 중 소모되는 Au와 기타 첨가제를 보충함
+25. 도금액 (GOLD PLATING ECF-11SA REPLENISHER) 
+3824.99-7100
+*
+3824.90-7100
+품목분류과-105533
+2005-09-26 
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’05) HSK 3824.90-7100 → (’17) HSK 3824.99-7100 (HSK 연계)
+
+335
+제15장 l 재료 및 부분품Ⅰ
+재료 및 부분품 Ⅰ
+Chapter
+2
+ 성분(함량)(단위:%)
+  ◈   본 물품은 Sodium gold sulfite, sodium sulfite, 킬레이트제 등으로 혼합조제된 무색투명 액상의 
+도금용 조제품(플라스틱 용기에 소

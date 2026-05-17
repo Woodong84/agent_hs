@@ -1,0 +1,55 @@
+---
+hs_code: 8486402010
+source: HS_Code_standard_지침_10장
+pub_year: 2023
+section: 84류
+chapter: 제10장 조립(Bonder 등)
+enacted: 
+---
+【품목명】 LC 테이프 접착기
+【영문명】 Fully Auto LC Tape Laminator
+【HS Code】 8486.40-2010 (HSK2022: 8486402010)
+【제조공정】 제10장 조립(Bonder 등)
+
+【물품설명】
+개 요
+  ◈   반도체 조립공정 중 Back Grind된 Wafer가 handling 하기 쉽도록 Ring Frame Mount 되기 전에 
+Wafer 후면에 LC Tape를 부착하는 데 사용되는 기기
+
+【결정사유】
+본 물품은 반도체 조립공정 중 Back Grind된 Wafer가 handling 하기 쉽도록 Ring Frame 
+Mount 되기 전에 Wafer 후면에 LC Tape를 부착하는 데 사용되는 장비임
+   제8486.40-20호에는 “반도체 디바이스·전자집적회로의 조립용 기계와 기기”가 분류되고, 
+제8486.40-2010호에는 “반도체 조립용의 다이부착기, 테이프자동접착기·와이어접착기”가 분류됨
+   따라서 Wafer 후면에 LC Tape를 부착하는 기기는 반도체 조립용의 테이프접착기로 보아 
+제8486.40-2010호에 분류함
+168
+반도체 HS 표준해석 지침
+1. 물품설명 
+[ Chip 부착부 ] [ UN & Loader 부 ] [ PBI 및 BLT 검사부 ]
+ 개 요
+  ◈   접착장치, 웨이퍼 공급장치, 검사장치 등으로 구성되며 반도체 디바이스 제조공정 중 인쇄된 
+칩상의 집적회로를 실리콘 웨이퍼(기판)에 접착하기 위한 장비로, 칩에 부착되어 있는 Solder 
+ball을 고온의 열로 녹여 웨이퍼와 칩을 접합시킴
+  ◈ 용 도 : 반도체 메모리 등 제조용
+ 구성요소 및 기능
+  ◈   CS : Wafer를 Chip 낱개 단위로 pick-up 하여 공급해주는 장치 
+  ◈   FC : Wafer 상면에 CS Unit으로부터 공급된 Chip을 온도와 압력을 이용하여 접합하는 기계 장치 
+  ◈   PBI & BLT 검사기 : Wafer의 접합 품질을 검사하는 장치 
+3. 다이 부착기 (DIE ATTACHER ; BONDING M/C ; FC3000WL)
+8486.40-2010
+8486.40-2010
+품목분류2과-10235
+2015-12-30
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+169
+제10장 l 조립(Bonder 등)
+반도체 제조장비
+Chapter
+1
+  ◈   LOADER : FOUP 단위로 공급받아서 Wafer 낱개로 설비에 공급해주는 장치 
+  ◈   Bond head : Z축 동작 부분을 가지고 있고 Heater, Pressure, Cool

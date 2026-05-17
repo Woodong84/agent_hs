@@ -1,0 +1,50 @@
+---
+hs_code: 8486209900
+source: HS_Code_standard_지침_9장
+pub_year: 2023
+section: 84류
+chapter: 제9장 조립 前 공정
+enacted: 2001-07-12
+---
+【품목명】 테이프 제거기
+【영문명】 TAPE REMOVER ; RAD-3000
+【HS Code】 8486.20-9900 (HSK2022: 8486209900)
+【제조공정】 제9장 조립 前 공정
+
+【물품설명】
+용 도
+  ◈ Back Grinding 후 Wafer Pattern 보호용 Tape를 제거하는 설비
+  ◈   Wafer Pattern 위에 Tapping된 Tape를 UV 조사 후 접착력을 약화시킨 후, Heat Seal Tape를 
+이용해 열을 가하여 UV 조사된 Tape에 압착시킨 후 Tape를 제거
+
+【결정사유】
+신청물품인 웨이퍼 테이프 제거기는 웨이퍼 이면연마 시 웨이퍼가 연삭수, 연삭설 등에 
+오염되는 것을 방지하기 위해 Back grinding 전에 접착한 테이프를 Back grinding 후에 
+제거해주는 장비임
+   테이프 제거기는 반도체 제조용으로서 특정 호에 게기되어 있지 않으므로 제8479.89-
+2099호에 분류함
+161
+제9장 l  조립 前 공정
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+ 용 도
+  ◈   완성된 반도체 웨이퍼를 개별 칩으로 절단하기 위해 반도체 웨이퍼 내부에 레이저빔을 
+집광(focusing)시켜 내부의 변형된 층(단결정 구조 → 다결정 구조)에 절단선(Scribe Line, 
+균열층)을 형성함으로써, 다결정으로 변형된 균열층을 따라 반도체 웨이퍼에 형성된 다이를 
+분리하기 위해 사용되는 장비
+   주요 구성요소
+  ◈   장비는 메인부분(X, T, Y, Z축, Laser unit, Microscope unit, Piping unit, Control unit, Loading 
+unit, Cassette elevator unit, Thermal regulator for water)과 절단용 테이블(cutting table)로 구성
+  ◈   Stealth Laser Dicing
+     -   Stealth Laser 방법은 Wafer를 통과하는 파장대(1,064㎛)의 IR Laser를 사용하기 때문에 Laser 
+Beam이 Wafer 내부에 조사할 수 있게 Focusing을 할 수 있음
+     -   그래서 보편적인 Laser의 단점인 표면 오염과 고열로 인한 Device 성능저하 문제가 없으며, 
+Silicon(단결정)에 가공 Laser을 조사해서 다결정화(결정 방위가 무질서한 미세 결정의 
+집합체)로 변화시키고, Expander할 때 다결정화된 라인에 따라 분리됨
+  
+7. 반도체 웨이퍼 레이저 다이싱기 (Laser Dicing System ; ML300)
+8486.20-9320
+8486.20-9320
+품목분류2과-61

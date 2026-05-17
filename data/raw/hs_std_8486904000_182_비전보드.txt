@@ -1,0 +1,69 @@
+---
+hs_code: 8486904000
+source: HS_Code_standard_지침_16장
+pub_year: 2023
+section: 84류
+chapter: 제16장 재료 및 부분품Ⅱ
+enacted: 2001-07-12
+---
+【품목명】 비전보드
+【영문명】 Vision board
+【HS Code】 8486.90-4000 (HSK2022: 8486904000)
+【제조공정】 제16장 재료 및 부분품Ⅱ
+
+【물품설명】
+Wire-Bonder의 개요(신청물품이 장착되는 장비)
+  ◈   Wire Bonder는 반도체 조립공정에 사용하는 장비로서, 회로가 형성된 칩을 리드 프레임에 
+부착시킨 후 칩과 리드프레임 간의 전기신호를 주고받을 수 있도록 와이어를 연결하는 장비임
+  ◈   Bond head, XY-LSM, Indexer, Control Unit, Vision Unit로 구성됨
+[ Wire-Bonder 구조 ]
+439
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+     →   CCD 카메라는 Bonding Head에 부착, 모니터는 Vision Unit에 부착, Vision Board는 Control 
+Unit 부위에 부착됨
+   Vision-Board(신청물품)의 개요
+  ◈   Wire Bonder기의 하단 부위에 장착되어 Control Board의 제어신호에 따라 다음 기능 수행
+    ①   저장된 이미지와 본딩 영역에 로딩된 물품 이미지를 CCD 카메라를 통해 체크한 후 해당 
+물품의 본딩 위치를 운영자가 볼 수 있도록 모니터에 Display
+    ② 열변형에 의한 본딩 위치 오차를 운영자가 볼 수 있도록 모니터에 Display
+    ③ 이송오차를 체크하여 운영자가 볼 수 있도록 모니터에 Display
+Vision Board
+※   본 물품은 와이어 본딩기의 Control Unit 부위에 장착되나 실제 제어기능은 Control Unit의 Control 
+Board가 수행하며, 설치 편의상 각종 제어보드 및 구동부와 함께 Control Unit에 장착됨 
+
+440
+반도체 HS 표준해석 지침
+
+【결정사유】
+본 물품은 CCD 카메라, 그래픽카드, 모니터와 함께 Wire-Bonder의 Vision System을 
+구성하는 물품으로서, Control Board의 제어신호에 따라 CCD 카메라를 통해 입력된 리드 
+프레임의 위치 및 이송오차를 모니터에 디스플레이 해주고 작업 후 Wire Loop의 형상을 
+모니터에 디스플레이 해주는 물품임
+  ◈   Wire-Bonder의 하단 부위에 설치되는 Control Unit는 2층의 Rack 구조로 상단은 각종 제어보드 
+및 그래픽카드와 본 물품이, 하단은 각종 구동장치가 장착됨
+   비록, 본 물품은 각종 제어보드 및 그래픽카드와 함께 Control Unit의 상단 부위에 
+장착되지만, 이는 설치 편의상 Control Unit 부위에 장착된 것이며 CCD 카메라, 모니터 및 
+그래픽카드와 함께 Control Board의 제어신호에 따라 Vision System의 기능을 수행하는 
+물품으로서 실제 제어와는 관련이 없으므로 제8538호의 제어반의 부분품으로 분류할 수 
+없음
+   따라서, 본 물품은 Wire-Bonder에 전용되도록 특수제작된 물품이므로 제16부 주 
+제2호의 해당 기계 전용 부분품 분류 규정에 따라 Wire-Bonder의 부분품이 분류되는 
+제8515.90-1010호에 분류함
+
+441
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+1. 물품설명
+ 개 요
+  ◈   플라스틱 재질의 BOTTOM과 TOP으로 구성된 BOX와 내부에 삽입되는 CASSETTE로 구성된 
+것으로, 반도체 웨이퍼 제조공정 라인에서 반도체 회로패턴 형성라인으로 Wafer(200mm 
+Silicon wafer 최대 25매)를 이송하기 위해 특별히 설계·제작된 플라스틱 재질의 웨이퍼 이송 
+용기(FOSB ; Front Opening Shipping Box) 
+  ◈   규격 : 270mm x 270mm x 241mm, 무게 2.1 kg 
+   용 도 : 웨이퍼 이동 시 오염방지와 안전을 위해 사용 
+46. 웨이퍼 이송용기 

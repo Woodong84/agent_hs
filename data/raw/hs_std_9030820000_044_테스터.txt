@@ -1,0 +1,53 @@
+---
+hs_code: 9030820000
+source: HS_Code_standard_지침_8장
+pub_year: 2023
+section: 90류
+chapter: 제8장 테스트(Tester, Prober 등)
+enacted: 
+---
+【품목명】 테스터
+【영문명】 Memory Tester ; MAGNUM V
+【HS Code】 9030.82-0000 (HSK2022: 9030820000)
+【제조공정】 제8장 테스트(Tester, Prober 등)
+
+【물품설명】
+용 도
+  ◈   낸드 플래시 제품의 불량 유무를 검사하여 PASS/FAIL을 분류하는 장비
+  ◈   반도체 패키지를 TEST하기 위해서 TESTER와 HANDLER가 결합되어 있으며 불량품과 양품을 
+자동으로 선별
+   동작방법
+  ◈   AUTO-HANDLER를 이용하여 NAND FLASH DEVICE를 TEST에 CONTACT함
+  ◈   TEST BOARD를 통하여 DEVICE에 전기적 신호를 주고받음
+  ◈   전기적인 특성을 검사하여 불량 유무를 판정함
+133
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+Chapter
+1
+
+【결정사유】
+반도체 제조공정에 있어 Test는 크게 Wafer Test와 Package Test로 구분하는데,
+  ◈   Wafer Test는 FAB공정을 마친 Wafer를 패키징하기 전에 웨이퍼 상의 개별 칩을 테스트하는 것을 
+말하고,
+  ◈   Package Test는 반도체 칩이 BGA(Ball Grid Array), CSP(Chip Scale Package) 등과 같이 
+Package를 한 상태에서 Test를 하는 것을 말함
+   Tester 장비는 웨이퍼 상의 각 Chip 또는 패키지 공정이 끝난 IC의 전기적 특성 검사를 
+실시하여 양·불량을 선별해 주는 장비로서 크게 Handler(Prober)와 Tester로 구분되며,
+  ◈   Handler나 Prober는,
+     -   Wafer 또는 IC로 이동하면서 Test가 진행될 수 있도록 하기 위한 Auto stepping 기능,
+     -   Probe카드의 Tip이 해당 pad에 Contact 될 수 있도록 align하는 Auto align 기능,
+     -   Wafer나 IC load/unload 기능, Temperature Control 기능 등을 가지고 있음
+  ◈   Tester는 전기적 신호를 발생시켜 Prober를 통해 Device에 인가하는 역할을 맡고 있으며 인가한 
+Signal을 통해 읽은 data를 판독하여 chip이 제대로 동작되는지 알아내는 시스템임
+   제9030호는 전기적 양의 측정 또는 검사용의 기기가 분류되며,
+  ◈   같은 호 해설서에 논리분석기(Logic analyzers)는 반도체 장치의 다수 부분품으로 구성되는 
+전기회로를 검사하는 데 사용하는 기기로서 제9030호에 분류된다고 설명되어 있음
+   본 물품은 패키징 공정이 끝난 IC 또는 패키지의 전기적 특성을 검사하여 양·불량품을 
+선별해주는 반도체 소자용 검사장치이므로 제9030.82-0000호에 분류함
+
+134
+반도체 HS 표준해석 지침
+1. 물품설명
+ 개 요
+  ◈     WAFER상의 MEMORY DE

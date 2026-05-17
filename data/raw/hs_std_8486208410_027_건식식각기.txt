@@ -1,0 +1,57 @@
+---
+hs_code: 8486208410
+source: HS_Code_standard_지침_5장
+pub_year: 2023
+section: 84류
+chapter: 제5장 식각
+enacted: 
+---
+【품목명】 건식식각기
+【영문명】 OXIDE ETCHER ; TACTRAS VIGUS MASK
+【HS Code】 8486.20-8410 (HSK2022: 8486208410)
+【제조공정】 제5장 식각
+
+【물품설명】
+용 도
+  ◈   WAFER를 LOADER로부터 PROCESS CHAMBER로 이송하면, 고진공 상태에서 각종 GAS와 
+고주파 전력을 이용하여 PLASMA 상태에서 WAFER를 가공함
+   주요 구성요소
+  ◈   MAIN FRAME : 설비의 본체를 말하며, WAFER를 식각하는 장치
+  ◈   SYSTEM CONTROLLER : 설비를 제어하는 장치로서 각종 제어 프로그램이 내장됨
+093
+제5장 l 식각
+반도체 제조장비
+Chapter
+1
+  ◈   RF & AC RACK : RF GENERATOR로 구성되어 있으며, RF POWER 및 AC POWER를 분배/
+공급하는 장치임
+
+【결정사유】
+본 물품은 WAFER를 LOADER로부터 PROCESS CHAMBER로 이송하면, 고진공 상태에서 
+각종 GAS와 고주파 전력을 이용하여 PLASMA 상태에서 WAFER를 가공하는 장비임
+   제8486호 해설서에서 “건식 플라즈마 식각기를 플라즈마 에너지 대역에 가스와 함께 
+원료물질이 제공되어 이방성 식각형태를 띄게 된다. 건식식각기는 몇 가지 다른 방법으로 
+기체 플라즈마를 생성하여 반도체웨이퍼로부터 박막재료를 제거한다.”라고 설명하고 있음
+   본 물품은 WAFER 표면의 POLY FILM을 플라즈마 방식에 의해 식각하는 기기이므로 
+반도체 재료의 건식식각 패턴용 기기로 보아 제8486.20-8410호에 분류함
+
+094
+반도체 HS 표준해석 지침
+1. 물품설명
+ 용 도
+  ◈   컴퓨터 제어방식의 장비로서 PLASMA 또는 이온빔을 이용하여 반도체 제조공정 중 원하는 
+PATTERN을 DEFINE하는 역할
+  ◈   WAFER를 LOADER로부터 PROCESS CHAMBER로 이송하는 역할을 하는 장치와 고진공 
+상태에서 각종 GAS와 고주파 전력을 이용하여 PLASMA 상태에서 WAFER를 가공함
+  ◈   256M DRAM XB-VERSION 양산적용 설비로서 반도체 제조공정에 있어서 PATTERN을 
+DEFINE하는 식각 공정에 사용
+ 주요 구성요소
+  ◈   MAIN FRAME : 설비의 본체를 말하며, WAFER를 에칭하는 장치
+  ◈   SYSTEM CONTROLLER : 설비를 제어하는 장치로서 각종 제어 프로그램이 내장됨
+  ◈   RF & AC RACK : RF GENERATOR로 구성되어 있으며, RF POWER 및 AC POWER를 분배/
+공급하는 장치
+2. 결정사유
+   식각기는 웨이퍼에 회로패턴을 만들어주기 위해 화공약품(습식식각 : Wet Etching)이나 
+부식성 가스(건식식각 : Dry Etching)를 이용해 필요 없는 부분을 선택적으로 제거하는 
+기기를 말하며,
+3. 건식식각기 (DPS POLY ETCHER ; Cent

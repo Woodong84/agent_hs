@@ -1,0 +1,60 @@
+---
+hs_code: 7616999090
+source: HS_Code_standard_지침_15장
+pub_year: 2023
+section: 76류
+chapter: 제15장 재료 및 부분품Ⅰ
+enacted: 2006-02-28
+---
+【품목명】 알루미늄 타겟
+【영문명】 Aluminum Target
+【HS Code】 7616.99-9090 (HSK2022: 7616999090)
+【제조공정】 제15장 재료 및 부분품Ⅰ
+
+【물품설명】
+개 요
+  ◈   형태 : Target(AI 성분)와 Backing Plate(CuCr)이 Diffusion Bonding(확산결합) 방식으로 
+결합된 물품
+  ◈   Target과 Backing Plate : Target은 Wafer 표면에 증착되어 박막을 형성하는 Source이며, 
+Backing Plate는 Target을 증착기기(Chamber)에 용이하게 결합시키기 위한 Plate임
+ 용 도
+  ◈   반도체 제조용 Wafer에 Target 성분을 증착시켜 전기신호의 통로로 사용함
+ 성 분
+  ◈   Pure Al + Si(0.2%) + Cu(0.5%)
+  ◈   순도 : 99.9999% 
+ 사용방법
+  ◈   증착기기에 부착이 용이하도록 제작된 Backing Plate를 이용하여 증착기기인 Chamber 내에 
+부착시킨 후 이온 진공 증착 방법으로 Target에 고전압의 전류를 통하여 Wafer 위에 Taget 
+성분을 증착시킴
+321
+제15장 l 재료 및 부분품Ⅰ
+재료 및 부분품 Ⅰ
+Chapter
+2
+
+【결정사유】
+관세율표 제7616호는 “알루미늄으로 만든 그 밖의 제품”을 분류하도록 규정하고 있고,
+  ◈   같은 호 해설서에서 “이 호에는 이 류의 앞에 나온 호에 분류하는 것, 제15부의 주 제1호에 
+규정한 것, 제82류나 제83류에 분류하는 물품이나 이 표의 다른 곳에 보다 더 구체적으로 
+규정한 것을 제외한 모든 알루미늄 제품을 분류한다.”라고 해설하고 있음
+   본 물품은 CuCr제 Backing Plate 위에, 원판형 Aluminum Target이 Diffusion Bonding 
+방식으로 결합된 형태로, Backing Plate는 사용 후 폐기(매각 또는 잉여물 처리)함으로써 
+반복사용하지 않는 단순 일회성의 용기로 확인됨(Al Target과 Backing Plate를 함께 분류)
+   따라서 본 물품은 Al Target에 주특성이 있으므로, 관세율표 제7616호의 용어 및 동 
+해설서 제7616호의 규정에 따라 “알루미늄제의 기타 제품”(제7616.99-9090호)에 
+분류함
+
+322
+반도체 HS 표준해석 지침
+1. 물품설명
+ 개 요
+  ◈   Pure Tantalum과 Backing Plate(CuZn 또는 CuCr)가 Diffusion Bonding 방식으로 결합된 물품
+  ◈   Target은 Wafer 표면에 증착되어 박막을 형성하는 Source이며, Backing Plate는 Target을 
+증착기기(Chamber)에 용이하게 결합시키기 위한 Plate
+   용 도 : 반도체 제조용 Wafer에 Target 성분을 증착시켜 전기신호의 통로로 사용함
+   성 분 : Tantalum 99.995%
+   사용 방법
+      ① PVD 설비 Chamber 내에서 이온 진공 증착 방법으로 Ta 박막을 형성함
+      ② Target에 고전압의 전류를 흘리고 Chamber 내의 Ar Plasma를 이용하여,
+      ③ Ta 원자 혹은 분자 단위로 Source인 Metal을 뜯어내며 Ta 박막을 형성하거나,
+      ④   N2 Gas를 Flow시

@@ -1,0 +1,66 @@
+---
+hs_code: 9031901010
+source: HS_Code_standard_지침_16장
+pub_year: 2023
+section: 90류
+chapter: 제16장 재료 및 부분품Ⅱ
+enacted: 2018-05-11
+---
+【품목명】 반도체 검사기용 스테이지
+【영문명】 Stage for semiconductor wafer inspection
+【HS Code】 9031.90-1010 (HSK2022: 9031901010)
+【제조공정】 제16장 재료 및 부분품Ⅱ
+
+【물품설명】
+개 요
+Fine XY Stage
+Motion Guide 
+Mechanism
+Vibration
+Isolator
+Long X-Stage
+Chuck
+  ◈   반도체 Wafer의 검사용 기기에 전용되는 모션 스테이지로서, 광원이 Wafer의 정확한 위치에 
+조사될 수 있도록 Wafer가 올려진 Chuck을 X, Y 방향으로 정밀하게 이송하는 장치
+   물품 구성
+  ◈   Chuck : Wafer를 고정하는 장치
+  ◈   Fine XY Stage : Chuck을 X, Y 방향으로 정밀하게 이송하는 장치
+542
+반도체 HS 표준해석 지침
+  ◈   Long X-Stage : Fine X, Y Stage를 Long-Stroke 범위로 이송하는 장치로 Fine X, Y Stage 
+구동을 위한 모터가 장착되어 있음
+  ◈   Motion Guide Mechanism : Fine X, Y Stage와 Long X-Stage가 정확한 모션을 유도할 수 
+있도록 함(X-Stage 구동용 모터 장착)
+  ◈   Vibration Isolator : 지면으로부터의 진동을 차단하고 스테이지의 균형을 잡아줌
+
+【결정사유】
+관세율표 제9031호에는 “그 밖의 측정용이나 검사용 기기(이 류에 따로 분류되지 않은 
+것으로 한정한다)와 윤곽 투영기”가 분류되고, 같은 호 해설서에서 “광학식 표면검사기 : 
+프리즘과 렌즈의 결합에 의하여 표면의 상태를 측정한다.”를 예시하고 있음
+  ◈   참고로, 관세율표 제8486호 해설서에서 “반도체 웨이퍼를 측정, 검사, 화학분석 등의 기계와 
+기기는 제외한다(제90류)”라고 설명하고 있고,
+  ◈   관세율표 소호 제9031.41호에는 “반도체 웨이퍼와 소자 검사용이나 반도체 소자 제조에 
+사용되는 포토마스크(photomask)나 레티클(reticle) 검사용”이 세분류되고 있으며, 본 물품은 
+반도체 웨이퍼의 검사용 기기에 전용되는 부분품임
+   따라서 본 물품은 반도체 웨이퍼 검사용 기기에 전용되어 광원이 웨이퍼의 정확한 
+위치에 조사될 수 있도록 웨이퍼가 올려진 Chuck을 정밀하게 이송하는 부분품이므로, 
+관세율표의 해석에 관한 통칙 제1호 및 제6호의 규정에 따라 제9031.90-1010호에 
+분류함
+
+543
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+1. 물품설명
+ 개 요
+  ◈   Manual shut off valve, Regulator, Pressure transducer, Filter, Three way valve, MFC, Two way 
+valve 등이 순차적으로 연결된 12개의 가스조절 라인과 신호전달을 위한 전기적인 연결 부문 및 
+가스공급부품(Three way, Two way Valve 제어)의 동작을 위한 공압장치로 구성된 물품
+ 용 도
+  ◈   반도체 제조용 건식식각 장비에 장착되어 식각공정에 필요한 가스의 공급을 조절하는 용도에 
+사용되는 장치
+  ◈   Tank Facility로부터 공급받은 가스를 PM(Process Module)으로 정밀하게 조절하여 공급함
+102. 유량 자동조절기 (ENHANCED GAS BOX ; 571-004400-003)
+9032.89-4091
+9032.89

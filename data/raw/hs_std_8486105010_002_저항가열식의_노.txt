@@ -1,0 +1,63 @@
+---
+hs_code: 8486105010
+source: HS_Code_standard_지침_1장
+pub_year: 2023
+section: 84류
+chapter: 제1장 웨이퍼 제조
+enacted: 2008-03-27
+---
+【품목명】 저항가열식의 노
+【영문명】 Multi Crystallizer
+【HS Code】 8486.10-5010 (HSK2022: 8486105010)
+【제조공정】 제1장 웨이퍼 제조
+
+【물품설명】
+물품형태 
+  ◈ Furnace vessel, Vacuum pumping unit, Cooling unit, Loading truck 등으로 구성 
+   기능 및 용도 
+  ◈   Furnace vessel 내부에 있는 Crucible(도가니)에 실리콘 원료를 투입하고 6개의 Graphite 
+heater에 전력을 인가하면 저항가열 방식에 의하여 발생한 열로 실리콘을 녹인 후 냉각하여 
+잉곳블록을 제조 
+  ◈   태양전지의 소재가 되는 실리콘 웨이퍼 제조공정 중 잉곳블록을 제조 
+   구성요소별 기능 
+    ① Furnace vessel : 실리콘을 저항 가열 방식에 의하여 녹여 잉곳블록을 제조하는 곳 
+    ② Vacuum pumping unit : Furnace vessel 내부를 진공으로 유지 
+    ③ Cooling unit : Crucible에서 녹은 실리콘을 water 및 아르곤가스에 의하여 냉각 
+    ④ Transformers : 변압기 
+    ⑤ Control cabinet : 전체를 제어하는 장치 
+    ⑥ Loading truck : 잉곳 이송 및 vessel bottom 역할을 함 
+026
+반도체 HS 표준해석 지침
+
+【결정사유】
+저항가열식의 노와 오븐은 제8514호에 분류되며, 반도체제조용의 노와 오븐은 
+제8486호에 분류됨
+  ◈   같은 호 해설서에서 “(A) 보울 또는 웨이퍼 제조용 기계와 기기. 이 그룹에는 다음과 같은 보울 
+또는 웨이퍼 제조용 기계와 기기를 분류한다. (1) 대상용융 및 실리콘 봉 정제를 위한 One-melt 
+노, 웨이퍼 표면 산화를 위한 산화로 및 웨이퍼에 불순물을 도핑하기 위한 확산로”라고 설명하고 
+있음
+   본 물품은 Furnace vessel, Vacuum pumping unit, Cooling unit, Loading truck, 
+Transformers, Control cabinet으로 구성되어 저항 가열 방식에 의하여 태양전지의 
+소재가 되는 실리콘 웨이퍼 제조공정 중 실리콘을 녹여 잉곳블록을 제조하는 장비임
+   따라서 본 물품은 반도체 제조용의 저항가열식의 노에 해당하므로 제8486.10-5010호에 
+분류함
+
+027
+제1장 l 웨이퍼 제조
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   개 요
+  ◈   봉상의 실리콘 보울(boule)을 웨이퍼로 slicing 공정 전에 진행하는 준비공정으로, 절단기에 
+고정하기 위한 Work Plate에 Graphite beam을 접착하고 그 위에 잉곳을 에폭시로 접착시키기 
+위한 장비
+   주요 구성요소
+  ◈   Gantry Machine : 잉곳을 각 단위요소에 이송시키는 장치 
+  ◈   X-ray machine : Slicing 후 웨이퍼의 Orientation이 원하는 값으로 작업될 수 있도록 잉곳의 
+Real orientation을 측정하고 target과 비교하여 보정값을 산출 
+  ◈   Turning machine : 각 기기 간 잉곳 이동 시 이동방향을 변경하는 장치 
+  ◈   Pre-heater : 접착력을 높이기 위해 잉곳과 plate를 예열처리하는 장치 
+  ◈   Glue machine : 잉곳과 plate를 접착하는 장치
+2. 결정사유
+   본 물품은 잉곳을 웨이퍼로

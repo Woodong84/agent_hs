@@ -1,0 +1,71 @@
+---
+hs_code: 9030909000
+source: HS_Code_standard_지침_16장
+pub_year: 2023
+section: 90류
+chapter: 제16장 재료 및 부분품Ⅱ
+enacted: 2006-02-14
+---
+【품목명】 전압 측정 프로브
+【영문명】 Voltage Active Probe ; P7240
+【HS Code】 9030.90-9000 (HSK2022: 9030909000)
+【제조공정】 제16장 재료 및 부분품Ⅱ
+
+【물품설명】
+기능 및 구성
+  ◈   Bandwidth : 4.0GHz          ◈   Rise Time : < 120ps 
+  ◈   DC Resistance : 20㏀
+ 용 도
+  ◈   전압 측정을 위한 Probe로서 Tektronix社의 TDS7404(Digital Phosphor Oscilloscope)에서 
+사용되는 Probe임
+ 작동원리
+    ① 설계된 회로에 Probe의 측정단과 Ground단을 연결한 후
+    ② 전류나 전압을 흘려 필요로 하는 node의 파형을 측정
+540
+반도체 HS 표준해석 지침
+
+【결정사유】
+관세율표 제9030.90소호에는 오실로스코프의 부분품과 부속품이 분류되며, 같은 호 
+해설서에 “제9030호의 부분품과 부속품으로서 별도 분리하여 제시된 것은 이 호에 
+분류된다.”라고 설명함
+   본 물품은 미국 Tektronix社 Digital Phosphor Oscilloscope(TDS7404)에 사용되는 
+Probe로 제90류 주 제2호 나목에 따라 오실로스코프의 부분품 및 부속품(제9030.90-
+9090호)으로 분류함
+
+541
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+1. 물품설명
+ 개 요
+Fine XY Stage
+Motion Guide 
+Mechanism
+Vibration
+Isolator
+Long X-Stage
+Chuck
+  ◈   반도체 Wafer의 검사용 기기에 전용되는 모션 스테이지로서, 광원이 Wafer의 정확한 위치에 
+조사될 수 있도록 Wafer가 올려진 Chuck을 X, Y 방향으로 정밀하게 이송하는 장치
+   물품 구성
+  ◈   Chuck : Wafer를 고정하는 장치
+  ◈   Fine XY Stage : Chuck을 X, Y 방향으로 정밀하게 이송하는 장치
+101. 반도체 검사기용 스테이지 (Stage for semiconductor wafer inspection) 
+9031.90-1010
+9031.90-1010
+품목분류4과-2203
+2018-05-11
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+542
+반도체 HS 표준해석 지침
+  ◈   Long X-Stage : Fine X, Y Stage를 Long-Stroke 범위로 이송하는 장치로 Fine X, Y Stage 
+구동을 위한 모터가 장착되어 있음
+  ◈   Motion Guide Mechanism : Fine X, Y Stage와 Long X-Stage가 정확한 모션을 유도할 수 
+있도록 함(X-Stage 구동용 모터 장착)
+  ◈   Vibration Isolator : 지면으로부터의 진동을 차단하고 스테이지의 균형을 잡아줌
+2. 결정사유

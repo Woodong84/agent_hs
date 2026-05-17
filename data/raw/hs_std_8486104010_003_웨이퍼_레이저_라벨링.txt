@@ -1,0 +1,59 @@
+---
+hs_code: 8486104010
+source: HS_Code_standard_지침_1장
+pub_year: 2023
+section: 84류
+chapter: 제1장 웨이퍼 제조
+enacted: 2001-07-12
+---
+【품목명】 웨이퍼 레이저 라벨링
+【영문명】 INTERGEN SMARTSCRIBE ; Intergen
+【HS Code】 8486.10-4010 (HSK2022: 8486104010)
+【제조공정】 제1장 웨이퍼 제조
+
+【물품설명】
+용 도
+  ◈   8″ SILICON WAFER에 일련번호를 새기는 데 사용
+ 물품사진 및 주요 구성요소
+  ◈   LASER : WAFER에 빛을 조사하여 WAFER 표면에 문자나 
+숫자를 새기는 데 필요한 광(光)을 발생시키는 장치
+  ◈   WAFER LOADER : WAFER를 CASSETTE에서 꺼내어 설비 
+안으로 넣어 주고 다시 꺼내 오기 위한 전기, 기계 장치
+  ◈   WATER CHILLER : 설비가 일정한 성능을 발휘하도록 설비 
+온도를 조절하기 위한 장치
+030
+반도체 HS 표준해석 지침
+   동작원리
+  ◈   설비의 WAFER TABLE에 올려진 WAFER CASSETTE로부터 WAFER를 꺼내어 STAGE 위에 
+WAFER를 올려놓음 → LASER광이 FIBER를 통하여 WAFER에 조사되어 WAFER 표면상에 문자 
+또는 숫자를 새김 → 입력 문자가 새겨진 WAFER를 꺼내어 다시 CASSETTE에 돌려 넣음
+
+【결정사유】
+일반적으로 반도체 제조공정에서 Marking 작업은 크게,
+    ①   웨이퍼 제조공정 중 단결정 성장공정 이후 Slicing이 끝난 웨이퍼 대한 결함 검사가 완료된 
+제품에 대해 Lapping 하기 전 또는 웨이퍼 가공공정에 들어가기 전에 소자제조업체가 Wafer를 
+두께별로 분류하여 Lot 관리를 위한 Laser marking 작업과,
+    ②   조립공정이 완료된 반도체 패키지나 케이스의 표면에 특정기호, 숫자, 문자를 잉크 또는 Laser 
+beam을 이용하여 제조회사, 조립, 검사 일자 등을 식별할 수 있도록 Marking하는 작업으로 
+나눌 수 있음
+   본 물품은 웨이퍼 제조공정 중 Slicing 작업이 끝난 후 결함검사가 완료된 웨이퍼에 대해 
+Lapping 하기 전에 두께별로 분류된 웨이퍼를 관리할 수 있도록 Laser beam을 이용하여 
+Marking 하거나, FAB 공정 전에 Blank Wafer에 Lot 번호와 웨이퍼 ID를 Marking할 때 
+사용하는 장비임
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 “반도체 
+웨이퍼 생산 시 레이저 또는 기타 광선·광선빔 방식에 의해 재료를 제거하여 가공하는 
+기기(Machines for working any material by removal of material, by laser or other light or 
+photo beam in the production of semiconductor wafers”가 게기되어 있고, 이를 수용하여 
+제8456.10-1000호로 양허하였음
+   따라서 본 물품은 반도체 웨이퍼 제조공정 중 또는 FAB 공정 전 웨이퍼 상에 Laser 
+beam을 이용하여 Lot 번호와 Wafer ID를 Marking하는 장비이므로 제8456.10-1000호에 
+분류함
+
+마스크 제작
+제  장2
+
+032
+반도체 HS 표준해석 지침
+1. 물품설명
+   용 도
+  ◈   반도체 재료

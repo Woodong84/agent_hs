@@ -1,0 +1,59 @@
+---
+hs_code: 8486202100
+source: HS_Code_standard_지침_3장
+pub_year: 2023
+section: 84류
+chapter: 제3장 확산로
+enacted: 2017-05-01
+---
+【품목명】 수직 전기로
+【영문명】 VERTICAL FURNACE SYSTEM ; DD-1256VN
+【HS Code】 8486.20-2100 (HSK2022: 8486202100)
+【제조공정】 제3장 확산로
+
+【물품설명】
+용 도
+  ◈   반도체 제조공정에 있는 Si Wafer 표면을 온도를 이용, 막질을 확산시키는 장치
+   동작원리
+  ◈   CX-5000 Controller에 입력된 Process Sequence에 따라 Wafer는 Loader부를 통해 Heater 
+내부로 이송되고, N2 Gas의 유입과 온도 상승으로 확산 분위기가 형성된 Heater 내부에서 Wafer 
+표면에 원하는 만큼 확산됨
+  ◈   확산이 종료되면 Heater 내부의 온도는 내려가고 Wafer는 Loader부를 통해 다시 Heater를 
+밖으로 꺼내며 Process 종료
+056
+반도체 HS 표준해석 지침
+   주요 구성 및 기능
+  ◈   LOADER부 : Wafer를 외부에서 설비 내부로 이동
+  ◈   TRANSFER부 : 설비 보관 RACK단에서 다시 Process를 진행하는 곳인 Boat로 이동
+  ◈   HEATER부 : 온도 제어
+  ◈   CX-5000 CONTROLLER부 : Process의 모든 조건을 맞추고 Control
+  ◈   GAS BOX : 막질 형성을 위한 Si2Cl6, HF 등 Gas의 유량을 제어하는 MFC와 Valve로 구성
+
+【결정사유】
+본 물품은 반도체 제조공정에 있어 Si WAFER 표면에 온도를 이용, 확산시키는 장비임
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 게기된 노와 
+오븐 및 가열기의 분류 유형을 보면,
+    ①   반도체 웨이퍼상의 반도체 소자 제조용의 저항가열식 노와 오븐(Resistance heated furnaces 
+and ovens for the manufacture of semiconductor devices on semi-conductor wafers),
+    ②   반도체 웨이퍼상의 반도체 소자 제조용의 전자 유도식 또는 유전식의 노와 오븐(Inductance 
+or dielectric furnaces and oven for the manufacture of semiconductor devices on 
+semiconductor wafers) 및 
+    ③   기타 방식의 노와 오븐 형태의 반도체 웨이퍼 급속가열기(Apparatus for rapid heating of 
+semiconductor wafers)가 있음
+   제8486.20호에는 반도체 디바이스·전자집적회로 제조용 기계와 기기가 분류되며, 그 중 
+저항가열식의 노와 오븐을 제8486.20-2100호에 분류함
+   본 물품은 반도체 디바이스 또는 전자집적회로 제조공정 중 N 2 GAS의 유입과 
+온도상승으로 확산 분위기가 형성된 HEATER 내부에서 WAFER 표면에 원하는 만큼의 
+확산을 실시하는 물품이므로 저항가열식의 노와 오븐으로 보아 제8486.20-2100호에 
+분류함
+
+057
+제3장 l 확산로
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   용 도
+  ◈   NiSi(니켈 실리사이드) 형성에 필요한 어닐장비로 PVD 방식으로 NiPt를 데포(deposition, 증착)한 
+Wafer에 본 장비를 이용, 열처리를 통하여 니켈(Ni)이 Si와 반응하여 웨이퍼로 확산하도록 하는 
+열처리 장비

@@ -1,0 +1,60 @@
+---
+hs_code: 8486209310
+source: HS_Code_standard_지침_5장
+pub_year: 2023
+section: 84류
+chapter: 제5장 식각
+enacted: 2001-07-12
+---
+【품목명】 웨이퍼 표면 연마장치
+【영문명】 Chemical Mechanical Polisher System ; TERES
+【HS Code】 8486.20-9310 (HSK2022: 8486209310)
+【제조공정】 제5장 식각
+
+【물품설명】
+용 도
+  ◈   반도체 CHIP의 고집적화가 이루어 짐에 따라, CHIP 내의 PATTERN 형성이 여러 층으로 
+이루어져 PATTERN을 형성하게 됨
+  ◈   이때 PATTERN의 각층 형성 시 각층의 표면이 굴곡이 심하면 위층의 PATTERN 형성 시 
+문제가 발생하게 되므로 PATTERN의 표면을 평탄화시킬 때 기계적(MECHANICAL)으로 
+연마(POLISHING)하여 평탄화함으로써 위층의 PATTERN 형성을 가능하게 하는 장치임
+   동작원리
+  ◈   LOAD/UNLOAD부의 CASSETTE에 있는 WAFER를 ROBOT이 MAIN FRAME 측의 POLISH 
+TABLE 측의 WAFER HEAD로 이동하여 장착시킴
+100
+반도체 HS 표준해석 지침
+  ◈   WAFER의 PATTERN 표면이 POLISH TABLE의 PAD에 압축되고, 이 WAFER와 PAD 사이로 
+연마제인 SLURRY CHEMICAL이 공급되면서, POLISH TABLE과 HEAD가 회전하여 WAFER의 
+PATTERN 표면을 연마하여 PATTERN 표면을 평탄화함
+  ◈   평탄화가 끝난 WAFER를 AUTO FRAME에 장착된 CLEANER로 이동하여 CLEAN 및 건조
+  ◈   DRY된 WAFER를 ROBOT이 PICK-UP하여 LOAD/UNLOAD부의 원래 CASSETTE로 UNLOAD
+
+【결정사유】
+본 물품은 기계적 제거가공과 화학적 제거가공을 하나의 가공방법으로 혼합한 새로운 
+연마기능을 적용한 물품으로서 반도체 웨이퍼 표면을 연마하여 평탄화하는 제품임 
+  ◈   그 원리는 헤드부의 자체 하중과 인가되는 가압력 및 회전에 의해 웨이퍼의 표면과 헤드는 
+접촉하게 되고 이 접촉면 사이의 미세한 틈 사이로 가공액인 슬러리가 유동을 하여 슬러리 
+내부에 있는 연마입자와 패드의 표면 돌기들에 의해 기계적인 제거작용이 이루어지고, 슬러리 
+내의 화학성분에 의해서는 화학적인 제거작용이 이루어지면서 웨이퍼 표면의 돌출부는 
+줄어들어 전면적에 걸쳐 균일하게 제거되어 평탄화됨 
+   제8464호에 “석(石)·도자기·콘크리트·석연시멘트와 이와 유사한 광물성 물질의 
+가공기계와 유리의 냉간 가공기계”가 게기되어 있음
+  ◈   제8464호 해설서(Ⅰ)에 “이 그룹에는 천연석의 가공기계 뿐만 아니라 기타 이와 유사한 
+경질(硬質)재료(세라믹, 콘크리트, 인조석, 석면시멘트 등)의 가공기계도 포함되고 귀석 또는 
+반귀석 가공기계의 대부분은 특징을 갖고 있음에도 불구하고 이 호에 분류된다.”라고 설명하고 
+있으며, ⓒ에 그라인딩용, Smoothing용, Polishing용 등이 나열되어 있음
+   본 물품은 실리콘웨이퍼를 연마하는 장치이므로 제8464.20-3000호에 분류함 
+
+101
+제5장 l 식각
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+ 용 도
+  ◈   반도체 CHIP의 고집적화가 이루어 짐에 따라, CHIP 내의 PATTERN 형성이 여러 층으로 
+이루어져 PATTERN을 형성하게 됨
+  ◈   이때 PATTERN의 각층 형성 시 각층의 표면이 굴곡이 심하면 위층의 PATTERN 형성 시 
+문제가 발생하게 되므로 PATTERN의 표면을 평탄화시킬 때 기계적(MECHANICAL)으로 
+연마(POLISHING)하여 평탄화함으로써 위층의 PATTERN 형성을 가능하게 하는 장치임
+6. 웨이퍼 표면 연마장치 (Chemical Mechanical Polisher ; R

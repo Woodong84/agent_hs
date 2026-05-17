@@ -1,0 +1,75 @@
+---
+hs_code: 8486403010
+source: HS_Code_standard_지침_8장
+pub_year: 2023
+section: 84류
+chapter: 제8장 테스트(Tester, Prober 등)
+enacted: 2008-03-04
+---
+【품목명】 프로브 스테이션
+【영문명】 Probe Station ; PRECIO
+【HS Code】 8486.40-3010 (HSK2022: 8486403010)
+【제조공정】 제8장 테스트(Tester, Prober 등)
+
+【물품설명】
+개 요
+  ◈   EDS Tester system(wafer 상태에서 각 chip의 전기적인 특성검사를 실시하여 양/불량을 선별)은 
+Tester(본체), Probe Card, Probe Station으로 구성되는데 이 중에서 Probe Station만 제시됨
+  ◈   Tester 본체와 연결하여 카셋트에서 웨이퍼를 Load/Unload하고 Probe Card의 needle과 
+Wafer의 IC Pad를 정밀하게 Contact, Tester에서 받은 좌표의 위치로 Chuck을 이동하는 기능을 
+수행
+141
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+Chapter
+1
+   기능 및 용도
+  ◈   Wafer 상태에서 각 Chip의 전기적 특성검사를 통하여 양/불량을 선별하는 TESTER SYSTEM의 
+필수적인 구성요소로서, Tester와 interface 할 수 있도록 구성되어 Tester가 명령하는 대로 Wafer 
+상의 칩으로 이동, Wafer의 칩과 Probe Card를 Contact 및 Wafer의 load/unload 기능
+    ① Auto align
+Wafer를 이동시켜 Wafer의 IC Pad와 Probe Card의 needle을 Contact 시키는 기능으로 
+초정밀도를 요구, Probe Station이 없이 Contact 작업 불가
+    ② Auto stepping
+Test를 완료한 위치에서 Test를 진행할 위치로 Wafer를 이동시키는 기능 (웨이퍼 척이 
+이동함으로써 웨이퍼가 이동)
+    ③ Wafer load/unload 기능
+Test를 받을 wafer를 Chuck 위에 load 및 Test가 완료된 wafer를 unload
+    ④ Temperature control : Test를 받을 wafer에 대한 온도를 조절
+   Probe Station의 작업 순서
+  ◈   Probe Station에 Start 명령 입력하면 Wafer를 Probe Station의 Chuck에 loading 작업 진행
+  ◈   Probe Card와 wafer의 영점 조절 작업 진행
+     -     Probe Card 및 wafer Pad의 위치 정보를 파악 및 영점 조절
+  ◈   최초 Test 작업 대상 Cell로 이동, 작업준비가 완료되었다는 SIGNAL을 Tester에 전송
+  ◈   Tester의 명령에 따라 Wafer 이동 및 Probe Card의 Tip과 IC Pad를 Contact 시키는 작업 진행 
+및 Tester가 테스트 수행
+  ◈   Test가 완료된 wafer를 unload
+
+142
+반도체 HS 표준해석 지침
+
+【결정사유】
+제84류 주 제9호 다목에서 보울, 웨이퍼, 반도체디바이스 전자집적회로와 평판디스플레이의 
+권양(lifting), 하역(handling), 적하(loading), 또는 양하(unloading)용 기계에 전용 
+또는 주로 사용하는 기계를 제8486호에 분류토록 규정하고 있으며,
+  ◈   “반도체소자 제조용 웨이퍼, 웨이퍼 카셋트상자 및 기타 물품을 이송(transport), 
+핸들링(handling) 그리고 저장(storage)하기 위한 것”을 제8486.40-3010호에 분류토록 
+규정하고 있음
+   EDS Tester system(wafer 상태에서 각 chip의 전기적인 특성검사를 실시하여 양/불량을 
+선별)은 Tester(본체), Probe Card, Probe Station으로 구성되는데,
+  ◈   쟁점물품은 Probe Station으로서 Tester 본체와 연결하여 카셋트에서 웨이퍼를 Load/
+Unload하고 Probe Card의 needle과 Wafer의 IC Pad를 정밀하게 Contact, Tester에서 받은 
+좌표의 위치로 Chuck을 이동하는 기능 및 Temperature control 기능을 수행함
+   쟁점물품이 수행하고 있는 개별기능을 살펴보면,
+  ◈   검사대상 웨이퍼를 Load하고 검사가 끝난 웨이퍼를 Unload하는 것과 Test를 완료하면 다음 
+Test를 진행할 위치로 Wafer를 이동시키는 Auto stepping은 이송기능, Wafer를 이동시켜 
+Wafer의 IC Pad와 Probe Card의 needle을 정밀하게 Contact 시키는 Auto align은 웨이퍼의 
+이송 또는 핸들링 기능, 온도조절 기능은 주기능이라기보다는 보조적이고 선택적인 기능임
+   따라서 쟁점물품은 웨이퍼의 이송 또는 핸들링에 주로 또는 전용되어 사용되는 
+물품이므로 제84류 주 제9호 다목 및 제8486호의 용어에 따라 제8486.40-3010호에 
+분류함
+
+143
+제8장 l  테스트(Tester, Prober 등)
+반도체 제조장비
+C

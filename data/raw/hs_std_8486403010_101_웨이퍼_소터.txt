@@ -1,0 +1,70 @@
+---
+hs_code: 8486403010
+source: HS_Code_standard_지침_13장
+pub_year: 2023
+section: 84류
+chapter: 제13장 현미경
+enacted: 
+---
+【품목명】 웨이퍼 소터
+【영문명】 WAFER SORTER ; SPARTAN
+【HS Code】 8486.40-3010 (HSK2022: 8486403010)
+【제조공정】 제13장 현미경
+
+【물품설명】
+용 도
+  ◈   반도체 제조 공정 중 Wafer를 담는 용기인 FOUP 교체 또는 Wafer 분류 시 FOUP과 FOUP 간 
+Wafer 이동, Wafer Sorting을 하는 장비
+ 주요 구성요소
+  ◈   Central Datum Structure : 장비 Frame
+  ◈   Load Port : Wafer가 담겨있는 FOUP의 Loading 및 Unloading
+  ◈   Wafer Engine : Load Port를 통해 들어온 Wafer를 이송하여 다른 FOUP으로 이송하는 Robot
+  ◈   Wafer Aligner & OCR Camera : Wafer의 정렬과 Lot ID 등을 인식
+271
+제14장 l 기타 지원 장비
+반도체 제조장비
+Chapter
+1
+ 동작원리
+  ◈   Wafer가 담긴 FOUP을 Load Port에 Loading하면 Robot이 Wafer를 장비 내로 이송하여 
+Aligner에서 Wafer를 정렬하고 ID를 확인함
+  ◈   확인된 번호를 이용하여 빈 FOUP의 번호와 일치하는 Slot으로 이송
+
+【결정사유】
+Wafer Sorter는 반도체 공정 중에서 작업자의 수작업에 의한 웨이퍼의 손상을 방지하고 
+수율향상을 도모하는 공정에 사용되는 장치로서,
+  ◈   주요 기능은 ① 특정 FOUP에서 임의의 FOUP으로 웨이퍼를 신속, 정확하게 이동, 분리 또는 
+합병기능을 수행하는 Moving 기능과 ② 각 웨이퍼의 flat을 정렬하고 Wafer의 ID를 읽어 Sorting 
+기능을 수행하는 장치임
+   본 물품은 다음 공정 작업을 할 수 있도록 웨이퍼의 ID를 읽어 두께 등에 따라 Sorting 
+해주고, 아울러 하나의 FOUP에서 다른 FOUP으로 이동, 분리 또는 합병의 이송기능을 
+함께 수행하는 장비이므로 제 8486.40-3010호에 분류함
+
+272
+반도체 HS 표준해석 지침
+1. 물품설명
+    
+ 용 도
+  ◈   반도체 제조 공정에서 사용되는 Test Wafer의 저장 및 관리를 위한 Full automation 설비로서 
+제조 공정의 Auto Transfer System과 연동하여, 중앙 Host의 명령에 따라 공정 투입 전후 Test 
+Wafer를 라인 환경에 맞추어 자동으로 Loading/Unloading하기 위한 자동화 물류창고
+   동작원리 
+  ◈   작업자 또는 Auto Transfer System의 OHT가 FOUP을 Stocker의 Load Port에 Loading
+  ◈   Load Port에서 RF-Tag로 Data를 읽은 후 FOUP의 Test Wafer 정보를 중앙 Host(Job Manager: 
+라인 전체의 공정을 제어하는 장치)로 전송
+2. 웨이퍼 보관용 저장창고 (WAFER STOCKER ; M2200 Test Wafer Stocker)
+8486.40-3010
+8486.40-3010
+품목분류2과-1749
+2011-06-11 
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+273
+제14장 l 기타 지원 장비
+반도체 제조장비
+Chapter
+1
+  ◈   공정 작업 시 중앙 Host(Job Manager)는 Stocker에 FOUP의 

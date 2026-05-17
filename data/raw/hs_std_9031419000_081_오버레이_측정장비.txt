@@ -1,0 +1,58 @@
+---
+hs_code: 9031419000
+source: HS_Code_standard_지침_11장
+pub_year: 2023
+section: 90류
+chapter: 제11장 측정
+enacted: 
+---
+【품목명】 오버레이 측정장비
+【영문명】 Overlay metrology system ; Archer 500
+【HS Code】 9031.41-9000 (HSK2022: 9031419000)
+【제조공정】 제11장 측정
+
+【물품설명】
+개 요
+  ◈   웨이퍼의 alignment(정렬) 상태를 검사하는 장비
+ 동작원리
+  ◈   WAFER에 노광된 PATTERN이 있는 WAFER를 ROBOT의 ARM으로 MAIN BODY로 이동시킴
+  ◈   이동된 웨이퍼에 노광된 PATTERN을 보다 정밀하게 계측할 MARK를 찾아서 자동으로 정렬 
+상태를 계측함
+  ◈   계측 완료 후 WAFER LOADER의 ROBOT이 WAFER를 UNLOADER 위치로 운반
+213
+제11장 l 측정
+반도체 제조장비
+Chapter
+1
+   주요 구성요소
+  ◈   Load port : 웨이퍼를 장비에 삽입하기 위한 장치
+  ◈   Transfer module : 웨이퍼를 chamber로 이송하기 위한 장치
+  ◈   Inspection chamber : 웨이퍼의 overlay 측정을 위한 부분
+
+【결정사유】
+본 물품은 광학장치를 이용하여 PHOTO 공정 중 이전 공정에서 반도체 웨이퍼 상에 
+형성된 패턴과 현재 공정에서 형성된 패턴과의 정렬 상태를 검사하는 장비임
+   제9031.41호에 “반도체 웨이퍼 및 소자 검사용 또는 반도체 소자 제조에 사용되는 
+포토마스크 또는 레티클 검사용의 광학식 기기(other optical instruments and 
+appliances for inspecting semiconductor wafers or devices or for inspecting 
+photomasks or reticles used in manufacturing semiconductor devices)” 가 게기되어 
+있고,
+  ◈   제9031호 관세율표 해설서 (B)에 각종 광학식 측정 및 검사기구를 설명하면서 ① 테이블, 
+프레임, 슬라이드 왕복대 및 두 개의 측정 현미경으로 구성되어 길이, 표면 등의 검사에 
+사용되는 Comparator bench와 ② 광학식 표면 검사기(optical surface tester) 등을 나열하고 
+있음
+   본 물품은 PHOTO 공정에서 형성된 pattern 간의 overlay 정도를 검사하는 장비로서 
+광학장치를 이용하여 웨이퍼 상에 형성된 pattern의 정렬 상태를 검사하는 장비이므로 
+제9031.41-9000호에 분류함
+
+214
+반도체 HS 표준해석 지침
+1. 물품설명
+   개 요
+  ◈   물방울의 표면장력을 측정하는 기기
+   물품 구성
+  ◈   Dosing Module : Syringe Position(액체를 웨이퍼에 떨어뜨리는 장치) 및 Dose Control (Syringe 
+Position의 높이 조절)로 구성되며 액체를 웨이퍼 표면에 Drop 시킴
+  ◈   Wafer Stage : Wafer 1매를 Loading 할 수 있는 Stage
+  ◈   Turn Table : Wafer Stage를 원하는 Drop 위치에 따라 0도~360도로 회전시키는 장치
+  ◈   Y-Axes Table : Waf

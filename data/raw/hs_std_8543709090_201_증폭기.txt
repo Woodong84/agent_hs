@@ -1,0 +1,65 @@
+---
+hs_code: 8543709090
+source: HS_Code_standard_지침_16장
+pub_year: 2023
+section: 85류
+chapter: 제16장 재료 및 부분품Ⅱ
+enacted: 2005-12-29
+---
+【품목명】 증폭기
+【영문명】 Amplifier ; ESPY ES-1C-MD-0 LAVEL
+【HS Code】 8543.70-9090 (HSK2022: 8543709090)
+【제조공정】 제16장 재료 및 부분품Ⅱ
+
+【물품설명】
+용 도
+  ◈   반도체 제조에 사용되는 Chemical을 담아 두는 Bath의 액면 위치를 감지하는 Level Sensor의 
+신호를 Amplifier로 증폭하여 설비에서 인식 가능한 신호로 변환(Level Sensor의 신호를 
+증폭하는 기능)
+ 작동원리
+481
+제16장 l 재료 및 부분품Ⅱ
+재료 및 부분품 Ⅱ
+Chapter
+3
+    ① Bath부에 설치된 Level Sensor를 통하여
+    ② 액면의 위치에 따라 Sensor가 신호를 감지 후
+    ③ Amplifier를 통하여 증폭하여 전송
+
+【결정사유】
+관세율표 제8543호에는 “제85류의 다른 호에 분류되지 않는 고유한 기능을 가진 기타의 
+전기기기”가 분류되고,
+  ◈   같은 호 해설서에서 “전기적으로 작동되는 전기제품 또는 부분품의 조립품으로 구성”된다고 
+해설하며, “계측증폭기(measurement amplifier)”를 예시함
+   본 물품은 전기제품의 조립품으로 구성되고, 액면의 위치를 감지한 전기신호를 증폭하는 
+계측증폭기이므로 제8543호 용어의 규정에 따라 ‘기타의 전기기기’(제8543.89-
+9090호)로 분류함
+
+482
+반도체 HS 표준해석 지침
+1. 물품설명
+   본 물품은 이온을 생성시키는 Source Head와 Analyzer Magnet Chamber 사이에 
+위치하며 Source Head에서 ionization으로 생성된 +이온을 원하는 energy를 가지고 
+beam의 형태로 추출하기 위한 extraction voltage의 ground plate와 2차 전자를 
+제거하기 위한 suppression plate가 존재하는 곳이고, beam을 추출할 때 최적의 형태로 
+추출하기 위하여 x, y, z의 세 방향으로 beam을 steering하는 곳임
+  ◈   이것은 beam의 초기 형태를 결정하는 중요한 Assy로서 beam을 x, y, z 세 축으로 steering할 
+때 신중하고 정확한 조절이 필요함
+       ※   장착장비(부분) : 반도체 제조장비인 ION IMPLANTER의 PROCESS CHAMBER
+2. 결정사유
+   제16부 주 제2호 나목의 규정에 따라 제8543.90-1010호에 분류
+68. 매니프레이터 (MANIPULATOR) 
+8486.90-2090
+*
+8543.90-1010
+평가분류47281-642
+2001-07-12 
+HSK 2022
+결정세번
+분류근거
+시행일자
+*   (’01) HSK 8543.90-1010 → (’07) HSK 8486.90-2010 → (’22) HSK 8486.90-2090 (HSK 연계)
+
+483
+제16장 l 재료 및 부분품Ⅱ
+재

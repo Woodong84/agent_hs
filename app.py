@@ -286,21 +286,65 @@ def _render_result(result: dict):
     # candidates 상세 펼치기
     candidates = result.get("candidates", [])
     if candidates:
+        # 중복 HS 코드 제거 (이미 search_hs.py에서 처리되나 방어 처리)
+        seen_hs: set = set()
+        unique_candidates = []
+        for c in candidates:
+            hs = c.get("hs_code", "")
+            if hs not in seen_hs:
+                seen_hs.add(hs)
+                unique_candidates.append(c)
+
         with st.expander("🔍 후보 코드 상세 (RAG 근거 포함)"):
-            for c in candidates:
+            for c in unique_candidates:
                 rank = c.get("rank", "?")
                 hs = c.get("hs_code", "")
                 conf = c.get("confidence", "")
-                st.markdown(f"**[{rank}순위] {hs}** — 신뢰도: {conf}")
-                for ev in c.get("evidence", []):
+                evidences = c.get("evidence", [])
+
+                st.markdown(f"**[{rank}순위] `{hs}`** — 신뢰도: **{conf}**")
+
+                # 근거 출처 목록 (중복 문서 제거)
+                seen_docs: set = set()
+                unique_evs = []
+                for ev in evidences:
+                    doc_key = ev.get("doc_name", "") + ev.get("chunk_id", "")
+                    if doc_key not in seen_docs:
+                        seen_docs.add(doc_key)
+                        unique_evs.append(ev)
+
+                for ev in unique_evs[:3]:   # 출처 최대 3개 표시
                     sim = ev.get("similarity_score", 0)
                     doc = ev.get("doc_name", "")
                     page = ev.get("page", "")
                     cite = ev.get("citation", "")
                     st.markdown(
-                        f"&nbsp;&nbsp;`유사도 {sim:.2f}` · {doc} {page}  \n"
-                        f"&nbsp;&nbsp;*\"{cite[:100]}...\"*"
+                        f"&nbsp;&nbsp;`유사도 {sim:.2f}` · **{doc}** {page}  \n"
+                        f"&nbsp;&nbsp;*\"{cite[:120]}...\"*"
                     )
+
+                # 유사 정보: 동일 코드를 지지하는 근거가 복수일 때 요약 표시
+                if len(unique_evs) > 1:
+                    extra_docs = [ev.get("doc_name", "") for ev in unique_evs[1:3]]
+                    st.caption(
+                        f"   ℹ️ 추가 유사 근거 {len(unique_evs)-1}건 확인됨: "
+                        f"{', '.join(extra_docs)}"
+                    )
+
+                # 유사 정보: top5_chunks 중 같은 HS 코드 앞 4자리를 지지하는 청크 수
+                top5 = result.get("audit_log", {}).get("rag_result", {}).get("top5_chunks", [])
+                related = [
+                    ch for ch in top5
+                    if ch.get("supports_hs", "")[:4] == hs[:4]
+                    and ch.get("supports_hs", "") != hs
+                ]
+                if related:
+                    related_codes = list({ch["supports_hs"] for ch in related})
+                    st.caption(
+                        f"   🔗 동일 류(類) 내 유사 코드: "
+                        f"{', '.join(related_codes[:3])}"
+                    )
+
                 st.markdown("---")
 
         # JSON 출력 (Interface 연동용)

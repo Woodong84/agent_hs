@@ -1,0 +1,46 @@
+---
+hs_code: 8486402091
+source: HS_Code_standard_지침_10장
+pub_year: 2023
+section: 84류
+chapter: 제10장 조립(Bonder 등)
+enacted: 2001-07-12
+---
+【품목명】 폼 머신
+【영문명】 AUTO Form System
+【HS Code】 8486.40-2091 (HSK2022: 8486402091)
+【제조공정】 제10장 조립(Bonder 등)
+
+【물품설명】
+본 물품은 반도체 조립공정 Molding된 Package에 대해 요구하는 Lead 형태를 성형하여 
+개별 Unit화하는 장비로서 Press 구동 방식에 따라 유압식과 Mechanical Type으로 구별됨
+
+【결정사유】
+본 물품은 패키지 밖으로 나온 외부 리드의 형태를 JEDEC 규격에 맞추어 굽혀주는 
+공정에 사용되는 장비로서 이 공정을 거쳐야 비로소 패키지를 부품 실장할 수 있고, 
+굽히는 형태에 따라 패키지 바깥쪽으로 휘어진 Gull form, J자 모양으로 패키지 안쪽으로 
+구부리는 J form방법이 있음
+182
+반도체 HS 표준해석 지침
+  ◈   ITA(Information Technology Agreement : 정보기술협정) Attachment A Section 2에 “Machines 
+for bending, folding and straightening semiconductor leads(반도체 리드 굽힘기, 접음기, 
+교정기와 펼침기)”가 게기되어 있고, 우리나라에서는 제8462.21-1010호(수치제어식의 것)와 
+제8462.29-1010호(비 수치제어식의 것)로 수용하여 양허하였음
+   본 물품은 수치제어방식에 의해 Forming 기능과 Press 타입의 Singulation 기능을 함께 
+수행할 수 있도록 제작된 물품으로서, 주요한 기능이 리드를 일정한 형태로 구부려 주는 
+Forming 기능을 수행하는 물품이므로 제16부 주 제3호의 규정에 따라 제8462.21-
+1010호에 분류하는 것이 타당함
+
+183
+제10장 l 조립(Bonder 등)
+반도체 제조장비
+Chapter
+1
+1. 물품설명
+   웨이퍼 상에 형성된 칩에, Solder Ball을 부착한 상태에서 EMC(Epoxy Mold 
+Compound)를 사용하여 Chip in Wafer를 성형하는 반도체 조립장비
+    ※   과거에는 Chip in Wafer를 칩 상태로 절단해서 성형했으나 대량성형, 얇은 두께, 비용절감 
+차원에서 개량된 장비임
+   주요 구성요소별 기능 
+    ① Load & Unload Port : Chip in Wafer를 공급하고 몰딩 완료된 Chip in Wafer를 Unloading함 
+    ② Wafer Handling Robot : Chip in Wafer를 이

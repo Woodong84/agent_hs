@@ -1,0 +1,58 @@
+---
+hs_code: 8486402099
+source: HS_Code_standard_지침_9장
+pub_year: 2023
+section: 84류
+chapter: 제9장 조립 前 공정
+enacted: 
+---
+【품목명】 웨이퍼 마운터
+【영문명】 Wafer Mounter
+【HS Code】 8486.40-2099 (HSK2022: 8486402099)
+【제조공정】 제9장 조립 前 공정
+
+【물품설명】
+개 요
+  ◈   본 물품은 반도체 조립공정 중 Back Grind된 Wafer를 handling 하기 쉽도록 Ring Frame에 
+Tape를 이용하여 고정하는데 사용되는 기기임
+
+【결정사유】
+본 물품은 반도체 조립공정 중 Back Grind된 Wafer를 handling 하기 쉽도록 Ring 
+Frame에 Tape를 이용하여 고정하는 데 사용되는 장비임
+   Ring Frame에 Tape를 이용하여 고정하는 기기는 반도체 조립용으로서 특정 호에 
+게기되어 있지 않으므로 제8486.40호 기타의 반도체 조립용 장비로 보아 제8486.40-
+2099호에 분류함
+167
+제10장 l 조립(Bonder 등)
+반도체 제조장비
+Chapter
+1
+1. 물품설명 
+ 개 요
+  ◈   반도체 조립공정 중 Back Grind된 Wafer가 handling 하기 쉽도록 Ring Frame Mount 되기 전에 
+Wafer 후면에 LC Tape를 부착하는 데 사용되는 기기
+2. 결정사유
+   본 물품은 반도체 조립공정 중 Back Grind된 Wafer가 handling 하기 쉽도록 Ring Frame 
+Mount 되기 전에 Wafer 후면에 LC Tape를 부착하는 데 사용되는 장비임
+   제8486.40-20호에는 “반도체 디바이스·전자집적회로의 조립용 기계와 기기”가 분류되고, 
+제8486.40-2010호에는 “반도체 조립용의 다이부착기, 테이프자동접착기·와이어접착기”가 분류됨
+   따라서 Wafer 후면에 LC Tape를 부착하는 기기는 반도체 조립용의 테이프접착기로 보아 
+제8486.40-2010호에 분류함
+2. LC 테이프 접착기 (Fully Auto LC Tape Laminator)
+8486.40-2010
+8486.40-2010
+-
+-
+HSK 2022
+결정세번
+분류근거
+시행일자
+
+168
+반도체 HS 표준해석 지침
+1. 물품설명 
+[ Chip 부착부 ] [ UN & Loader 부 ] [ PBI 및 BLT 검사부 ]
+ 개 요
+  ◈   접착장치, 웨이퍼 공급장치, 검사장치 등으로 구성되며 반도체 디바이스 제조공정 중 인쇄된 
+칩상의 집적회로를 실리콘 웨이퍼(기판)에 접착하기 위한 장비로, 칩에 부착되어 있는 Solder 
+ball을 고온의 열로 녹여 웨이퍼와 
