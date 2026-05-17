@@ -189,6 +189,11 @@ def run_agent(input_data: dict) -> dict:
             "conflict_flag": conflict_flag,
             "conflict_type": conflict_type,
             "conflict_detail": conflict_detail,
+            "resolution": {
+                "clarification_turns": 0,
+                "clarification_result": None,
+                "expert_referral": conflict_flag,
+            },
             "response_time_sec": response_time,
             "llm_provider": base_result["llm_provider"],
         }

@@ -235,6 +235,17 @@ def _render_result(result: dict):
 
     st.divider()
 
+    _HS_CLASS_DESC = {
+        "28": "화학원소·화합물 (28류)",
+        "38": "혼합 화학제품 (38류)",
+        "39": "플라스틱 제품 (39류)",
+        "70": "유리·유리제품 (70류)",
+        "76": "알루미늄 제품 (76류)",
+        "84": "반도체 제조장비·기계 (84류)",
+        "85": "전기기기·반도체 부품 (85류)",
+        "90": "광학·측정기기 (90류)",
+    }
+
     # 충돌 경고 배너
     if result.get("conflict_flag"):
         conflict_type = result.get("conflict_type", "")
@@ -250,6 +261,45 @@ def _render_result(result: dict):
             f'<span style="font-size:0.85rem;color:#555">{conflict_detail} · 관세사 확인을 권장합니다.</span></div>',
             unsafe_allow_html=True,
         )
+
+        # TYPE-2 전용: 사내 코드 통일 경고 + A/B 비교표
+        if conflict_type == "TYPE-2":
+            audit_in = result.get("audit_log", {}).get("input", {})
+            existing_code = (audit_in.get("existing_hs_code") or "").strip()
+            candidates_all = result.get("candidates", [])
+            top1_code = candidates_all[0]["hs_code"] if candidates_all else ""
+
+            st.warning(
+                "⚠️ **사내 코드 불일치 감지** — 동일 품목에 서로 다른 HS-Code가 사용되고 있습니다. "
+                "**사내 코드 통일 검토가 필요합니다.** 관세청 품목분류 사전심사 또는 관세사 확인을 권장합니다."
+            )
+
+            if existing_code and top1_code:
+                st.markdown("#### 📊 후보 코드 비교 분석")
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    cls_a = existing_code[:2]
+                    desc_a = _HS_CLASS_DESC.get(cls_a, f"{cls_a}류")
+                    st.markdown(
+                        f'<div style="background:#f5f5f5;border:1px solid #bbb;padding:12px;border-radius:6px">'
+                        f'<b>후보 A — 기존 코드</b><br>'
+                        f'<span style="font-size:1.1rem;font-family:monospace">{existing_code}</span><br>'
+                        f'<span style="color:#555;font-size:0.88rem">{desc_a}</span>'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
+                with col_b:
+                    cls_b = top1_code[:2]
+                    desc_b = _HS_CLASS_DESC.get(cls_b, f"{cls_b}류")
+                    top1_conf = candidates_all[0].get("confidence", "") if candidates_all else ""
+                    st.markdown(
+                        f'<div style="background:#e8f5e9;border:1px solid #66bb6a;padding:12px;border-radius:6px">'
+                        f'<b>후보 B — RAG 추천 코드</b><br>'
+                        f'<span style="font-size:1.1rem;font-family:monospace">{top1_code}</span><br>'
+                        f'<span style="color:#2e7d32;font-size:0.88rem">{desc_b} · 신뢰도: {top1_conf}</span>'
+                        f'</div>',
+                        unsafe_allow_html=True,
+                    )
 
     if result.get("fallback_triggered"):
         st.markdown(
