@@ -36,6 +36,24 @@ _STATIC_TAX_TABLE: dict = {
         ],
         "import_requirements": "특별한 수입 요건 없음",
     },
+    "69": {
+        "basic_rate": "8%",
+        "fta_rates": [
+            {"country": "미국", "agreement": "한-미 FTA", "rate": "0%"},
+            {"country": "EU", "agreement": "한-EU FTA", "rate": "0%"},
+            {"country": "중국", "agreement": "한-중 FTA", "rate": "확인필요"},
+        ],
+        "import_requirements": "특별한 수입 요건 없음 (공업용 도자제품)",
+    },
+    "76": {
+        "basic_rate": "8%",
+        "fta_rates": [
+            {"country": "미국", "agreement": "한-미 FTA", "rate": "0%"},
+            {"country": "EU", "agreement": "한-EU FTA", "rate": "0%"},
+            {"country": "중국", "agreement": "한-중 FTA", "rate": "확인필요"},
+        ],
+        "import_requirements": "특별한 수입 요건 없음",
+    },
     "84": {
         "basic_rate": "0%",
         "fta_rates": [
@@ -53,24 +71,6 @@ _STATIC_TAX_TABLE: dict = {
             {"country": "중국", "agreement": "한-중 FTA", "rate": "0%"},
         ],
         "import_requirements": "반도체 부품 면세",
-    },
-    "38": {
-        "basic_rate": "6.5%",
-        "fta_rates": [
-            {"country": "미국", "agreement": "한-미 FTA", "rate": "0%"},
-            {"country": "EU", "agreement": "한-EU FTA", "rate": "0%"},
-            {"country": "중국", "agreement": "한-중 FTA", "rate": "확인필요"},
-        ],
-        "import_requirements": "화학물질 안전관리법 준수 필요",
-    },
-    "76": {
-        "basic_rate": "8%",
-        "fta_rates": [
-            {"country": "미국", "agreement": "한-미 FTA", "rate": "0%"},
-            {"country": "EU", "agreement": "한-EU FTA", "rate": "0%"},
-            {"country": "중국", "agreement": "한-중 FTA", "rate": "확인필요"},
-        ],
-        "import_requirements": "특별한 수입 요건 없음",
     },
     "90": {
         "basic_rate": "0%",
@@ -96,6 +96,14 @@ _STATIC_EXPORT_TABLE: dict = {
     "39": {
         "US": {"basic_rate": "3.7%", "fta_rate": "0% (한-미 FTA)"},
         "CN": {"basic_rate": "6.5%", "fta_rate": "확인필요 (한-중 FTA)"},
+    },
+    "69": {
+        "US": {"basic_rate": "3.7%", "fta_rate": "0% (한-미 FTA)"},
+        "CN": {"basic_rate": "8.0%", "fta_rate": "확인필요 (한-중 FTA)"},
+    },
+    "76": {
+        "US": {"basic_rate": "3.0%", "fta_rate": "0% (한-미 FTA)"},
+        "CN": {"basic_rate": "8.0%", "fta_rate": "확인필요 (한-중 FTA)"},
     },
     "84": {
         "US": {"basic_rate": "0%", "fta_rate": "0% (한-미 FTA)"},
