@@ -92,6 +92,11 @@ def run_ingest():
     pc = Pinecone(api_key=settings.PINECONE_API_KEY)
     index = pc.Index(settings.PINECONE_INDEX_NAME)
 
+    # 기존 벡터 전체 삭제 후 재적재 (중복 누적 방지)
+    print("[Pinecone] 기존 벡터 전체 삭제 중...")
+    index.delete(delete_all=True)
+    print("[Pinecone] 기존 벡터 삭제 완료")
+
     # langchain-pinecone 0.2.x 호환 방식: add_documents 사용
     vectorstore = PineconeVectorStore(index=index, embedding=embeddings)
 

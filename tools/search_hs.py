@@ -106,7 +106,8 @@ def search_hs_code_rag(
     except (json.JSONDecodeError, AttributeError, TypeError, ValueError):
         pass
 
-    query = f"{product_name} {material} {purpose} {trade_direction}"
+    # 품목명을 2회 반복하여 코사인 유사도에서 품목명 가중치 효과 부여
+    query = f"{product_name} {product_name} {material} {purpose} {trade_direction}"
 
     if not settings.use_pinecone:
         return {

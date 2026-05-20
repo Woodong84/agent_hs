@@ -364,13 +364,15 @@ def _render_result(result: dict):
 
                 st.markdown(f"**[{rank}순위] `{hs}`** — 신뢰도: **{conf}**")
 
-                # 근거 출처 목록 (중복 문서 제거)
+                # 근거 출처 목록 (문서+청크 동일 OR 유사도+인용문 동일 시 중복 제거)
                 seen_docs: set = set()
                 unique_evs = []
                 for ev in evidences:
                     doc_key = ev.get("doc_name", "") + ev.get("chunk_id", "")
-                    if doc_key not in seen_docs:
+                    sim_key = str(ev.get("similarity_score", "")) + ev.get("citation", "")[:60]
+                    if doc_key not in seen_docs and sim_key not in seen_docs:
                         seen_docs.add(doc_key)
+                        seen_docs.add(sim_key)
                         unique_evs.append(ev)
 
                 for ev in unique_evs[:3]:   # 출처 최대 3개 표시
