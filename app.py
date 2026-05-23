@@ -33,15 +33,31 @@ st.markdown("""
 [data-testid="stSidebar"] * {
     color: #e8f0ff !important;
 }
+
+/* ── 사이드바 입력 필드: 흰 배경 + 검정 텍스트로 가독성 확보 */
 [data-testid="stSidebar"] .stTextInput input,
-[data-testid="stSidebar"] .stSelectbox select {
-    background: rgba(255,255,255,0.12) !important;
-    border: 1px solid rgba(255,255,255,0.25) !important;
-    color: #fff !important;
+[data-testid="stSidebar"] .stSelectbox select,
+[data-testid="stSidebar"] .stTextArea textarea {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(255,255,255,0.5) !important;
+    color: #111827 !important;
     border-radius: 6px;
+    font-weight: 500;
 }
+[data-testid="stSidebar"] .stTextInput input::placeholder,
+[data-testid="stSidebar"] .stTextArea textarea::placeholder {
+    color: #9ca3af !important;
+}
+[data-testid="stSidebar"] .stTextInput input:focus,
+[data-testid="stSidebar"] .stTextArea textarea:focus {
+    border-color: #f97316 !important;
+    box-shadow: 0 0 0 2px rgba(249,115,22,0.25) !important;
+}
+
+/* ── 사이드바 라벨·설명 텍스트 */
 [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
-[data-testid="stSidebar"] label {
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
     color: #c8d8ff !important;
 }
 [data-testid="stSidebar"] .stSlider [data-testid="stTickBar"] {
@@ -51,16 +67,54 @@ st.markdown("""
     border-color: rgba(255,255,255,0.2) !important;
 }
 
-/* ── 사이드바 버튼 */
+/* ── 사이드바 버튼: 흰 배경 + 네이비 텍스트로 가독성 확보 */
 [data-testid="stSidebar"] .stButton > button {
-    background: rgba(255,255,255,0.12) !important;
-    border: 1px solid rgba(255,255,255,0.3) !important;
-    color: #fff !important;
+    background: #ffffff !important;
+    border: 1.5px solid rgba(255,255,255,0.6) !important;
+    color: #0f2d6b !important;
     border-radius: 6px;
-    transition: background 0.2s;
+    font-weight: 600;
+    transition: all 0.2s;
 }
 [data-testid="stSidebar"] .stButton > button:hover {
-    background: rgba(255,255,255,0.22) !important;
+    background: #f97316 !important;
+    border-color: #f97316 !important;
+    color: #ffffff !important;
+}
+
+/* ── 사이드바 expander 내부 텍스트 */
+[data-testid="stSidebar"] [data-testid="stExpander"] {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] input {
+    background: #ffffff !important;
+    color: #111827 !important;
+}
+
+/* ── 사이드바 탭 텍스트 */
+[data-testid="stSidebar"] [data-baseweb="tab"] {
+    color: #93c5fd !important;
+}
+[data-testid="stSidebar"] [aria-selected="true"] {
+    color: #f97316 !important;
+    border-bottom: 2px solid #f97316 !important;
+}
+
+/* ── 사이드바 success/warning/info 박스 */
+[data-testid="stSidebar"] [data-testid="stSuccess"] {
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: #bbf7d0 !important;
+}
+[data-testid="stSidebar"] [data-testid="stWarning"] {
+    background: rgba(249,115,22,0.2) !important;
+    border: 1px solid rgba(249,115,22,0.5) !important;
+    color: #fed7aa !important;
+}
+[data-testid="stSidebar"] [data-testid="stCaption"],
+[data-testid="stSidebar"] .stCaption {
+    color: #93c5fd !important;
 }
 
 /* ── 메인 타이틀 */
