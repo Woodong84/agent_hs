@@ -18,16 +18,246 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── CSS 스타일
+# ── CSS 스타일 (파란색·주황색 계열 테마)
 st.markdown("""
 <style>
-.result-box   { background:#f0f4ff; border-left:4px solid #4a6cf7;
-                padding:1rem 1.2rem; border-radius:6px; margin:0.5rem 0; }
-.fallback-box { background:#fff8e1; border-left:4px solid #f0a500;
-                padding:1rem 1.2rem; border-radius:6px; margin:0.5rem 0; }
-.warn-box     { background:#fff3f3; border-left:4px solid #e53935;
-                padding:0.8rem 1rem; border-radius:6px; margin:0.5rem 0; }
-.meta-row     { color:#555; font-size:0.85rem; margin-top:0.4rem; }
+/* ── 전체 배경 */
+.stApp {
+    background: linear-gradient(160deg, #f0f5ff 0%, #fdf6ee 100%);
+}
+
+/* ── 사이드바 */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0f2d6b 0%, #1a4299 100%);
+}
+[data-testid="stSidebar"] * {
+    color: #e8f0ff !important;
+}
+[data-testid="stSidebar"] .stTextInput input,
+[data-testid="stSidebar"] .stSelectbox select {
+    background: rgba(255,255,255,0.12) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    color: #fff !important;
+    border-radius: 6px;
+}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+[data-testid="stSidebar"] label {
+    color: #c8d8ff !important;
+}
+[data-testid="stSidebar"] .stSlider [data-testid="stTickBar"] {
+    color: #8ab4ff !important;
+}
+[data-testid="stSidebar"] hr {
+    border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* ── 사이드바 버튼 */
+[data-testid="stSidebar"] .stButton > button {
+    background: rgba(255,255,255,0.12) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: #fff !important;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: rgba(255,255,255,0.22) !important;
+}
+
+/* ── 메인 타이틀 */
+h1 { color: #0f2d6b !important; letter-spacing: -0.5px; }
+h2 { color: #1a4299 !important; }
+h3 { color: #1e56c4 !important; }
+
+/* ── 기본 버튼 (primary) */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #1a4299 0%, #2563eb 100%) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.5rem 1.4rem;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.35);
+    transition: all 0.2s;
+}
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #0f2d6b 0%, #1a4299 100%) !important;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.45);
+    transform: translateY(-1px);
+}
+
+/* ── 보조 버튼 */
+.stButton > button:not([kind="primary"]) {
+    border: 1.5px solid #2563eb !important;
+    color: #1a4299 !important;
+    border-radius: 8px;
+    background: #fff !important;
+    transition: all 0.2s;
+}
+.stButton > button:not([kind="primary"]):hover {
+    background: #eff6ff !important;
+    border-color: #1a4299 !important;
+}
+
+/* ── 결과 박스 (파란색 계열) */
+.result-box {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    box-shadow: 0 1px 6px rgba(37,99,235,0.1);
+}
+
+/* ── Fallback 박스 (주황색 계열) */
+.fallback-box {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    box-shadow: 0 1px 6px rgba(249,115,22,0.12);
+}
+
+/* ── 경고 박스 (진한 주황) */
+.warn-box {
+    background: #fff3e0;
+    border-left: 4px solid #ea580c;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+}
+
+.meta-row { color: #475569; font-size: 0.85rem; margin-top: 0.4rem; }
+
+/* ── 메트릭 카드 */
+[data-testid="stMetric"] {
+    background: #fff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 1px 4px rgba(37,99,235,0.08);
+}
+[data-testid="stMetricLabel"] { color: #1a4299 !important; font-size: 0.82rem; font-weight: 600; }
+[data-testid="stMetricValue"] { color: #0f2d6b !important; font-weight: 700; }
+
+/* ── Info 배너 */
+[data-testid="stInfo"] {
+    background: #eff6ff !important;
+    border: 1px solid #93c5fd !important;
+    border-radius: 8px;
+    color: #1e40af !important;
+}
+
+/* ── Success 배너 */
+[data-testid="stSuccess"] {
+    background: #f0fdf4 !important;
+    border: 1px solid #86efac !important;
+    border-radius: 8px;
+}
+
+/* ── Warning 배너 */
+[data-testid="stWarning"] {
+    background: #fff7ed !important;
+    border: 1px solid #fdba74 !important;
+    border-radius: 8px;
+    color: #9a3412 !important;
+}
+
+/* ── Error 배너 */
+[data-testid="stError"] {
+    background: #fff1f2 !important;
+    border: 1px solid #fda4af !important;
+    border-radius: 8px;
+}
+
+/* ── Expander */
+[data-testid="stExpander"] {
+    border: 1px solid #bfdbfe !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+}
+[data-testid="stExpander"] summary {
+    color: #1a4299 !important;
+    font-weight: 600;
+}
+[data-testid="stExpander"] summary:hover {
+    color: #f97316 !important;
+}
+
+/* ── 입력 필드 */
+.stTextInput input,
+.stTextArea textarea {
+    border: 1.5px solid #bfdbfe !important;
+    border-radius: 7px !important;
+    background: #fff !important;
+    transition: border-color 0.2s;
+}
+.stTextInput input:focus,
+.stTextArea textarea:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.12) !important;
+}
+
+/* ── 라디오 버튼 */
+[data-testid="stRadio"] label {
+    color: #1a4299 !important;
+    font-weight: 500;
+}
+
+/* ── 탭 */
+[data-testid="stTabs"] [data-baseweb="tab"] {
+    color: #64748b !important;
+    border-bottom: 2px solid transparent;
+}
+[data-testid="stTabs"] [aria-selected="true"] {
+    color: #f97316 !important;
+    border-bottom: 2px solid #f97316 !important;
+}
+
+/* ── 구분선 */
+hr { border-color: #bfdbfe !important; }
+
+/* ── 슬라이더 */
+[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
+    background: #f97316 !important;
+    border-color: #f97316 !important;
+}
+[data-testid="stSlider"] [data-baseweb="slider"] [data-testid="stTickBar"] {
+    background: #2563eb !important;
+}
+
+/* ── 코드 블록 */
+.stCode, code {
+    background: #f0f5ff !important;
+    border: 1px solid #bfdbfe !important;
+    color: #1a4299 !important;
+    border-radius: 5px;
+}
+
+/* ── 캡션 */
+[data-testid="stCaptionContainer"] {
+    color: #64748b !important;
+}
+
+/* ── 헤더 구분 배너 */
+.section-header {
+    background: linear-gradient(90deg, #1a4299, #2563eb);
+    color: #fff !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+/* ── 충돌 감지 배너 (주황) */
+.conflict-box {
+    background: #fff7ed;
+    border-left: 4px solid #ea580c;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(234,88,12,0.12);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -257,9 +487,9 @@ def _render_result(result: dict):
             "TYPE-3": "복수 코드가 동등하게 지지됨",
         }.get(conflict_type, "분류 충돌 감지")
         st.markdown(
-            f'<div style="background:#fff3e0;border-left:4px solid #e65100;padding:10px 14px;border-radius:4px;margin-bottom:8px">'
-            f'⚠️ <b>분류 충돌 감지 ({conflict_type}) — {type_desc}</b><br>'
-            f'<span style="font-size:0.85rem;color:#555">{conflict_detail} · 관세사 확인을 권장합니다.</span></div>',
+            f'<div class="conflict-box">'
+            f'⚠️ <b style="color:#9a3412">분류 충돌 감지 ({conflict_type}) — {type_desc}</b><br>'
+            f'<span style="font-size:0.85rem;color:#78350f">{conflict_detail} · 관세사 확인을 권장합니다.</span></div>',
             unsafe_allow_html=True,
         )
 
@@ -282,10 +512,10 @@ def _render_result(result: dict):
                     cls_a = existing_code[:2]
                     desc_a = _HS_CLASS_DESC.get(cls_a, f"{cls_a}류")
                     st.markdown(
-                        f'<div style="background:#f5f5f5;border:1px solid #bbb;padding:12px;border-radius:6px">'
-                        f'<b>후보 A — 기존 코드</b><br>'
-                        f'<span style="font-size:1.1rem;font-family:monospace">{existing_code}</span><br>'
-                        f'<span style="color:#555;font-size:0.88rem">{desc_a}</span>'
+                        f'<div style="background:#f8fafc;border:1.5px solid #94a3b8;padding:14px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">'
+                        f'<b style="color:#475569">후보 A — 기존 코드</b><br>'
+                        f'<span style="font-size:1.15rem;font-family:monospace;color:#0f2d6b;font-weight:700">{existing_code}</span><br>'
+                        f'<span style="color:#64748b;font-size:0.88rem">{desc_a}</span>'
                         f'</div>',
                         unsafe_allow_html=True,
                     )
@@ -294,10 +524,10 @@ def _render_result(result: dict):
                     desc_b = _HS_CLASS_DESC.get(cls_b, f"{cls_b}류")
                     top1_conf = candidates_all[0].get("confidence", "") if candidates_all else ""
                     st.markdown(
-                        f'<div style="background:#e8f5e9;border:1px solid #66bb6a;padding:12px;border-radius:6px">'
-                        f'<b>후보 B — RAG 추천 코드</b><br>'
-                        f'<span style="font-size:1.1rem;font-family:monospace">{top1_code}</span><br>'
-                        f'<span style="color:#2e7d32;font-size:0.88rem">{desc_b} · 신뢰도: {top1_conf}</span>'
+                        f'<div style="background:#fff7ed;border:1.5px solid #f97316;padding:14px;border-radius:8px;box-shadow:0 1px 6px rgba(249,115,22,0.15)">'
+                        f'<b style="color:#c2410c">후보 B — RAG 추천 코드</b><br>'
+                        f'<span style="font-size:1.15rem;font-family:monospace;color:#ea580c;font-weight:700">{top1_code}</span><br>'
+                        f'<span style="color:#9a3412;font-size:0.88rem">{desc_b} · 신뢰도: {top1_conf}</span>'
                         f'</div>',
                         unsafe_allow_html=True,
                     )
