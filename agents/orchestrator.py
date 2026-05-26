@@ -146,9 +146,32 @@ def run_agent(input_data: dict) -> dict:
         "llm_provider": "azure" if settings.use_azure else "anthropic",
     }
 
+    product_name = input_data.get("product_name", "")
+    material = input_data.get("material", "")
+    trade_direction = input_data.get("trade_direction", "")
+    threshold = input_data.get("similarity_threshold", 0.30)
+    existing_code = input_data.get("existing_hs_code", "") or "없음"
+    llm_label = "Azure OpenAI gpt-4.1" if settings.use_azure else "Claude Sonnet 4.5"
+
+    print("\n╔══════════════════════════════════════════════╗")
+    print("║  HSAgent — 추론 시작                         ║")
+    print("╚══════════════════════════════════════════════╝")
+    print(f"[PLANNING] 품목: {product_name} | 재질: {material} | 방향: {trade_direction}")
+    print(f"[PLANNING] 유사도 임계값: {threshold} | 기존코드: {existing_code} | LLM: {llm_label}")
+    print("[PLANNING] Step 1. RAG 문서 검색 실행 (Pinecone 코사인 유사도)")
+    print("[PLANNING] Step 2. 충돌 감지 및 후보 Top-3 정렬")
+    print("[PLANNING] Step 3. 관세율 조회 (정적 세율 테이블)")
+    print("[PLANNING] Step 4. 최종 응답 생성 + 감사 로그 저장")
+    print("──────────────────────────────────────────────")
+
     try:
         executor = _build_agent_executor()
         question = _format_question(input_data)
+
+        print("[TOOL CALL] AgentExecutor 실행 시작 (ReAct 루프)")
+        print(f"  ▶ 입력 질문:\n    {question.replace(chr(10), chr(10) + '    ')}")
+        print("──────────────────────────────────────────────")
+
         result = executor.invoke({"input": question})
 
         final_response = result.get("output", "")
@@ -158,11 +181,49 @@ def run_agent(input_data: dict) -> dict:
         tax_result: dict = {}
         for action, observation in intermediate:
             tool_name = getattr(action, "tool", "")
+            tool_input = getattr(action, "tool_input", {})
             parsed = _parse_observation(observation)
-            if tool_name == "search_hs_code_rag" and parsed:
-                rag_result = parsed
-            elif tool_name == "query_tax_rate" and parsed:
-                tax_result = parsed
+
+            if tool_name == "search_hs_code_rag":
+                print(f"[TOOL CALL] search_hs_code_rag 호출")
+                if isinstance(tool_input, dict):
+                    q_name = tool_input.get("product_name", product_name)
+                    q_mat = tool_input.get("material", material)
+                    print(f"  ▶ 품목: {q_name} | 재질: {q_mat}")
+                print("──────────────────────────────────────────────")
+                if parsed:
+                    rag_result = parsed
+                    max_sim = round(parsed.get("max_similarity", 0.0), 3)
+                    candidates_count = len(parsed.get("candidates", []))
+                    fallback = parsed.get("fallback", False)
+                    top1 = parsed.get("candidates", [{}])[0] if parsed.get("candidates") else {}
+                    top1_code = top1.get("hs_code", "N/A")
+                    top1_conf = top1.get("confidence", "N/A")
+                    conflict = parsed.get("conflict_flag", False)
+                    conflict_type_obs = parsed.get("conflict_type", "없음")
+                    print(f"[OBSERVATION] Pinecone 검색 완료")
+                    print(f"  ▶ 최고 유사도: {max_sim} | 후보 코드 수: {candidates_count}건 | Fallback: {'예' if fallback else '아니오'}")
+                    print(f"  ▶ Top-1: {top1_code} (신뢰도: {top1_conf})")
+                    print(f"  ▶ conflict_flag: {conflict} | conflict_type: {conflict_type_obs}")
+                    print("──────────────────────────────────────────────")
+
+            elif tool_name == "query_tax_rate":
+                if isinstance(tool_input, dict):
+                    hs_q = tool_input.get("hs_code", "")
+                    dir_q = tool_input.get("trade_direction", trade_direction)
+                else:
+                    hs_q = str(tool_input)
+                    dir_q = trade_direction
+                print(f"[TOOL CALL] query_tax_rate 호출")
+                print(f"  ▶ HS-Code: {hs_q} | 방향: {dir_q}")
+                print("──────────────────────────────────────────────")
+                if parsed:
+                    tax_result = parsed
+                    basic_rate = parsed.get("basic_rate", "정보 없음")
+                    fta_rate = parsed.get("fta_rate", "정보 없음")
+                    print(f"[OBSERVATION] 세율 조회 완료")
+                    print(f"  ▶ 기본세율: {basic_rate} | FTA: {fta_rate}")
+                    print("──────────────────────────────────────────────")
 
         fallback_triggered = rag_result.get("fallback", False)
         if fallback_triggered and not final_response.strip():
@@ -198,6 +259,10 @@ def run_agent(input_data: dict) -> dict:
             "llm_provider": base_result["llm_provider"],
         }
 
+        top1_display = candidates[0]["hs_code"] if candidates else "N/A"
+        print(f"[FINAL] 응답 생성 완료 | 응답시간: {response_time}초 | Top-1: {top1_display}")
+        print(f"[FINAL] Fallback: {'예' if fallback_triggered else '아니오'} | 충돌감지: {'예' if conflict_flag else '아니오'} | 근거품질: {evidence_quality_score}/8.0")
+
         # audit_log를 직접 저장 (LLM 경유 없이 → input_data 누락 방지)
         try:
             top1_code = candidates[0]["hs_code"] if candidates else ""
@@ -206,8 +271,11 @@ def run_agent(input_data: dict) -> dict:
                 "user_selection": top1_code,
                 "modify_reason": "",
             })
+            print("[LOG SAVE] audit_log.json 저장 완료")
         except Exception:
-            pass
+            print("[LOG SAVE] audit_log.json 저장 실패 (무시)")
+
+        print("══════════════════════════════════════════════\n")
 
         return {
             **base_result,
@@ -224,9 +292,13 @@ def run_agent(input_data: dict) -> dict:
         }
 
     except Exception as e:
+        response_time = round(time.time() - start, 2)
+        print(f"[ERROR] 에이전트 실행 실패 | 응답시간: {response_time}초")
+        print(f"  ▶ 오류: {e}")
+        print("══════════════════════════════════════════════\n")
         return {
             **base_result,
-            "response_time_sec": round(time.time() - start, 2),
+            "response_time_sec": response_time,
             "error_message": str(e),
         }
 
