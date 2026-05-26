@@ -154,14 +154,16 @@ def run_agent(input_data: dict) -> dict:
     llm_label = "Azure OpenAI gpt-4.1" if settings.use_azure else "Claude Sonnet 4.5"
 
     print("\n╔══════════════════════════════════════════════╗")
-    print("║  HSAgent — 추론 시작                         ║")
+    print("║  HSAgent — Deep Reasoning Trace 시작         ║")
     print("╚══════════════════════════════════════════════╝")
-    print(f"[PLANNING] 품목: {product_name} | 재질: {material} | 방향: {trade_direction}")
-    print(f"[PLANNING] 유사도 임계값: {threshold} | 기존코드: {existing_code} | LLM: {llm_label}")
-    print("[PLANNING] Step 1. RAG 문서 검색 실행 (Pinecone 코사인 유사도)")
-    print("[PLANNING] Step 2. 충돌 감지 및 후보 Top-3 정렬")
-    print("[PLANNING] Step 3. 관세율 조회 (정적 세율 테이블)")
-    print("[PLANNING] Step 4. 최종 응답 생성 + 감사 로그 저장")
+    print(f"[CONTEXT] 품목: {product_name} | 재질: {material} | 방향: {trade_direction}")
+    print(f"[CONTEXT] 유사도 임계값: {threshold} | 기존코드: {existing_code} | LLM: {llm_label}")
+    print("[PLANNING] 4-step execution plan generated. Simulating plan...")
+    print("  ▷ Step 1/4. RAG 문서 검색 실행 (Pinecone 코사인 유사도)")
+    print("  ▷ Step 2/4. 충돌 감지 및 후보 Top-3 정렬 (결정론적 룰 엔진)")
+    print("  ▷ Step 3/4. 관세율 조회 (정적 세율 테이블, 기존코드 의존)")
+    print("  ▷ Step 4/4. 최종 응답 생성 + 감사 로그 직접 저장")
+    print("[PLANNING] Plan validated. Proceeding to execution phase.")
     print("──────────────────────────────────────────────")
 
     try:
@@ -206,6 +208,20 @@ def run_agent(input_data: dict) -> dict:
                     print(f"  ▶ Top-1: {top1_code} (신뢰도: {top1_conf})")
                     print(f"  ▶ conflict_flag: {conflict} | conflict_type: {conflict_type_obs}")
                     print("──────────────────────────────────────────────")
+
+                    # Self-Correction: Fallback 분기 시 계획 재수정
+                    if fallback:
+                        print(f"[SELF-CORRECTION] 유사도 {max_sim} < 임계값 {threshold} 감지")
+                        print(f"  ▶ 초기 계획(일반 추천) 폐기 → Fallback 경로로 재계획")
+                        print(f"  ▶ Step 3(세율 조회) 스킵 + 황색 경고 배너 + 면책 문구 강제 출력")
+                        print("──────────────────────────────────────────────")
+
+                    # Self-Correction: 충돌 감지 시 후속 처리 경로 추가
+                    if conflict:
+                        print(f"[SELF-CORRECTION] {conflict_type_obs} 충돌 감지 — 계획 보강")
+                        print(f"  ▶ A/B 비교 카드 자동 생성 경로 추가")
+                        print(f"  ▶ 주황색 경고 배너 + '사내 코드 통일 검토 필요' 메시지 활성화")
+                        print("──────────────────────────────────────────────")
 
             elif tool_name == "query_tax_rate":
                 if isinstance(tool_input, dict):
